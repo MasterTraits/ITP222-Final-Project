@@ -6,6 +6,6 @@
   <title>Compass</title>
 </head>
 <body>
-  
+  <h1>Welcome to Compass</h1>
 </body>
 </html>
