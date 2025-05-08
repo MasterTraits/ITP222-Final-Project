@@ -14,7 +14,7 @@
     <article class="p-20 h-full w-full flex flex-col justify-between">
       <img src="../assets/logo.svg" alt="Compass Logo" class="h-10 w-auto self-end">
       <div>
-        <h1 class="text-3xl tracking-tighter font-bold mb-2">Sign-up</h1>
+        <h1 class="text-3xl tracking-tighter font-bold mb-2">Sign-in</h1>
         <p class="font-semibold mb-8">Glad to have you back with us!</p>
         <form>
           <label for="email" class="block mb-2 text-lg font-semibold text-[333333]">Email</label>
