@@ -48,7 +48,7 @@
         </form>
       </div>
       <div class="flex justify-between items-end">
-        <p class="text-sm text-[#333333]">Don't have an account? <a href="signup.php" class="text-[#FFBF40] font-semibold">Sign-up</a></p>
+        <p class="text-sm text-[#333333]">Don't have an account? <a href="register.php" class="text-[#FFBF40] font-semibold">Sign-up</a></p>
         <button type="submit" class="bg-[#FFCC66] text-[#333333] py-2 px-5 rounded-lg transition duration-300 ease-in-out hover:bg-[#FFBF40] font-bold tracking-tight">Let's Travel</button>
       </div>
     </article>
