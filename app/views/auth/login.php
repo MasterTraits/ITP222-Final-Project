@@ -12,7 +12,7 @@
   <main class="grid grid-cols-2 h-screen w-full">
     <img src="" alt="Compass Travel Showcase" class="h-full w-full bg-black">
     <article class="p-20 h-full w-full flex flex-col justify-between">
-      <img src="../assets/logo.svg" alt="Compass Logo" class="h-10 w-auto self-end">
+      <img src="../../assets/logo.svg" alt="Compass Logo" class="h-10 w-auto self-end">
       <div>
         <h1 class="text-3xl tracking-tighter font-bold mb-2">Sign-in</h1>
         <p class="font-semibold mb-8">Glad to have you back with us!</p>
