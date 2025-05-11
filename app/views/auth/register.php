@@ -4,28 +4,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compass | Register</title>
+  <title>Compass | Sign-up</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body class="bg-[#FFF8F5] font-inter">
-  <main class="grid grid-cols-2 h-screen w-full">
-    <img src="" alt="Compass Travel Showcase" class="h-full w-full bg-black">
-    <form class="p-20 h-full w-full flex flex-col justify-between">
-      <img src="../../assets/logo.svg" alt="Compass Logo" class="h-10 w-auto self-end">
+  <main class="grid grid-cols-1 md:grid-cols-2 h-screen w-full">
+    <a href="" class="hidden md:inline-block h-full w-full bg-black">
+      <img src="" alt="Compass Travel Showcase" class="h-full w-full">
+    </a>
+    <form
+      action="/auth/register" method="post" 
+      class="gap-6 p-10 sm:p-20 sm:gap-0 h-full w-full flex flex-col justify-between"
+    >
+      <img src="assets/logo.svg" alt="Compass Logo" class="h-10 w-auto md:self-end">
       <div>
         <h1 class="text-3xl tracking-tighter font-bold mb-2">Sign-up</h1>
         <p class="font-semibold mb-8">Start your Journey with us at Compass!</p>
-        <article>
+        <section>
           <label for="email" class="block mb-2 text-lg font-semibold text-[333333]">Email</label>
           <input
             id="email"
             type="email"
             placeholder="e.g. example@ex.com"
             name="email"
-            class="w-2/3 h-12 bg-[#F4EEEC] border border-[#E2E8F0] rounded-lg px-4 mb-6 transition duration-300 ease-in-out"
+            class="w-full lg:w-2/3 h-12 bg-[#F4EEEC] border border-[#E2E8F0] rounded-lg px-4 mb-6 transition duration-300 ease-in-out"
             required>
-          <div class="flex gap-2 w-2/3">
+          <div class="flex gap-2 w-full lg:w-2/3">
             <div>
               <label for="given" class="block mb-2 text-lg font-semibold text-[333333]">Given Name</label>
               <input
@@ -48,7 +53,7 @@
             </div>
           </div>
           <label for="password" class="block mb-2 text-lg font-semibold text-[#333333]">Password</label>
-          <div class="relative w-2/3">
+          <div class="relative w-full lg:w-2/3">
             <input
               id="password"
               type="password"
@@ -67,7 +72,7 @@
               </svg>
             </button>
           </div>
-          <div class="flex gap-2 items-start w-2/3 mb-4">
+          <div class="flex gap-2 items-start w-full lg:w-2/3 mb-4">
             <input
               id="terms"
               type="checkbox"
@@ -76,11 +81,11 @@
               required>
             <label for="terms" class="ml-2 text-sm text-[#333333]">I have read, understood, and agree to the <a href="#" class="text-[#FFBF40] font-semibold">Terms of Service</a> and the updated Compass <a href="#" class="text-[#FFBF40] font-semibold">Privacy Policy</a>. I consent to the collection, use, processing and sharing of my personal information in accordance therewith.</label>
           </div>
-        </article>
+        </section>
       </div>
-      <div class="flex justify-between items-end">
-        <p class="text-sm text-[#333333]">Already have an account? <a href="login.php" class="text-[#FFBF40] font-semibold">Sign-in</a></p>
-        <button type="submit" class="bg-[#FFCC66] text-[#333333] py-2 px-5 rounded-lg transition duration-300 ease-in-out hover:bg-[#FFBF40] font-bold tracking-tight">Let's Travel</button>
+      <div class="lg:flex justify-between items-end">
+        <p class="text-sm text-[#333333]">Already have an account? <a href="login" class="text-[#FFBF40] font-semibold">Sign-in</a></p>
+        <button type="submit" class="w-full mt-3 lg:mt-0 lg:w-40 bg-[#FFCC66] text-[#333333] py-2 px-5 rounded-lg transition duration-300 ease-in-out hover:bg-[#FFBF40] font-bold tracking-tight">Let's Travel</button>
       </div>
     </form>
   </main>
