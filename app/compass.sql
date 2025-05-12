@@ -3,12 +3,12 @@ USE compass;
 
 CREATE TABLE IF NOT EXISTS `compass`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(45) NOT NULL,
+  `given` VARCHAR(50) NOT NULL,
+  `surname` VARCHAR(50) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(50) NOT NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC));
 
 -- CREATE TABLE IF NOT EXISTS `compass`.`trips` (

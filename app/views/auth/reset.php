@@ -4,23 +4,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compass | Sign-up</title>
+  <title>Compass | Reset Password</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body class="bg-[#FFF8F5] font-inter">
   <main class="grid grid-cols-1 md:grid-cols-2 h-screen w-full">
-    <a href="" class="hidden md:inline-block h-full w-full bg-black">
+    <div class="hidden md:inline-block h-full w-full bg-black">
       <img src="" alt="Compass Travel Showcase" class="h-full w-full">
-    </a>
+    </div>
     <form
-      action="/auth/register" method="post" 
+      action="/auth/login" method="post"
       class="gap-6 p-10 sm:p-20 sm:gap-0 h-full w-full flex flex-col justify-between"
     >
-      <img src="assets/logo.svg" alt="Compass Logo" class="h-10 w-auto md:self-end">
+      <img src="assets/logo.svg" alt="Compass Logo" class="h-10 w-auto">
       <div>
-        <h1 class="text-3xl tracking-tighter font-bold mb-2">Sign-up</h1>
-        <p class="font-semibold mb-8">Start your Journey with us at Compass!</p>
+        <h1 class="text-3xl tracking-tighter font-bold mb-2">Reset</h1>
+        <p class="font-semibold mb-8">Glad to have you back with us!</p>
+
+        <?php if (isset($_SESSION['error'])): ?>
+          <div class="w-full md:w-2/3 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <?= $_SESSION['error'];
+            unset($_SESSION['error']); ?>
+          </div>
+        <?php endif; ?>
+
+        <?php if (isset($_SESSION['success'])): ?>
+          <div class="w-full md:w-2/3 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+            <?= $_SESSION['success'];
+            unset($_SESSION['success']); ?>
+          </div>
+        <?php endif; ?>
+
         <section>
           <label for="email" class="block mb-2 text-lg font-semibold text-[333333]">Email</label>
           <input
@@ -28,31 +43,12 @@
             type="email"
             placeholder="e.g. example@ex.com"
             name="email"
-            class="w-full lg:w-2/3 h-12 bg-[#F4EEEC] border border-[#E2E8F0] rounded-lg px-4 mb-6 transition duration-300 ease-in-out"
+            class="w-full lg:w-2/3 h-12 bg-[#F4EEEC] border border-[#E2E8F0] rounded-lg px-4 mb-4 transition duration-300 ease-in-out"
             required>
-          <div class="flex gap-2 w-full lg:w-2/3">
-            <div>
-              <label for="given" class="block mb-2 text-lg font-semibold text-[333333]">Given Name</label>
-              <input
-                id="given"
-                type="given"
-                placeholder="e.g. Juan"
-                name="given"
-                class="w-full h-12 bg-[#F4EEEC] border border-[#E2E8F0] rounded-lg px-4 mb-6 transition duration-300 ease-in-out"
-                required>
-            </div>
-            <div>
-              <label for="surname" class="block mb-2 text-lg font-semibold text-[333333]">Surname</label>
-              <input
-                id="surname"
-                type="surname"
-                placeholder="e.g. Dela Cruz"
-                name="surname"
-                class="w-full h-12 bg-[#F4EEEC] border border-[#E2E8F0] rounded-lg px-4 mb-6 transition duration-300 ease-in-out"
-                required>
-            </div>
+          <div class="flex justify-between w-full lg:w-2/3">
+            <label for="password" class="block mb-2 text-lg font-semibold text-[#333333]">Password</label>
+            <a href="forgot-pass" class="text-sm text-[#FFBF40] font-semibold cursor-pointer text-right">Forgot password?</a>
           </div>
-          <label for="password" class="block mb-2 text-lg font-semibold text-[#333333]">Password</label>
           <div class="relative w-full lg:w-2/3">
             <input
               id="password"
@@ -72,27 +68,11 @@
               </svg>
             </button>
           </div>
-          <div class="flex gap-2 items-start w-full lg:w-2/3 mb-4">
-            <input
-              id="terms"
-              type="checkbox"
-              name="terms"
-              class="size-10 text-[#FFBF40] border border-[#E2E8F0] rounded-lg focus:ring-[#FFBF40] focus:ring-opacity-50 "
-              required>
-            <label for="terms" class="ml-2 text-sm text-[#333333]">I have read, understood, and agree to the <a href="#" class="text-[#FFBF40] font-semibold">Terms of Service</a> and the updated Compass <a href="#" class="text-[#FFBF40] font-semibold">Privacy Policy</a>. I consent to the collection, use, processing and sharing of my personal information in accordance therewith.</label>
-          </div>
         </section>
       </div>
       <div class="lg:flex justify-between items-end">
-        <p class="text-sm text-[#333333]">Already have an account? <a href="login" class="text-[#FFBF40] font-semibold">Sign-in</a></p>
-        <button 
-          disabled="disabled"
-          type="submit" 
-          class="w-full mt-3 lg:mt-0 lg:w-40 bg-[#FFCC66] text-[#333333] py-2 px-5 rounded-lg transition duration-300 ease-in-out hover:bg-[#FFBF40] font-bold tracking-tight disabled:opacity-50"
-          id="submitButton"
-        >
-          Let's Travel
-        </button>
+        <p class="text-sm text-[#333333]">Don't have an account? <a href="register" class="text-[#FFBF40] font-semibold">Sign-up</a></p>
+        <button type="submit" class="w-full mt-3 lg:mt-0 lg:w-40 bg-[#FFCC66] text-[#333333] py-2 px-5 rounded-lg transition duration-300 ease-in-out hover:bg-[#FFBF40] font-bold tracking-tight">Let's Travel</button>
       </div>
     </form>
   </main>
@@ -110,23 +90,7 @@
         icon.innerHTML = '<path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>';
       }
     });
-
-    submitButton = document.getElementById('submitButton');
-    checkbox = document.getElementById('terms');
-
-    checkbox.addEventListener('change', function() {
-      if (this.checked) {
-        submitButton.removeAttribute('disabled');
-      } else {
-        submitButton.setAttribute('disabled', 'disabled');
-      }
-    });
   </script>
 </body>
-
-
-
-
-
 
 </html>

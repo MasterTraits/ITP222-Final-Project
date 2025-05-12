@@ -7,5 +7,6 @@
 </head>
 <body>
   This is the landing page of the Compass application
+  <a href="logout"><button>Log-out?</button></a> 
 </body>
 </html>

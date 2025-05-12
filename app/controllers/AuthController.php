@@ -20,18 +20,6 @@ class AuthController
         include __DIR__ . '/../views/auth/login.php';
     }
 
-    public function registerForm()
-    {
-        include __DIR__ . '/../views/auth/register.php';
-    }
-
-    public function forgotPasswordForm()
-    {
-        include __DIR__ . '/../views/auth/forgot-pass.php';
-    }
-
-
-    // Handle login submission
     public function login()
     {
         $email = $_POST['email'] ?? '';
@@ -47,13 +35,18 @@ class AuthController
 
         if ($user && password_verify($password, $user['password'])) {
             Auth::login($user);
-            header("Location: /dashboard");
+            header("Location: /");
             exit;
         } else {
-            $_SESSION['error'] = "Invalid email or password.";
+            $_SESSION['error'] = "Invalid email or password. ";
             header("Location: /login");
             exit;
         }
+    }
+
+    public function registerForm()
+    {
+        include __DIR__ . '/../views/auth/register.php';
     }
 
     public function register()
@@ -78,7 +71,7 @@ class AuthController
         }
 
         // Fix: Call the register method instead of create
-        if ($this->userModel->create($email, $given, $surname, password_hash($password, PASSWORD_BCRYPT))) {
+        if ($this->userModel->create($email, $given, $surname, $password)) {
             $_SESSION['success'] = "Registration successful! Please login.";
             header("Location: /login");
             exit;
@@ -87,6 +80,31 @@ class AuthController
             header("Location: /register");
             exit;
         }
+    }
+
+    public function forgotPasswordForm()
+    {
+        include __DIR__ . '/../views/auth/forgot-pass.php';
+    }
+
+    public function forgotPassword()
+    {
+        $email = $_POST['email'] ?? '';
+        if (empty($email)) {
+            $_SESSION['error'] = "Email is required.";
+            header("Location: /forgot-pass");
+            exit;
+        }
+
+        $token = bin2hex(random_bytes(16));
+        $token_hash = hash("sha256", $token);
+        $expiry = date("Y-m-d H:i:s", time() + 1800); // 30 minute expiry
+        
+
+        // Here you would typically send a password reset email
+        $_SESSION['success'] = "Password reset link sent to your email.";
+        header("Location: /login");
+        exit;
     }
 
     // Logout

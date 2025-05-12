@@ -1,17 +1,7 @@
 <?php
 
 session_start();
-
-// Autoloader for classes
-spl_autoload_register(function($class) {
-    // Convert namespace separators to directory separators
-    $path = str_replace('\\', '/', $class) . '.php';
-    $fullPath = __DIR__ . '/' . $path;
-    
-    if (file_exists($fullPath)) {
-        require_once $fullPath;
-    }
-});
+require 'vendor/autoload.php';
 
 $env = parse_ini_file(__DIR__ . '/.env');
 $db = new PDO("mysql:host={$env['HOST']};dbname={$env['DBNAME']}", $env['USERNAME'], $env['PASSWORD']);
@@ -29,10 +19,6 @@ if($base_dir != '/' && strpos($request, $base_dir) === 0) {
 $request = rtrim($request, '/') ?: '/';
 
 
-// Add debug output (remove in production)
-// echo "Debug - Request URI: " . $request . "<br>";
-
-// Route to the appropriate controller action
 switch ($request) {
     case '/':
         // Home page
@@ -57,6 +43,10 @@ switch ($request) {
 
     case '/forgot-pass':
         $authController->forgotPasswordForm();
+        break;
+
+    case '/auth/forgot-pass':
+        $authController->forgotPassword();
         break;
         
     case '/logout':
