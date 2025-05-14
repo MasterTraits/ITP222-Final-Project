@@ -13,8 +13,8 @@ $mail->SMTPAuth = true;
 $mail->Host = "smtp.gmail.com";
 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 $mail->Port = 587;
-$mail->Username = "efrohibire@gmail.com";
-$mail->Password = "lylw yhfp pjoq ozct";
+$mail->Username = "";
+$mail->Password = "";
 
 $mail->isHtml(true);
 
