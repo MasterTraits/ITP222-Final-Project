@@ -1,5 +1,5 @@
 <?php
-  var_dump($_SESSION);
+$env = parse_ini_file(__DIR__ . '/../../../.env');
 ?>
 
 <!DOCTYPE html>
@@ -10,43 +10,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Compass | Sign-in</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script>
+    function onSubmit(token) {
+      document.getElementById("login-submit").submit();
+    }
+  </script>
 </head>
 
 <body class="bg-[#FFF8F5] font-inter">
   <main class="grid grid-cols-1 md:grid-cols-2 h-screen w-full">
     <div class="hidden md:inline-block h-full w-full bg-black">
-      <img src="" alt="Compass Travel Showcase" class="h-full w-full">
+      <img src="assets/login-sample.jpeg" alt="Compass Travel Showcase" class="h-full w-full object-cover object-center">
     </div>
     <form
       action="/auth/login" method="post"
-      class="gap-6 p-10 sm:p-20 sm:gap-0 h-full w-full flex flex-col justify-between"
-    >
+      id="login-submit"
+      aria-labelledby="login-heading"
+      class="gap-6 p-10 sm:p-20 sm:gap-0 h-full w-full flex flex-col justify-between">
       <img src="assets/logo.svg" alt="Compass Logo" class="h-10 w-auto md:self-end">
       <div>
-        <h1 class="text-3xl tracking-tighter font-bold mb-2">Sign-in</h1>
+        <h1 id="login-heading" class="text-3xl tracking-tighter font-bold mb-2">Sign-in</h1>
         <p class="font-semibold mb-8">Glad to have you back with us!</p>
 
         <?php if (isset($_SESSION['error'])): ?>
-          <div class="w-full md:w-2/3 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+          <div class="w-full md:w-2/3 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" role="alert" aria-live="assertive">
             <?= $_SESSION['error'];
             unset($_SESSION['error']); ?>
           </div>
         <?php endif; ?>
 
         <?php if (isset($_SESSION['success'])): ?>
-          <div class="w-full md:w-2/3 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+          <div class="w-full md:w-2/3 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4" role="status" aria-live="polite">
             <?= $_SESSION['success'];
             unset($_SESSION['success']); ?>
           </div>
         <?php endif; ?>
 
-        <section>
+        <section aria-label="Login credentials">
           <label for="email" class="block mb-2 text-lg font-semibold text-[333333]">Email</label>
           <input
             id="email"
             type="email"
             placeholder="e.g. example@ex.com"
             name="email"
+            aria-required="true"
+            aria-label="Email address"
             class="w-full lg:w-2/3 h-12 bg-[#F4EEEC] border border-[#E2E8F0] rounded-lg px-4 mb-4 transition duration-300 ease-in-out"
             required>
           <div class="flex justify-between w-full lg:w-2/3">
@@ -59,6 +68,8 @@
               type="password"
               placeholder="Enter your password"
               name="password"
+              aria-required="true"
+              aria-label="Password"
               class="w-full h-12 bg-[#F4EEEC] border border-[#E2E8F0] rounded-lg px-4 mb-4 transition duration-300 ease-in-out"
               required>
             <button
@@ -76,7 +87,14 @@
       </div>
       <div class="lg:flex justify-between items-end">
         <p class="text-sm text-[#333333]">Don't have an account? <a href="register" class="text-[#FFBF40] font-semibold">Sign-up</a></p>
-        <button type="submit" class="w-full mt-3 lg:mt-0 lg:w-40 bg-[#FFCC66] text-[#333333] py-2 px-5 rounded-lg transition duration-300 ease-in-out hover:bg-[#FFBF40] font-bold tracking-tight">Let's Travel</button>
+        <button
+          type="submit"
+          class="g-recaptcha w-full mt-3 lg:mt-0 lg:w-40 bg-[#FFCC66] text-[#333333] py-2 px-5 rounded-lg transition duration-300 ease-in-out hover:bg-[#FFBF40] font-bold tracking-tight"
+          data-sitekey="<?= $env['RECAPTCHA_SITE_KEY'] ?? getenv('RECAPTCHA_SITE_KEY') ?? '' ?>"
+          data-callback='onSubmit'
+        >
+          Let's Travel
+        </button>
       </div>
     </form>
   </main>

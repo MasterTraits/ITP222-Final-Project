@@ -1,3 +1,7 @@
+<?php
+$env = parse_ini_file(__DIR__ . '/../../../.env');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,21 +10,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Compass | Sign-up</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script>
+    function onSubmit(token) {
+      document.getElementById("register-submit").submit();
+    }
+  </script>
 </head>
 
 <body class="bg-[#FFF8F5] font-inter">
   <main class="grid grid-cols-1 md:grid-cols-2 h-screen w-full">
     <a href="" class="hidden md:inline-block h-full w-full bg-black">
-      <img src="" alt="Compass Travel Showcase" class="h-full w-full">
+      <img src="assets/register-sample.jpg" alt="Compass Travel Showcase" class="h-full w-full object-cover object-left">
     </a>
     <form
-      action="/auth/register" method="post" 
-      class="gap-6 p-10 sm:p-20 sm:gap-0 h-full w-full flex flex-col justify-between"
-    >
+      action="/auth/register" method="post"
+      id="register-submit"
+      class="gap-6 p-10 sm:p-20 sm:gap-0 h-full w-full flex flex-col justify-between">
       <img src="assets/logo.svg" alt="Compass Logo" class="h-10 w-auto md:self-end">
       <div>
         <h1 class="text-3xl tracking-tighter font-bold mb-2">Sign-up</h1>
         <p class="font-semibold mb-8">Start your Journey with us at Compass!</p>
+
+        <?php if (isset($_SESSION['error'])): ?>
+          <div class="w-full md:w-2/3 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <?= $_SESSION['error'];
+            unset($_SESSION['error']); ?>
+          </div>
+        <?php endif; ?>
+
+        <?php if (isset($_SESSION['success'])): ?>
+          <div class="w-full md:w-2/3 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+            <?= $_SESSION['success'];
+            unset($_SESSION['success']); ?>
+          </div>
+        <?php endif; ?>
+        
         <section>
           <label for="email" class="block mb-2 text-lg font-semibold text-[333333]">Email</label>
           <input
@@ -29,26 +54,32 @@
             placeholder="e.g. example@ex.com"
             name="email"
             class="w-full lg:w-2/3 h-12 bg-[#F4EEEC] border border-[#E2E8F0] rounded-lg px-4 mb-6 transition duration-300 ease-in-out"
+            aria-required="true"
+            aria-label="Email address"
             required>
           <div class="flex gap-2 w-full lg:w-2/3">
             <div>
               <label for="given" class="block mb-2 text-lg font-semibold text-[333333]">Given Name</label>
               <input
                 id="given"
-                type="given"
+                type="text"
                 placeholder="e.g. Juan"
                 name="given"
                 class="w-full h-12 bg-[#F4EEEC] border border-[#E2E8F0] rounded-lg px-4 mb-6 transition duration-300 ease-in-out"
+                aria-required="true"
+                aria-label="Given name"
                 required>
             </div>
             <div>
               <label for="surname" class="block mb-2 text-lg font-semibold text-[333333]">Surname</label>
               <input
                 id="surname"
-                type="surname"
+                type="text"
                 placeholder="e.g. Dela Cruz"
                 name="surname"
                 class="w-full h-12 bg-[#F4EEEC] border border-[#E2E8F0] rounded-lg px-4 mb-6 transition duration-300 ease-in-out"
+                aria-required="true"
+                aria-label="Surname"
                 required>
             </div>
           </div>
@@ -60,6 +91,8 @@
               placeholder="Enter your password"
               name="password"
               class="w-full h-12 bg-[#F4EEEC] border border-[#E2E8F0] rounded-lg px-4 mb-4 transition duration-300 ease-in-out"
+              aria-required="true"
+              aria-label="Password"
               required>
             <button
               type="button"
@@ -85,13 +118,16 @@
       </div>
       <div class="lg:flex justify-between items-end">
         <p class="text-sm text-[#333333]">Already have an account? <a href="login" class="text-[#FFBF40] font-semibold">Sign-in</a></p>
-        <button 
+        <button
           disabled="disabled"
-          type="submit" 
-          class="w-full mt-3 lg:mt-0 lg:w-40 bg-[#FFCC66] text-[#333333] py-2 px-5 rounded-lg transition duration-300 ease-in-out hover:bg-[#FFBF40] font-bold tracking-tight disabled:opacity-50"
+          type="submit"
+          class="g-recaptcha w-full mt-3 lg:mt-0 lg:w-40 bg-[#FFCC66] text-[#333333] py-2 px-5 rounded-lg transition duration-300 ease-in-out hover:bg-[#FFBF40] font-bold tracking-tight disabled:opacity-50"
           id="submitButton"
+          data-sitekey="<?= $env['RECAPTCHA_SITE_KEY'] ?? getenv('RECAPTCHA_SITE_KEY') ?? '' ?>"
+          data-callback='onSubmit'
         >
           Let's Travel
+        </button>
         </button>
       </div>
     </form>
@@ -113,6 +149,7 @@
 
     submitButton = document.getElementById('submitButton');
     checkbox = document.getElementById('terms');
+    submitButton.setAttribute('disabled', 'disabled');
 
     checkbox.addEventListener('change', function() {
       if (this.checked) {

@@ -48,13 +48,23 @@ switch ($request) {
     case '/auth/forgot-pass':
         $authController->forgotPassword();
         break;
+    
+    case '/reset':
+        $authController->resetPasswordForm();
+        break;
         
+    case '/auth/reset':
+        $authController->resetPassword();
+        break;
+
     case '/logout':
         $authController->logout();
         break;
         
     default:
         http_response_code(404);
+        include __DIR__ . '/app/views/not-found.php';
+        error_log("404 Not Found: " . $request);
         break;
 }
 ?>

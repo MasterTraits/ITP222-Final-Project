@@ -38,7 +38,7 @@ class AuthController
             header("Location: /");
             exit;
         } else {
-            $_SESSION['error'] = "Invalid email or password. ";
+            $_SESSION['error'] = "Invalid email or password. " . $user['reset_token_hash']  ;
             header("Location: /login");
             exit;
         }
@@ -100,11 +100,84 @@ class AuthController
         $token_hash = hash("sha256", $token);
         $expiry = date("Y-m-d H:i:s", time() + 1800); // 30 minute expiry
         
+        if ($this->userModel->resetPassword($email, $token_hash, $expiry)) {
+            header("Location: /forgot-pass");
+        } else {
+            $_SESSION['error'] = "Failed to send password reset link.";
+            header("Location: /forgot-pass");
+        }
+    }
 
-        // Here you would typically send a password reset email
-        $_SESSION['success'] = "Password reset link sent to your email.";
-        header("Location: /login");
-        exit;
+    public function resetPasswordForm()
+    {
+        $token = $_GET['token'] ?? '';
+        if (empty($token)) {
+            $_SESSION['error'] = "Invalid token.";
+            header("Location: /login");
+            exit;
+        }
+
+        include __DIR__ . '/../views/auth/reset.php';
+    }
+
+    public function resetPassword()
+    {
+        $token = $_POST['token'];
+        
+        if (empty($token)) {
+            $_SESSION['error'] = "Missing reset token. Please try again.";
+            header("Location: /forgot-pass");
+            exit;
+        }
+        
+        $new_password = $_POST['new_password'];
+        $confirm_password = $_POST['confirm_password'] ?? '';
+        
+        // Password validation
+        $errors = [];
+        
+        // Check if passwords match
+        if ($new_password !== $confirm_password) {
+            $errors[] = "Passwords do not match.";
+        }
+        
+        // Check password length
+        if (strlen($new_password) < 8) {
+            $errors[] = "Password must be at least 8 characters long.";
+        }
+        
+        // Check password complexity
+        if (!preg_match('/[A-Z]/', $new_password)) {
+            $errors[] = "Password must include at least one uppercase letter.";
+        }
+        
+        if (!preg_match('/[a-z]/', $new_password)) {
+            $errors[] = "Password must include at least one lowercase letter.";
+        }
+        
+        if (!preg_match('/[0-9]/', $new_password)) {
+            $errors[] = "Password must include at least one number.";
+        }
+        
+        if (!preg_match('/[^A-Za-z0-9]/', $new_password)) {
+            $errors[] = "Password must include at least one special character.";
+        }
+        
+        if (!empty($errors)) {
+            $_SESSION['error'] = implode("<br>", $errors);
+            header("Location: /reset?token=$token");
+            exit;
+        }
+        
+        if ($this->userModel->updatePassword($token, $new_password)) {
+            $_SESSION['success'] = "Password reset successful! Please login.";
+            header("Location: /login");
+            exit;
+        } else {
+            $_SESSION['error'] = "Failed to reset password.";
+            header("Location: /reset?token=$token");
+            exit;
+        }
     }
 
     // Logout
