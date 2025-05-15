@@ -24,6 +24,10 @@ switch ($request) {
         // Home page
         include __DIR__ . '/app/views/home.php';
         break;
+    
+    case '/travel/palawan':
+        include __DIR__ . 'app/views/travel/palawan.php';
+        break;
         
     case '/login':
         $authController->loginForm();
