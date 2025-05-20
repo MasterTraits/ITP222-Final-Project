@@ -1,3 +1,10 @@
+<?php
+require_once 'app/models/fake-data.php';
+require_once 'app/controllers/Auth.php';
+
+use App\controllers\Auth;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,33 +13,458 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Compass</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-    body { font-family: 'Inter', sans-serif; }
-    :root {
-      --text-dark: #444;
-      --gold: #FC6;
-      --blue: #069;
-      --background: #F4EEEC;
-      --bg-transparent-dark: rgba(0, 0, 0, 0.50);
-    }
-  </style>
+  <script src="https://kit.fontawesome.com/2251ecbe6b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="app/styles/index.css">
+  <link rel="stylesheet" href="app/styles/animations.css">
 </head>
 
-<body>
-  <nav class="fixed top-5 left-1/2 transform -translate-x-1/2 z-10 bg-">
+<body class="scroll-smooth">
+  <!-------------------------------
+      REUSABLE NAVIGATION BAR 
+  -------------------------------->
+  <nav class="rounded-tl-lg rounded-br-lg shadow-lg px-4 py-2 w-full max-w-5xl   
+    bg-[var(--bg-transparent-light)] backdrop-blur-md border border-[#E2E8F0] 
+    fixed top-5 left-1/2 transform -translate-x-1/2 z-40
+    flex items-center justify-between">
     <a href="/" class="flex items-center">
       <img src="assets/logo.svg" alt="Compass Logo" class="h-10 w-auto">
-      <span class="text-2xl font-bold text-[#333333] ml-2">Compass</span>
     </a>
 
-  </nav>
-  <section class="h-150 bg-black text-white">
-    Hello
-  </section>
-  <section>
+    <aside class="flex items-center space-x-6">
+      <a href="/travel/palawan" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Book</a>
+      <a href="/login" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Travel</a>
+      <a href="/register" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Your Trips</a>
+      <div class="relative py-1 px-4 rounded-full border flex items-center gap-2 group/account hover:bg-[var(--blue)] transition 300ms ease-out">
+        <?php if (!Auth::check()): ?>
+          <i class="fa-solid fa-user text-sm"></i> Login
+          <div class="invisible absolute bg-[#F4EEEC] p-5 h-70 w-60 rounded-lg leading-tight
+          group-hover/account:visible top-9 -right-3 ">
+            <div class="w-full pb-4 mb-2 border-b-1 border-[var(--text-dark)]">
+              <a href="/login" class="block text-center bg-[var(--blue)] rounded-full py-2 px-5 text-white w-full mb-2 text-semibold">Sign-in</a>
+              <p class="text-sm">Not a user yet? <a href="/register" class="text-[var(--blue)]">Sign-up</a></p>
+            </div>
 
+            <div class="flex items-center gap-2 mt-5 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gift"></i></i> Travel Vouchers</div>
+            <p class="text-sm text-[var(--text-dark)]">Redeem your travel vouchers before they expire</p>
+            <div class="flex items-center gap-2 mt-2 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gear"></i> Settings</div>
+            <p class="text-sm mb-4 text-[var(--text-dark)]">Manage your notification preferences here</p>
+          </div>
+        <?php else: ?>
+          <i class="fa-solid fa-user text-sm"></i> Account
+          <div class="invisible absolute bg-[#F4EEEC] p-5 h-68 w-60 rounded-lg leading-tight
+          group-hover/account:visible top-9 -right-3 ">
+            <div class="flex items-center gap-2 mt-5 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gift"></i></i> Travel Vouchers</div>
+            <p class="text-sm text-[var(--text-dark)]">Redeem your travel vouchers before they expire</p>
+            <div class="flex items-center gap-2 mt-2 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gear"></i> Settings</div>
+            <p class="text-sm mb-4 text-[var(--text-dark)]">Manage your notification preferences here</p>
+            <div class="w-full pt-4 mb-2 border-t-1 border-[var(--text-dark)]">
+              <a href="/logout" class="block text-center bg-[var(--blue)] rounded-full py-2 px-5 text-white w-full mb-2 text-semibold">Log-out</a>
+            </div>
+          </div>
+        <?php endif; ?>
+      </div>
+    </aside>
+  </nav>
+
+  <!-------------------------------
+        HERO LANDING PAGE 
+  -------------------------------->
+  <section class="carousel-section-wrapper relative h-180 text-white flex flex-col justify-between items-center p-10">
+    <div class="h-10"></div>
+    <div class="carousel-slides-container absolute inset-0">
+      <?php
+      $itemIndex = 0;
+      foreach ($carouselItems as $item) {
+        $activeClass = ($itemIndex === 0) ? 'active opacity-100 visible' : 'opacity-0 invisible';
+      ?>
+        <div class="carousel-item absolute inset-0 transition-opacity duration-500 ease-in-out <?= $activeClass ?> flex flex-col justify-between items-center p-10 box-border">
+          <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0)_58.03%,rgba(0,0,0,0.5)_100%),linear-gradient(0deg,rgba(0,0,0,0.25)_0%,rgba(0,0,0,0.25)_100%)] shadow-[inset_0px_0px_100px_10px_rgba(0,0,0,0.5)] -z-1"></div>
+          <?php if (isset($item['image'])): ?>
+            <img src="<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['title'] ?? 'Carousel image') ?>" class="absolute inset-0 object-cover object-bottom w-full min-w-full h-full -z-2">
+          <?php endif; ?>
+
+          <article class="slide-content max-w-5xl w-full relative z-10 mx-auto flex flex-col items-center justify-center text-center md:items-start md:text-left mt-auto mb-auto">
+            <?php if (isset($item['title'])): ?>
+              <h1 class="tracking-widest text-5xl font-light mb-4 text-shadow-xl"><?= htmlspecialchars($item['title']) ?></h1>
+            <?php endif; ?>
+            <?php if (isset($item['description'])): ?>
+              <p class="w-full md:w-1/2 text-shadow-2xl"><?= nl2br(htmlspecialchars($item['description'])) ?></p>
+            <?php endif; ?>
+          </article>
+        </div>
+      <?php
+        $itemIndex++;
+      }
+      ?>
+    </div>
+    <article class="carousel-controls-indicators absolute bottom-0 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-5xl pb-30 flex justify-between items-center">
+      <a href="/travel" class="explore-link flex items-center gap-3 bg-[var(--bg-transparent-dark)] backdrop-blur-md rounded-full p-2 pr-4 font-light group-destinations hover:bg-gradient-to-r from-[var(--blue)] to-[var(--gold)] transition animated-gradient-hover">
+        <i class="fa-solid fa-arrow-up transform -rotate-55 bg-white text-black size-8 text-center p-2 rounded-full"></i>
+        <p>Explore Destinations</p>
+      </a>
+
+      <div class="flex gap-2">
+        <button class="carousel-control-btn prev bg-[var(--bg-transparent-dark)] size-11 rounded-full cursor-pointer flex items-center justify-center text-white text-2xl p-0">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="carousel-control-btn next bg-[var(--bg-transparent-dark)] size-11 rounded-full cursor-pointer flex items-center justify-center text-white text-2xl p-0">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </article>
+    <div class="carousel-previews absolute right-4 top-1/2 transform -translate-y-1/2 z-20 flex flex-col gap-y-2">
+      <?php
+      // Generate preview indicators using another loop
+      $previewIndex = 0;
+      foreach ($carouselItems as $item) {
+        // Add active class to the first preview only - this will be used by JavaScript
+        $activeClass = ($previewIndex === 0) ? 'active' : '';
+      ?>
+        <div class="carousel-preview-item relative w-30 h-20 border-2 border-transparent rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out <?= $activeClass ?>" data-slide-to="<?= $previewIndex ?>">
+          <?php if (isset($item['image'])): ?>
+            <img src="<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['title'] ?? 'Preview image') ?>" class="w-full h-full object-cover">
+          <?php endif; ?>
+          <div class="preview-overlay absolute inset-0 bg-black/50 flex items-center justify-center transition-opacity duration-300 ease-in-out pointer-events-none">
+            <?php if (isset($item['title'])): ?>
+              <div class="text-white text-xs font-bold text-center px-1.5 overflow-hidden text-ellipsis whitespace-nowrap"><?= htmlspecialchars($item['title']) ?></div>
+            <?php endif; ?>
+          </div>
+        </div>
+      <?php
+        $previewIndex++;
+      }
+      ?>
+    </div>
+    <div class="absolute top-1/2 left-5 transform -translate-y-1/2 text-xl shadow-2xl flex flex-col gap-6 z-40">
+      <i class="fa-brands fa-facebook"></i>
+      <i class="fa-brands fa-instagram"></i>
+      <i class="fa-brands fa-x-twitter"></i>
+    </div>
+    <form class="absolute flex justify-around gap-4 bg-[var(--bg-transparent-light)] backdrop-blur-md w-full max-w-5xl text-black -bottom-13 p-4 rounded-tl-lg rounded-br-lg shadow-lg z-10">
+      <div class="w-full">
+        <p class="text-lg mb-2">Travel Destinations</p>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label for="country" class="text-sm">From</label>
+            <select
+              id="country"
+              class="bg-[var(--bg-input)] border border-[var(--blue)] text-black rounded-full rounded-bl-none py-3 px-4 w-full">
+              <option value="Manila, PHL" selected>Manila, PHL</option>
+              <option value="El Nido, PHL">El Nido, PHL</option>
+              <option value="Boracay, PHL">Boracay, PHL</option>
+              <option value="Panglao, PHL">Panglao, PHL</option>
+              <option value="Wyoming, US">Wyoming, US</option>
+              <option value="Los Angeles, US">Los Angeles, US</option>
+              <option value="Upper Hutt, NZL">Upper Hutt, NZL</option>
+            </select>
+          </div>
+          <div class="w-full">
+            <label for="destination" class="text-sm">To</label>
+            <div class="grid grid-cols-2 gap-1 w-full">
+              <select
+                id="destination"
+                class="bg-[var(--bg-input)] border border-[var(--blue)] text-black rounded-full rounded-tr-none py-3 px-2 w-full text-sm">
+                <option value="" hidden disabled selected>Country</option>
+                <option value="Philippines">Philippines</option>
+                <option value="United States">United States</option>
+                <option value="New Zealand">New Zealand</option>
+              </select>
+              <select
+                id="destination"
+                class="bg-[var(--bg-input)] border border-[var(--blue)] text-black rounded-full rounded-tr-none py-3 px-4 w-full text-sm">
+                <option value="" hidden disabled selected>City</option>
+                <option value="1">Palawan</option>
+                <option value="2">Boracay</option>
+                <option value="3">Cebu</option>
+                <option value="4">Batanes</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full">
+        <select
+          class="text-black text-lg px-0 mb-2.5">
+          <option value="1">Round-trip</option>
+          <option value="2">One-way</option>
+          <option value="3">Multicity</option>
+        </select>
+        <div class="grid grid-cols-2 gap-2 pl-1">
+          <div>
+            <label for="date" class="text-sm">Departure</label>
+            <input
+              type="date"
+              id="date"
+              class="bg-[var(--bg-input)] border border-[var(--blue)] text-black rounded-full rounded-bl-none py-3 px-4 w-full">
+          </div>
+          <div>
+            <label for="date" class="text-sm">Return</label>
+            <input
+              type="date"
+              id="date"
+              class="bg-[var(--bg-input)] border border-[var(--blue)] text-black rounded-full rounded-tr-none py-3 px-4 w-full">
+          </div>
+        </div>
+      </div>
+      <div>
+        <br><br>
+        <button
+          type="submit"
+          class="bg-[var(--gold)] text-black rounded-full mt-2 py-3 px-5 font-semibold hover:bg-[var(--gold)] text-nowrap w-full">
+          Let's Travel!
+        </button>
+      </div>
+    </form>
   </section>
+
+  <!-------------------------------
+        UNIQUE SELLING POINT 
+  -------------------------------->
+  <?php if (!Auth::check()): ?>
+    <section class="w-full flex flex-col items-center mb-30">
+      <div class="h-45"></div>
+      <article class="max-w-5xl grid grid-cols-3 gap-4">
+        <div class="col-span-2">
+          <h2 class="text-3xl tracking-tighter font-bold text-[var(--blue)]">Guiding you to a memorable trip.</h2>
+          <p class="text-[var(--text-dark)] mt-8 font-semibold text-balance">
+            We believe every Filipino deserves to explore the beauty of our 7,641 islands without emptying their wallets.
+            We negotiate directly with local businesses to bring you authentic experiences at prices
+            that respect your budget. Whether you're planning a weekend getaway or an extended island-hopping adventure,
+            let Compass be your guide to discovering the Philippines' treasures affordably.
+          </p>
+        </div>
+        <img
+          src="assets/campfire.svg"
+          alt="Compass Logo"
+          class="h-[80%] w-auto col-span-1 transform -scale-x-100">
+      </article>
+      <article class="grid grid-cols-3 gap-4 max-w-5xl w-full">
+        <div class="w-full rounded-3xl border border-[var(--hero-border)] p-6 *:leading-tight">
+          <div class="flex *:-mr-2 mb-4">
+            <?php foreach ($logos as $logo) { ?>
+              <img src="<?= $logo ?>" alt="" class="h-10 w-10 bg-[var(--blue)] rounded-full border object-cover object-center">
+            <?php } ?>
+          </div>
+          <h4 class="text-lg font-semibold tracking-tight mb-1">Save when you compare.</h4>
+          <p class="font-light">More deals. More sites. One search</p>
+        </div>
+        <div class="w-full rounded-3xl border border-[var(--hero-border)] p-6 *:leading-tight">
+          <div class="flex *:-mr-2 mb-4">
+            <?php foreach ($random_people as $person) { ?>
+              <img src="<?= $person ?>" alt="" class="h-10 w-10 bg-[var(--blue)] rounded-full border object-cover object-center">
+            <?php } ?>
+          </div>
+          <h4 class="text-lg font-semibold tracking-tight mb-1">1,500,000+</h4>
+          <p class="font-light">Searches at our site!</p>
+        </div>
+        <div class="w-full rounded-3xl border border-[var(--hero-border)] p-6 *:leading-tight">
+          <div class="flex mb-4 *:text-2xl *:text-[var(--gold)] my-2">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <h4 class="text-lg font-semibold tracking-tight mb-1">Explorers love us.</h4>
+          <p class="font-light">50k+ ratings in our app</p>
+        </div>
+      </article>
+    </section>
+  <?php endif; ?>
+
+  <!-------------------------------
+        TRAVEL DESTINATIONS 
+  -------------------------------->
+  <section class="bg-[#F4EEEC] relative h-185 w-full flex flex-col items-center">
+    <h3 class="mt-25 mb-10 text-[27px] tracking-tight text-[var(--blue)]">Discover what we offer!</h3>
+
+    <article class="flex gap-6 max-w-5xl overflow-x-auto flex-nowrap p-5 scroll-smooth">
+      <?php foreach ($destinations as $destination) { ?>
+        <a
+          href="/travel/palawan"
+          class="w-70 shrink-0 rounded-xl bg-[var(--background)] border border-[var(--hero-border)] hover:scale-105"
+        >
+          <img src="assets/login-sample.jpeg" alt="Philippines" class="rounded-t-lg h-40 w-full object-fit">
+          <div class="p-3 tracking-tight flex flex-col ">
+            <p class="text-lg tracking-tight font-semibold -mb-1"><?= $destination['package'] ?></p>
+            <p class="tracking-tight mb-2"><?= $destination['location'] ?></p>
+            <div class="text-sm py-1 px-2 rounded-lg <?= ($destination['rating'] > 8)? "border-2 border-[var(--blue)]" : (($destination['rating'] > 5)? "border-2 border-[var(--blue)]" : "bg-[var(--hero-border)]") ?> mb-2">
+              <?= $destination['rating'] ?>/10 Recommended (<?= $destination['users_rated'] ?>)
+            </div>
+            <div class="text-sm flex items-center gap-2.5">
+              <i class="fa-regular fa-building text-xl mb-3"></i>
+              <?= $destination['star'] ?> star
+            </div>
+            <div class="text-sm flex items-center gap-2 mb-8 "><i class="fa-solid fa-plane-departure "></i>
+              <?= $destination['from'] ?> - <?= $destination['to'] ?>
+            </div>
+            <p class="inline-block text-sm text-[var(--blue)] p-2 bg-[var(--gold)] font-semibold self-end">Bundle Save</p>
+            <div class="flex items-center gap-1 text-xl mt-3 my-2 self-end">
+              ₱<?= number_format($destination['price'], 0, '.', ',') ?>
+              <i class="fa-solid fa-circle-info text-neutral-400"></i>
+              <s class="text-neutral-400">₱<?= number_format($destination['original_price'], 0, '.', ',') ?></s>
+            </div>
+          </div>
+        </a>
+      <?php } ?>
+    </article>
+    <div></div>
+  </section>
+
+  <!-------------------------------
+      LATEST EXPLORATION UPDATES 
+  -------------------------------->
+  <section class="w-full flex flex-col items-center my-40">
+    <h2 class="text-3xl text-left tracking-tight font-bold text-[var(--blue)] mb-5 w-full max-w-5xl">Hear our Stories.</h2>
+    <article class="grid grid-cols-4 gap-4 p-4 w-full max-w-5xl">
+      <div class="col-span-3 row-span-3 relative overflow-hidden rounded-lg">
+        <img src="assets/login-sample.webp" alt="Description of the image" class="w-full h-100 object-cover">
+        <p class="absolute bottom-0 left-0 w-full p-4 text-white bg-[var(--bg-transparent-dark)] bg-opacity-50">
+          Caption here
+        </p>
+      </div>
+
+      <div class="col-start-4 flex flex-col gap-4">
+        <div class="relative rounded-lg w-full h-28 overflow-hidden">
+          <img src="" class="w-full h-full object-cover brightness-75">
+          <p class="absolute bottom-0 left-0 w-full p-2 text-white bg-[var(--bg-transparent-dark)]">Caption here</p>
+        </div>
+        <div class="relative rounded-lg w-full h-28 overflow-hidden">
+          <img src="" class="w-full h-full object-cover brightness-75">
+          <p class="absolute bottom-0 left-0 w-full p-2 text-white bg-[var(--bg-transparent-dark)]">Caption here</p>
+        </div>
+        <div class="relative rounded-lg w-full h-28 overflow-hidden">
+          <img src="" class="w-full h-full object-cover brightness-75">
+          <p class="absolute bottom-0 left-0 w-full p-2 text-white bg-[var(--bg-transparent-dark)]">Caption here</p>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <footer class="bg-[var(--text-dark)] h-50">
+
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get necessary elements
+      const carouselSection = document.querySelector('.carousel-section-wrapper');
+      const items = carouselSection.querySelectorAll('.carousel-item');
+      const prevButton = carouselSection.querySelector('.carousel-control-btn.prev');
+      const nextButton = carouselSection.querySelector('.carousel-control-btn.next');
+
+      // Get the new preview elements (now inside the section)
+      const previewsContainer = carouselSection.querySelector('.carousel-previews');
+      const previews = previewsContainer.querySelectorAll('.carousel-preview-item');
+
+      let currentIndex = 0;
+      const totalItems = items.length;
+
+      // Find the index of the initially active item/preview set by PHP
+      let initialActiveIndex = 0;
+      items.forEach((item, index) => {
+        if (item.classList.contains('active')) {
+          initialActiveIndex = index;
+        }
+      });
+      currentIndex = initialActiveIndex;
+
+      // Ensure the corresponding preview is also marked active initially
+      if (previews[currentIndex]) {
+        previews[currentIndex].classList.add('active');
+      }
+
+
+      // Function to show a specific slide and update previews
+      function showSlide(index) {
+        // Handle wrapping around
+        if (index >= totalItems) {
+          index = 0;
+        } else if (index < 0) {
+          index = totalItems - 1;
+        }
+
+        // Remove active class from current item and preview
+        items[currentIndex].classList.remove('active', 'opacity-100', 'visible');
+        items[currentIndex].classList.add('opacity-0', 'invisible'); // Hide current
+
+        if (previews[currentIndex]) {
+          previews[currentIndex].classList.remove('active');
+          // Remove active state styling
+          previews[currentIndex].classList.remove('border-white', 'scale-105', 'shadow-lg', 'shadow-white/50');
+          previews[currentIndex].classList.add('border-transparent');
+          // Show overlay on inactive items
+          const overlay = previews[currentIndex].querySelector('.preview-overlay');
+          if (overlay) overlay.classList.remove('opacity-0');
+          if (overlay) overlay.classList.add('opacity-100');
+        }
+
+        // Add active class to the new item and preview
+        items[index].classList.add('active', 'opacity-100', 'visible'); // Show new
+        items[index].classList.remove('opacity-0', 'invisible');
+
+        if (previews[index]) {
+          previews[index].classList.add('active');
+          // Add active state styling
+          previews[index].classList.add('border-white', 'scale-105', 'shadow-lg', 'shadow-white/50');
+          previews[index].classList.remove('border-transparent');
+          // Hide overlay on active item
+          const overlay = previews[index].querySelector('.preview-overlay');
+          if (overlay) overlay.classList.add('opacity-0');
+          if (overlay) overlay.classList.remove('opacity-100');
+        }
+
+        // Update current index
+        currentIndex = index;
+      }
+
+      // Add event listeners to buttons
+      prevButton.addEventListener('click', () => {
+        showSlide(currentIndex - 1);
+      });
+
+      nextButton.addEventListener('click', () => {
+        showSlide(currentIndex + 1);
+      });
+
+      // Add event listeners to previews
+      previews.forEach(preview => {
+        preview.addEventListener('click', (event) => {
+          // Get the slide index from the data attribute
+          const slideIndex = parseInt(event.currentTarget.getAttribute('data-slide-to'), 10); // Use currentTarget
+          showSlide(slideIndex);
+        });
+      });
+    });
+
+    // Intersection Observer for fade-in effects
+    document.addEventListener('DOMContentLoaded', function() {
+      const fadeInElements = document.querySelectorAll('.fade-in-element');
+
+      const observerOptions = {
+        root: null, // Use the viewport as the root
+        rootMargin: '0px',
+        threshold: 0.1 // Trigger when 10% of the element is visible
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Add the 'is-visible' class to trigger the CSS animation
+            entry.target.classList.add('is-visible');
+            // Optionally, unobserve the element if you only want the animation to happen once
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe each fade-in element
+      fadeInElements.forEach(element => {
+        observer.observe(element);
+      });
+    });
+  </script>
+
 </body>
 
 </html>

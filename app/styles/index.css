@@ -14,6 +14,17 @@ body {
   --text-dark: #444;
   --gold: #fc6;
   --blue: #069;
-  --background: #f4eeec;
+  --background: #fff8f5;
   --bg-transparent-dark: rgba(0, 0, 0, 0.5);
+  --bg-transparent-light: rgba(255, 248, 245, 0.75);
+  --bg-input: rgba(255, 246, 242, 0.5);
+  --hero-border: #d9d9d9;
+}
+
+.carousel-control-btn i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
