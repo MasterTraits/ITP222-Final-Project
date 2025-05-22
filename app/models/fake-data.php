@@ -1,6 +1,11 @@
 <?php
 $carouselItems = [
   [
+    'image' => 'assets/bohol.webp',
+    'title' => 'BOHOL',
+    'description' => 'Provides a fantastic mix of natural wonders and cultural sites. Must-sees include the unique Chocolate Hills and Philippine tarsiers, along with beautiful beaches, the Loboc River cruise, and historical churches.'
+  ],
+  [
     'image' => 'assets/login-sample.jpeg',
     'title' => 'EL NIDO',
     'description' => 'The "crown jewel" of Philippine tourism, offering unparalleled natural beauty with breathtaking limestone landscapes, crystal-clear waters, and incredible island hopping. El Nido boasts stunning lagoons and beaches, while Coron is famous for wreck diving and unique lakes.'
@@ -9,11 +14,6 @@ $carouselItems = [
     'image' => 'assets/boracay.jpg',
     'title' => 'BORACAY',
     'description' => 'World-famous for its powdery White Beach and vibrant atmosphere. It\'s a top spot for relaxation, water sports, and lively nightlife, known for its accessibility and concentrated beauty.'
-  ],
-  [
-    'image' => 'assets/bohol.webp',
-    'title' => 'BOHOL',
-    'description' => 'Provides a fantastic mix of natural wonders and cultural sites. Must-sees include the unique Chocolate Hills and Philippine tarsiers, along with beautiful beaches, the Loboc River cruise, and historical churches.'
   ],
 ];
 

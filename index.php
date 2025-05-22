@@ -27,21 +27,9 @@ switch ($request) {
         include __DIR__ . '/app/views/home.php';
         break;
 
-    case '/book/1':
-        include __DIR__ . '/app/views/book/book-step1.php';
-        break;
-
-    case '/book/2':
-        include __DIR__ . '/app/views/book/book-step2.php';
-        break;
-
-    case '/book/3':
-        include __DIR__ . '/app/views/book/book-step3.php'; 
-        break;
-
-    case '/travel/palawan':
-        include __DIR__ . 'app/views/travel/palawan.php';
-        break;
+    /*******************************
+           USER AUTHENTICATION
+         ********************************/
 
     case '/login':
         $authController->loginForm();
@@ -79,17 +67,45 @@ switch ($request) {
         $authController->logout();
         break;
 
+    /*******************************
+            BOOKING STEPS
+    ********************************/
+    case '/book/1':
+        include __DIR__ . '/app/views/book/book-step1.php';
+        break;
+
+    case '/book/2':
+        include __DIR__ . '/app/views/book/book-step2.php';
+        break;
+
+    case '/book/3':
+        include __DIR__ . '/app/views/book/book-step3.php';
+        break;
+
     case '/booking-confirmation':
         $tripController->saveFormData();
         break;
-        
+
     case '/booking-success':
         include __DIR__ . '/app/views/book/booking-success.php';
+        break;
+
+    case '/your-trips':
+        $tripController->userTrips();
         break;
 
     case '/test':
         include __DIR__ . '/app/views/test.php';
         break;
+
+    /*******************************
+            USER TRIPS
+    ********************************/
+
+    case '/travel/palawan':
+        include __DIR__ . 'app/views/travel/palawan.php';
+        break;
+
 
     default:
         http_response_code(404);
