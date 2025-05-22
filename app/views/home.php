@@ -14,15 +14,15 @@ use App\controllers\Auth;
   <title>Compass</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script src="https://kit.fontawesome.com/2251ecbe6b.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="app/styles/index.css">
-  <link rel="stylesheet" href="app/styles/animations.css">
+  <link rel="stylesheet" href="/app/styles/index.css">
+  <link rel="stylesheet" href="/app/styles/animations.css">
 </head>
 
 <body class="scroll-smooth">
   <!-------------------------------
       REUSABLE NAVIGATION BAR 
   -------------------------------->
-  <nav class="rounded-tl-lg rounded-br-lg shadow-lg px-4 py-2 w-full max-w-5xl   
+  <nav class="rounded-tl-lg rounded-br-lg shadow-lg px-4 py-2 w-[95%] max-w-5xl   
     bg-[var(--bg-transparent-light)] backdrop-blur-md border border-[#E2E8F0] 
     fixed top-5 left-1/2 transform -translate-x-1/2 z-40
     flex items-center justify-between">
@@ -30,10 +30,16 @@ use App\controllers\Auth;
       <img src="assets/logo.svg" alt="Compass Logo" class="h-10 w-auto">
     </a>
 
-    <aside class="flex items-center space-x-6">
-      <a href="/travel/palawan" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Book</a>
-      <a href="/login" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Travel</a>
-      <a href="/register" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Your Trips</a>
+    <!-- Mobile menu button -->
+    <button id="mobile-menu-button" class="md:hidden text-[var(--text-dark)] focus:outline-none">
+      <i class="fa-solid fa-bars text-xl"></i>
+    </button>
+
+    <!-- Desktop menu -->
+    <aside class="hidden md:flex items-center space-x-6">
+      <a href="/book/1" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Book</a>
+      <a href="/destinations" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Travel</a>
+      <a href="/your-trips" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Your Trips</a>
       <div class="relative py-1 px-4 rounded-full border flex items-center gap-2 group/account hover:bg-[var(--blue)] transition 300ms ease-out">
         <?php if (!Auth::check()): ?>
           <i class="fa-solid fa-user text-sm"></i> Login
@@ -66,10 +72,28 @@ use App\controllers\Auth;
     </aside>
   </nav>
 
+  <!-- Mobile menu (hidden by default) -->
+  <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-[var(--bg-transparent-light)] backdrop-blur-lg z-50 hidden flex-col items-center pt-20">
+    <button id="close-menu-button" class="absolute top-5 right-5 text-[var(--text-dark)] text-2xl">
+      <i class="fa-solid fa-times"></i>
+    </button>
+    <div class="flex flex-col items-center gap-8 text-xl">
+      <a href="/book/1" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Book</a>
+      <a href="/destinations" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Travel</a>
+      <a href="/your-trips" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Your Trips</a>
+      <?php if (!Auth::check()): ?>
+        <a href="/login" class="bg-[var(--blue)] text-white rounded-full py-2 px-8 font-semibold">Sign in</a>
+        <p class="text-sm">Not a user yet? <a href="/register" class="text-[var(--blue)]">Sign-up</a></p>
+      <?php else: ?>
+        <a href="/logout" class="bg-[var(--blue)] text-white rounded-full py-2 px-8 font-semibold">Log out</a>
+      <?php endif; ?>
+    </div>
+  </div>
+
   <!-------------------------------
         HERO LANDING PAGE 
   -------------------------------->
-  <section class="carousel-section-wrapper relative h-180 text-white flex flex-col justify-between items-center p-10">
+  <section class="carousel-section-wrapper relative min-h-[500px] h-[90vh] md:h-180 text-white flex flex-col justify-between items-center p-5 md:p-10">
     <div class="h-10"></div>
     <div class="carousel-slides-container absolute inset-0">
       <?php
@@ -135,19 +159,34 @@ use App\controllers\Auth;
       }
       ?>
     </div>
-    <div class="absolute top-1/2 left-5 transform -translate-y-1/2 text-xl shadow-2xl flex flex-col gap-6 z-40">
+    <div class="absolute top-1/2 left-5 transform -translate-y-1/2 text-xl shadow-2xl hidden sm:flex flex-col gap-6 z-40">
       <i class="fa-brands fa-facebook"></i>
       <i class="fa-brands fa-instagram"></i>
       <i class="fa-brands fa-x-twitter"></i>
     </div>
-    <form class="absolute flex justify-around gap-4 bg-[var(--bg-transparent-light)] backdrop-blur-md w-full max-w-5xl text-black -bottom-13 p-4 rounded-tl-lg rounded-br-lg shadow-lg z-10">
+    <!-------------------------------
+            FORMS HANDLING
+    -------------------------------->
+    <form action="/book/1" method="GET" class="absolute flex flex-col md:flex-row justify-around gap-4 bg-[var(--bg-transparent-light)] backdrop-blur-md w-[95%] max-w-5xl text-black -bottom-[8rem] md:-bottom-13 p-4 rounded-tl-lg rounded-br-lg shadow-lg z-10">
       <div class="w-full">
-        <p class="text-lg mb-2">Travel Destinations</p>
-        <div class="grid grid-cols-2 gap-2">
+        <div class="custom-dropdown mb-2.5 group-select hover:text-[var(--blue)] text-base">
+          <input type="hidden" name="transport_type">
+          <div class="custom-dropdown-options group-hover/select:text-[var(--text-dark)]">
+            <div class="custom-dropdown-option" data-value="flight">
+              <i class="fa-solid fa-plane-up"></i> Flight
+            </div>
+            <div class="custom-dropdown-option" data-value="ship">
+              <i class="fa-solid fa-ship"></i> Ship
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
           <div>
-            <label for="country" class="text-sm">From</label>
+            <label for="from" class="text-sm">From</label>
             <select
-              id="country"
+              id="from"
+              name="from"
               class="bg-[var(--bg-input)] border border-[var(--blue)] text-black rounded-full rounded-bl-none py-3 px-4 w-full">
               <option value="Manila, PHL" selected>Manila, PHL</option>
               <option value="El Nido, PHL">El Nido, PHL</option>
@@ -159,58 +198,68 @@ use App\controllers\Auth;
             </select>
           </div>
           <div class="w-full">
-            <label for="destination" class="text-sm">To</label>
-            <div class="grid grid-cols-2 gap-1 w-full">
-              <select
-                id="destination"
-                class="bg-[var(--bg-input)] border border-[var(--blue)] text-black rounded-full rounded-tr-none py-3 px-2 w-full text-sm">
-                <option value="" hidden disabled selected>Country</option>
+            <label for="country" class="text-sm">To</label>
+            <div class="grid grid-cols-2 gap-2 w-full">
+              <select id="country" name="country" class="bg-[var(--bg-input)] border border-[var(--blue)] text-black rounded-full rounded-tr-none py-4 px-2 w-full hover:bg-white *:p-1 transition duration-300 ease-in-out">
+                <option value="" hidden disabled>Country</option>
                 <option value="Philippines">Philippines</option>
                 <option value="United States">United States</option>
                 <option value="New Zealand">New Zealand</option>
               </select>
-              <select
-                id="destination"
-                class="bg-[var(--bg-input)] border border-[var(--blue)] text-black rounded-full rounded-tr-none py-3 px-4 w-full text-sm">
-                <option value="" hidden disabled selected>City</option>
-                <option value="1">Palawan</option>
-                <option value="2">Boracay</option>
-                <option value="3">Cebu</option>
-                <option value="4">Batanes</option>
+              <select id="city" name="city" class="bg-[var(--bg-input)] border border-[var(--blue)] text-black rounded-full rounded-tr-none py-4 px-4 w-full hover:bg-white *:p-1 transition duration-300 ease-in-out">
+                <option value="" hidden disabled>City</option>
+                <option value="Manila" data-country="Philippines">Manila</option>
+                <option value="El Nido" data-country="Philippines">El Nido, Palawan</option>
+                <option value="Boracay" data-country="Philippines">Boracay, Aklan</option>
+                <option value="Panglao" data-country="Philippines">Panglao, Bohol</option>
+                <option value="New York" data-country="United States">New York</option>
+                <option value="Los Angeles" data-country="United States">Los Angeles</option>
+                <option value="Wyoming" data-country="United States">Wyoming</option>
+                <option value="Upper Hutt" data-country="New Zealand">Upper Hutt</option>
+                <option value="Auckland" data-country="New Zealand">Auckland</option>
+                <option value="Wellington" data-country="New Zealand">Wellington</option>
               </select>
             </div>
           </div>
         </div>
       </div>
       <div class="w-full">
-        <select
-          class="text-black text-lg px-0 mb-2.5">
-          <option value="1">Round-trip</option>
-          <option value="2">One-way</option>
-          <option value="3">Multicity</option>
-        </select>
-        <div class="grid grid-cols-2 gap-2 pl-1">
+        <div class="custom-dropdown mt-6 my-2.5 group-select hover:text-[var(--blue)] text-base">
+          <div class="custom-dropdown-options group-hover/select:text-[var(--text-dark)]">
+            <div class="custom-dropdown-option" data-value="roundtrip">
+              <i class="fa-solid fa-arrows-rotate"></i> Round-trip
+            </div>
+            <div class="custom-dropdown-option" data-value="oneway">
+              <i class="fa-solid fa-arrow-right"></i> One-way
+            </div>
+            <div class="custom-dropdown-option" data-value="multicity">
+              <i class="fa-solid fa-arrows-split-up-and-left"></i> Multi-city
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-1">
           <div>
-            <label for="date" class="text-sm">Departure</label>
+            <label for="departure_date" class="text-sm">Departure</label>
             <input
               type="date"
-              id="date"
+              id="departure_date"
+              name="departure_date"
               class="bg-[var(--bg-input)] border border-[var(--blue)] text-black rounded-full rounded-bl-none py-3 px-4 w-full">
           </div>
           <div>
-            <label for="date" class="text-sm">Return</label>
+            <label for="return_date" class="text-sm">Return</label>
             <input
               type="date"
-              id="date"
+              id="return_date"
+              name="return_date"
               class="bg-[var(--bg-input)] border border-[var(--blue)] text-black rounded-full rounded-tr-none py-3 px-4 w-full">
           </div>
         </div>
       </div>
-      <div>
-        <br><br>
+      <div class="md:self-end">
         <button
           type="submit"
-          class="bg-[var(--gold)] text-black rounded-full mt-2 py-3 px-5 font-semibold hover:bg-[var(--gold)] text-nowrap w-full">
+          class="bg-[var(--gold)] text-black rounded-full mt-4 md:mt-2 py-3 px-5 font-semibold hover:bg-[var(--gold)] text-nowrap w-full">
           Let's Travel!
         </button>
       </div>
@@ -222,9 +271,9 @@ use App\controllers\Auth;
   -------------------------------->
   <?php if (!Auth::check()): ?>
     <section class="w-full flex flex-col items-center mb-30">
-      <div class="h-45"></div>
-      <article class="max-w-5xl grid grid-cols-3 gap-4">
-        <div class="col-span-2">
+      <div class="h-[12rem] md:h-45"></div>
+      <article class="max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-4 px-4">
+        <div class="md:col-span-2">
           <h2 class="text-3xl tracking-tighter font-bold text-[var(--blue)]">Guiding you to a memorable trip.</h2>
           <p class="text-[var(--text-dark)] mt-8 font-semibold text-balance">
             We believe every Filipino deserves to explore the beauty of our 7,641 islands without emptying their wallets.
@@ -236,9 +285,9 @@ use App\controllers\Auth;
         <img
           src="assets/campfire.svg"
           alt="Compass Logo"
-          class="h-[80%] w-auto col-span-1 transform -scale-x-100">
+          class="h-[80%] w-auto mx-auto md:col-span-1 transform -scale-x-100">
       </article>
-      <article class="grid grid-cols-3 gap-4 max-w-5xl w-full">
+      <article class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl w-full px-4 mt-8">
         <div class="w-full rounded-3xl border border-[var(--hero-border)] p-6 *:leading-tight">
           <div class="flex *:-mr-2 mb-4">
             <?php foreach ($logos as $logo) { ?>
@@ -275,20 +324,19 @@ use App\controllers\Auth;
   <!-------------------------------
         TRAVEL DESTINATIONS 
   -------------------------------->
-  <section class="bg-[#F4EEEC] relative h-185 w-full flex flex-col items-center">
+  <section class="bg-[#F4EEEC] relative min-h-[500px] md:h-185 w-full flex flex-col items-center px-4 py-12 md:py-0">
     <h3 class="mt-25 mb-10 text-[27px] tracking-tight text-[var(--blue)]">Discover what we offer!</h3>
 
     <article class="flex gap-6 max-w-5xl overflow-x-auto flex-nowrap p-5 scroll-smooth">
       <?php foreach ($destinations as $destination) { ?>
         <a
           href="/travel/palawan"
-          class="w-70 shrink-0 rounded-xl bg-[var(--background)] border border-[var(--hero-border)] hover:scale-105"
-        >
+          class="w-70 shrink-0 rounded-xl bg-[var(--background)] border border-[var(--hero-border)] hover:scale-105">
           <img src="assets/login-sample.jpeg" alt="Philippines" class="rounded-t-lg h-40 w-full object-fit">
           <div class="p-3 tracking-tight flex flex-col ">
             <p class="text-lg tracking-tight font-semibold -mb-1"><?= $destination['package'] ?></p>
             <p class="tracking-tight mb-2"><?= $destination['location'] ?></p>
-            <div class="text-sm py-1 px-2 rounded-lg <?= ($destination['rating'] > 8)? "border-2 border-[var(--blue)]" : (($destination['rating'] > 5)? "border-2 border-[var(--blue)]" : "bg-[var(--hero-border)]") ?> mb-2">
+            <div class="text-sm py-1 px-2 rounded-lg <?= ($destination['rating'] > 8) ? "border-2 border-[var(--blue)]" : (($destination['rating'] > 5) ? "border-2 border-[var(--blue)]" : "bg-[var(--hero-border)]") ?> mb-2">
               <?= $destination['rating'] ?>/10 Recommended (<?= $destination['users_rated'] ?>)
             </div>
             <div class="text-sm flex items-center gap-2.5">
@@ -463,6 +511,35 @@ use App\controllers\Auth;
         observer.observe(element);
       });
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu toggle
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const closeMenuButton = document.getElementById('close-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      if (mobileMenuButton && mobileMenu && closeMenuButton) {
+        mobileMenuButton.addEventListener('click', () => {
+          mobileMenu.style.display = 'flex';
+          document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+          mobileMenu.style.display = 'none';
+          document.body.style.overflow = 'auto'; // Re-enable scrolling
+        });
+      }
+
+      // Handle window resize to reset mobile menu state when switching to desktop
+      window.addEventListener('resize', function() {
+        if (window.innerWidth >= 768 && mobileMenu) { // 768px is the md breakpoint in Tailwind
+          mobileMenu.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      });
+    });
+
+    
   </script>
 
 </body>
