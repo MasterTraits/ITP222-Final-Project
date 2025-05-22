@@ -87,6 +87,10 @@ switch ($request) {
         include __DIR__ . '/app/views/book/booking-success.php';
         break;
 
+    case '/test':
+        include __DIR__ . '/app/views/test.php';
+        break;
+
     default:
         http_response_code(404);
         include __DIR__ . '/app/views/not-found.php';

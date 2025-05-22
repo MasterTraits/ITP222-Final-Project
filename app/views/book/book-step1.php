@@ -1,17 +1,26 @@
 <?php
 $_SESSION['booking_step'] = 1;
 
+// Prefer POST data, then session, then defaults
+function getField($name, $default = '') {
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST[$name])) {
+    return $_POST[$name];
+  }
+  global $savedData;
+  return isset($savedData[$name]) ? $savedData[$name] : $default;
+}
+
 // Get saved data for this step if it exists
 $savedData = isset($_SESSION['booking_data']['step1']) ? $_SESSION['booking_data']['step1'] : [];
 
 // Get values for selects and inputs
-$transportType = isset($savedData['transport_type']) ? $savedData['transport_type'] : 'flight';
-$tripType = isset($savedData['trip_type']) ? $savedData['trip_type'] : 'roundtrip';
-$from = isset($savedData['from']) ? $savedData['from'] : 'Manila, PHL';
-$country = isset($savedData['country']) ? $savedData['country'] : '';
-$city = isset($savedData['city']) ? $savedData['city'] : '';
-$departureDate = isset($savedData['departure_date']) ? $savedData['departure_date'] : '';
-$returnDate = isset($savedData['return_date']) ? $savedData['return_date'] : '';
+$transportType = getField('transport_type', 'flight');
+$tripType = getField('trip_type', 'roundtrip');
+$from = getField('from', 'Manila, PHL');
+$country = getField('country', '');
+$city = getField('city', '');
+$departureDate = getField('departure_date', '');
+$returnDate = getField('return_date', '');
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +79,7 @@ $returnDate = isset($savedData['return_date']) ? $savedData['return_date'] : '';
             <i class="fa-solid fa-ship"></i> Ship <i class="fa-solid fa-chevron-down"></i>
           <?php endif; ?>
         </div>
-        <input type="hidden" name="transport_type" value="<?= $transportType ?>">
+        <input type="hidden" name="transport_type" value="<?= htmlspecialchars($transportType) ?>">
         <div class="custom-dropdown-options group-hover/select:text-[var(--text-dark)]">
           <div class="custom-dropdown-option" data-value="flight">
             <i class="fa-solid fa-plane-up"></i> Flight
@@ -130,7 +139,7 @@ $returnDate = isset($savedData['return_date']) ? $savedData['return_date'] : '';
             <i class="fa-solid fa-arrows-split-up-and-left"></i> Multi-city <i class="fa-solid fa-chevron-down"></i>
           <?php endif; ?>
         </div>
-        <input type="hidden" name="trip_type" value="<?= $tripType ?>">
+        <input type="hidden" name="trip_type" value="<?= htmlspecialchars($tripType) ?>">
         <div class="custom-dropdown-options group-hover/select:text-[var(--text-dark)]">
           <div class="custom-dropdown-option" data-value="roundtrip">
             <i class="fa-solid fa-arrows-rotate"></i> Round-trip
@@ -146,12 +155,12 @@ $returnDate = isset($savedData['return_date']) ? $savedData['return_date'] : '';
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-1">
         <div>
           <label for="departure_date" class="text-sm">Departure</label>
-          <input type="date" id="departure_date" name="departure_date" value="<?= $departureDate ?>"
+          <input type="date" id="departure_date" name="departure_date" value="<?= htmlspecialchars($departureDate) ?>"
             class="border border-[var(--blue)] rounded-lg text-black rounded-full rounded-bl-none py-3 px-4 w-full hover:bg-white *:p-1 transition duration-300 ease-in-out">
         </div>
         <div>
           <label for="return_date" class="text-sm">Return</label>
-          <input type="date" id="return_date" name="return_date" value="<?= $returnDate ?>"
+          <input type="date" id="return_date" name="return_date" value="<?= htmlspecialchars($returnDate) ?>"
             class="border border-[var(--blue)] rounded-lg text-black rounded-full rounded-tr-none py-3 px-4 w-full hover:bg-white *:p-1 transition duration-300 ease-in-out">
         </div>
       </div>

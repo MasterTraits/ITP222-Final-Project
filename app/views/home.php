@@ -18,7 +18,7 @@ use App\controllers\Auth;
   <link rel="stylesheet" href="/app/styles/animations.css">
 </head>
 
-<body class="scroll-smooth">
+<body class="scroll-smooth overflow-x-hidden">
   <!-------------------------------
       REUSABLE NAVIGATION BAR 
   -------------------------------->
@@ -38,29 +38,32 @@ use App\controllers\Auth;
     <!-- Desktop menu -->
     <aside class="hidden md:flex items-center space-x-6">
       <a href="/book/1" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Book</a>
-      <a href="/destinations" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Travel</a>
-      <a href="/your-trips" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Your Trips</a>
-      <div class="relative py-1 px-4 rounded-full border flex items-center gap-2 group/account hover:bg-[var(--blue)] transition 300ms ease-out">
+      <a href="/destinations" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Destinations</a>
+      <?php if (Auth::check()): ?>
+        <a href="/travel-logs" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Travel Logs</a>
+        <a href="/your-trips" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Your Trips</a>
+      <?php endif; ?>
+      <div class="relative py-1 px-4 rounded-full border flex items-center gap-2 group/account hover:bg-[var(--blue)] hover:text-white transition 400ms ease-out">
         <?php if (!Auth::check()): ?>
           <i class="fa-solid fa-user text-sm"></i> Login
           <div class="invisible absolute bg-[#F4EEEC] p-5 h-70 w-60 rounded-lg leading-tight
           group-hover/account:visible top-9 -right-3 ">
             <div class="w-full pb-4 mb-2 border-b-1 border-[var(--text-dark)]">
               <a href="/login" class="block text-center bg-[var(--blue)] rounded-full py-2 px-5 text-white w-full mb-2 text-semibold">Sign-in</a>
-              <p class="text-sm">Not a user yet? <a href="/register" class="text-[var(--blue)]">Sign-up</a></p>
+              <p class="text-sm text-[var(--text-dark)]">Not a user yet? <a href="/register" class="text-[var(--blue)]">Sign-up</a></p>
             </div>
 
             <div class="flex items-center gap-2 mt-5 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gift"></i></i> Travel Vouchers</div>
-            <p class="text-sm text-[var(--text-dark)]">Redeem your travel vouchers before they expire</p>
+            <p class="text-sm text-[var,--text-dark)]">Redeem your travel vouchers before they expire</p>
             <div class="flex items-center gap-2 mt-2 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gear"></i> Settings</div>
             <p class="text-sm mb-4 text-[var(--text-dark)]">Manage your notification preferences here</p>
           </div>
         <?php else: ?>
-          <i class="fa-solid fa-user text-sm"></i> Account
+          <i class="fa-solid fa-user text-sm"></i> <?= $_SESSION["user"]["given"] . " " . $_SESSION["user"]["surname"] ?>
           <div class="invisible absolute bg-[#F4EEEC] p-5 h-68 w-60 rounded-lg leading-tight
           group-hover/account:visible top-9 -right-3 ">
             <div class="flex items-center gap-2 mt-5 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gift"></i></i> Travel Vouchers</div>
-            <p class="text-sm text-[var(--text-dark)]">Redeem your travel vouchers before they expire</p>
+            <p class="text-sm text-[var,--text-dark)]">Redeem your travel vouchers before they expire</p>
             <div class="flex items-center gap-2 mt-2 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gear"></i> Settings</div>
             <p class="text-sm mb-4 text-[var(--text-dark)]">Manage your notification preferences here</p>
             <div class="w-full pt-4 mb-2 border-t-1 border-[var(--text-dark)]">
@@ -79,8 +82,8 @@ use App\controllers\Auth;
     </button>
     <div class="flex flex-col items-center gap-8 text-xl">
       <a href="/book/1" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Book</a>
-      <a href="/destinations" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Travel</a>
-      <a href="/your-trips" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Your Trips</a>
+      <a href="/destinations" class="font-semibold text-[var,--text-dark)] hover:text-[var(--blue)]">Travel</a>
+      <a href="/your-trips" class="font-semibold text-[var,--text-dark)] hover:text-[var(--blue)]">Your Trips</a>
       <?php if (!Auth::check()): ?>
         <a href="/login" class="bg-[var(--blue)] text-white rounded-full py-2 px-8 font-semibold">Sign in</a>
         <p class="text-sm">Not a user yet? <a href="/register" class="text-[var(--blue)]">Sign-up</a></p>
@@ -167,9 +170,13 @@ use App\controllers\Auth;
     <!-------------------------------
             FORMS HANDLING
     -------------------------------->
-    <form action="/book/1" method="GET" class="absolute flex flex-col md:flex-row justify-around gap-4 bg-[var(--bg-transparent-light)] backdrop-blur-md w-[95%] max-w-5xl text-black -bottom-[8rem] md:-bottom-13 p-4 rounded-tl-lg rounded-br-lg shadow-lg z-10">
+    <form action="/book/1" method="POST" class="absolute flex flex-col md:flex-row md:items-center justify-around gap-4 bg-[var(--bg-transparent-light)] backdrop-blur-md w-[95%] max-w-5xl text-black -bottom-[8rem] md:-bottom-13 p-4 rounded-tl-lg rounded-br-lg shadow-lg z-10">
       <div class="w-full">
-        <div class="custom-dropdown mb-2.5 group-select hover:text-[var(--blue)] text-base">
+        <!-- Custom dropdown for transport type -->
+        <div class="custom-dropdown group-select hover:text-[var(--blue)] text-base" data-value="flight">
+          <div class="custom-dropdown-selected" data-value="flight">
+            <i class="fa-solid fa-plane-up"></i> Flight <i class="fa-solid fa-chevron-down"></i>
+          </div>
           <input type="hidden" name="transport_type">
           <div class="custom-dropdown-options group-hover/select:text-[var(--text-dark)]">
             <div class="custom-dropdown-option" data-value="flight">
@@ -181,13 +188,13 @@ use App\controllers\Auth;
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:items-center">
           <div>
             <label for="from" class="text-sm">From</label>
             <select
               id="from"
               name="from"
-              class="bg-[var(--bg-input)] border border-[var(--blue)] text-black rounded-full rounded-bl-none py-3 px-4 w-full">
+              class="bg-[var(--bg-input)] border border-[var(--blue)] text-black rounded-full rounded-bl-none py-3 px-4 w-full hover:bg-white *:p-1 transition duration-300 ease-in-out">
               <option value="Manila, PHL" selected>Manila, PHL</option>
               <option value="El Nido, PHL">El Nido, PHL</option>
               <option value="Boracay, PHL">Boracay, PHL</option>
@@ -224,7 +231,11 @@ use App\controllers\Auth;
         </div>
       </div>
       <div class="w-full">
-        <div class="custom-dropdown mt-6 my-2.5 group-select hover:text-[var(--blue)] text-base">
+        <div class="custom-dropdown group-select hover:text-[var(--blue)] text-base" data-value="roundtrip">
+          <div class="custom-dropdown-selected" data-value="roundtrip">
+            <i class="fa-solid fa-arrows-rotate"></i> Round-trip <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <input type="hidden" name="trip_type">
           <div class="custom-dropdown-options group-hover/select:text-[var(--text-dark)]">
             <div class="custom-dropdown-option" data-value="roundtrip">
               <i class="fa-solid fa-arrows-rotate"></i> Round-trip
@@ -259,7 +270,7 @@ use App\controllers\Auth;
       <div class="md:self-end">
         <button
           type="submit"
-          class="bg-[var(--gold)] text-black rounded-full mt-4 md:mt-2 py-3 px-5 font-semibold hover:bg-[var(--gold)] text-nowrap w-full">
+          class="bg-[var(--gold)] text-black rounded-full mt-4 md:mt-1 py-3 px-5 font-semibold hover:bg-[var(--gold)] text-nowrap w-full">
           Let's Travel!
         </button>
       </div>
@@ -395,13 +406,11 @@ use App\controllers\Auth;
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Get necessary elements
+      // Carousel logic
       const carouselSection = document.querySelector('.carousel-section-wrapper');
       const items = carouselSection.querySelectorAll('.carousel-item');
       const prevButton = carouselSection.querySelector('.carousel-control-btn.prev');
       const nextButton = carouselSection.querySelector('.carousel-control-btn.next');
-
-      // Get the new preview elements (now inside the section)
       const previewsContainer = carouselSection.querySelector('.carousel-previews');
       const previews = previewsContainer.querySelectorAll('.carousel-preview-item');
 
@@ -422,51 +431,36 @@ use App\controllers\Auth;
         previews[currentIndex].classList.add('active');
       }
 
-
       // Function to show a specific slide and update previews
       function showSlide(index) {
-        // Handle wrapping around
         if (index >= totalItems) {
           index = 0;
         } else if (index < 0) {
           index = totalItems - 1;
         }
-
-        // Remove active class from current item and preview
         items[currentIndex].classList.remove('active', 'opacity-100', 'visible');
-        items[currentIndex].classList.add('opacity-0', 'invisible'); // Hide current
-
+        items[currentIndex].classList.add('opacity-0', 'invisible');
         if (previews[currentIndex]) {
           previews[currentIndex].classList.remove('active');
-          // Remove active state styling
           previews[currentIndex].classList.remove('border-white', 'scale-105', 'shadow-lg', 'shadow-white/50');
           previews[currentIndex].classList.add('border-transparent');
-          // Show overlay on inactive items
           const overlay = previews[currentIndex].querySelector('.preview-overlay');
           if (overlay) overlay.classList.remove('opacity-0');
           if (overlay) overlay.classList.add('opacity-100');
         }
-
-        // Add active class to the new item and preview
-        items[index].classList.add('active', 'opacity-100', 'visible'); // Show new
+        items[index].classList.add('active', 'opacity-100', 'visible');
         items[index].classList.remove('opacity-0', 'invisible');
-
         if (previews[index]) {
           previews[index].classList.add('active');
-          // Add active state styling
           previews[index].classList.add('border-white', 'scale-105', 'shadow-lg', 'shadow-white/50');
           previews[index].classList.remove('border-transparent');
-          // Hide overlay on active item
           const overlay = previews[index].querySelector('.preview-overlay');
           if (overlay) overlay.classList.add('opacity-0');
           if (overlay) overlay.classList.remove('opacity-100');
         }
-
-        // Update current index
         currentIndex = index;
       }
 
-      // Add event listeners to buttons
       prevButton.addEventListener('click', () => {
         showSlide(currentIndex - 1);
       });
@@ -475,44 +469,32 @@ use App\controllers\Auth;
         showSlide(currentIndex + 1);
       });
 
-      // Add event listeners to previews
       previews.forEach(preview => {
         preview.addEventListener('click', (event) => {
-          // Get the slide index from the data attribute
-          const slideIndex = parseInt(event.currentTarget.getAttribute('data-slide-to'), 10); // Use currentTarget
+          const slideIndex = parseInt(event.currentTarget.getAttribute('data-slide-to'), 10);
           showSlide(slideIndex);
         });
       });
-    });
 
-    // Intersection Observer for fade-in effects
-    document.addEventListener('DOMContentLoaded', function() {
+      // Intersection Observer for fade-in effects
       const fadeInElements = document.querySelectorAll('.fade-in-element');
-
       const observerOptions = {
-        root: null, // Use the viewport as the root
+        root: null,
         rootMargin: '0px',
-        threshold: 0.1 // Trigger when 10% of the element is visible
+        threshold: 0.1
       };
-
       const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            // Add the 'is-visible' class to trigger the CSS animation
             entry.target.classList.add('is-visible');
-            // Optionally, unobserve the element if you only want the animation to happen once
             observer.unobserve(entry.target);
           }
         });
       }, observerOptions);
-
-      // Observe each fade-in element
       fadeInElements.forEach(element => {
         observer.observe(element);
       });
-    });
 
-    document.addEventListener('DOMContentLoaded', function() {
       // Mobile menu toggle
       const mobileMenuButton = document.getElementById('mobile-menu-button');
       const closeMenuButton = document.getElementById('close-menu-button');
@@ -521,25 +503,106 @@ use App\controllers\Auth;
       if (mobileMenuButton && mobileMenu && closeMenuButton) {
         mobileMenuButton.addEventListener('click', () => {
           mobileMenu.style.display = 'flex';
-          document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+          document.body.style.overflow = 'hidden';
         });
 
         closeMenuButton.addEventListener('click', () => {
           mobileMenu.style.display = 'none';
-          document.body.style.overflow = 'auto'; // Re-enable scrolling
+          document.body.style.overflow = 'auto';
         });
       }
 
-      // Handle window resize to reset mobile menu state when switching to desktop
       window.addEventListener('resize', function() {
-        if (window.innerWidth >= 768 && mobileMenu) { // 768px is the md breakpoint in Tailwind
+        if (window.innerWidth >= 768 && mobileMenu) {
           mobileMenu.style.display = 'none';
           document.body.style.overflow = 'auto';
         }
       });
-    });
 
-    
+      // Custom dropdown code
+      const dropdowns = document.querySelectorAll('.custom-dropdown');
+      let openDropdown = null;
+
+      dropdowns.forEach(dropdown => {
+        const selected = dropdown.querySelector('.custom-dropdown-selected');
+        const options = dropdown.querySelector('.custom-dropdown-options');
+        const optionItems = dropdown.querySelectorAll('.custom-dropdown-option');
+        const hiddenInput = dropdown.querySelector('input[type="hidden"]');
+
+        // Toggle dropdown on click
+        selected.addEventListener('click', (e) => {
+          e.stopPropagation();
+          // Close other open dropdowns
+          if (openDropdown && openDropdown !== options) {
+            openDropdown.style.display = 'none';
+          }
+          // Toggle current dropdown
+          if (options.style.display === 'block') {
+            options.style.display = 'none';
+            openDropdown = null;
+          } else {
+            options.style.display = 'block';
+            openDropdown = options;
+          }
+        });
+
+        // Select option
+        optionItems.forEach(option => {
+          option.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const value = option.getAttribute('data-value');
+            const content = option.innerHTML;
+
+            selected.innerHTML = content + ' <i class="fa-solid fa-chevron-down"></i>';
+            dropdown.setAttribute('data-value', value);
+
+            // Also update the hidden input
+            if (hiddenInput) {
+              hiddenInput.value = value;
+            }
+
+            // Set data-value on selected for reference
+            selected.setAttribute('data-value', value);
+
+            options.style.display = 'none';
+            openDropdown = null;
+          });
+        });
+
+        // Country-City filtering
+        const countrySelect = document.getElementById('country');
+        const citySelect = document.getElementById('city');
+        const cityOptions = citySelect.querySelectorAll('option');
+
+        function filterCities() {
+          const selectedCountry = countrySelect.value;
+          // Reset city selection if country changes
+          if (!citySelect.querySelector('option[data-country="' + selectedCountry + '"][selected]')) {
+            citySelect.value = "";
+          }
+          // Show/hide city options based on selected country
+          cityOptions.forEach(option => {
+            if (option.value === "" || option.getAttribute('data-country') === selectedCountry) {
+              option.style.display = '';
+            } else {
+              option.style.display = 'none';
+            }
+          });
+        }
+        // Initial filtering
+        filterCities();
+        // Filter cities when country changes
+        countrySelect.addEventListener('change', filterCities);
+      });
+
+      // Close dropdown when clicking outside any dropdown
+      document.addEventListener('click', function(e) {
+        if (openDropdown) {
+          openDropdown.style.display = 'none';
+          openDropdown = null;
+        }
+      });
+    });
   </script>
 
 </body>
