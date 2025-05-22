@@ -29,26 +29,26 @@ switch ($request) {
 
     /*******************************
            USER AUTHENTICATION
-         ********************************/
+         ***************************/
 
     case '/login':
-        $authController->loginForm();
+        include __DIR__ . '/app/views/auth/login.php';
+        break;
+
+    case '/register':
+        include __DIR__ . '/app/views/auth/register.php';
+        break;
+
+    case '/forgot-pass':
+        include __DIR__ . '/app/views/auth/forgot-pass.php';
         break;
 
     case '/auth/login':
         $authController->login();
         break;
 
-    case '/register':
-        $authController->registerForm();
-        break;
-
     case '/auth/register':
         $authController->register();
-        break;
-
-    case '/forgot-pass':
-        $authController->forgotPasswordForm();
         break;
 
     case '/auth/forgot-pass':
@@ -69,7 +69,7 @@ switch ($request) {
 
     /*******************************
             BOOKING STEPS
-    ********************************/
+         ***************************/
     case '/book/1':
         include __DIR__ . '/app/views/book/book-step1.php';
         break;
@@ -100,7 +100,7 @@ switch ($request) {
 
     /*******************************
             USER TRIPS
-    ********************************/
+         ***************************/
 
     case '/travel/palawan':
         include __DIR__ . 'app/views/travel/palawan.php';

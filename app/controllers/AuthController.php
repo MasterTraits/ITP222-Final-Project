@@ -14,12 +14,6 @@ class AuthController
         $this->userModel = new UserModel($db);
     }
 
-    // Show login form
-    public function loginForm()
-    {
-        include __DIR__ . '/../views/auth/login.php';
-    }
-
     public function login()
     {
         $email = $_POST['email'] ?? '';
@@ -42,11 +36,6 @@ class AuthController
             header("Location: /login");
             exit;
         }
-    }
-
-    public function registerForm()
-    {
-        include __DIR__ . '/../views/auth/register.php';
     }
 
     public function register()
@@ -80,11 +69,6 @@ class AuthController
             header("Location: /register");
             exit;
         }
-    }
-
-    public function forgotPasswordForm()
-    {
-        include __DIR__ . '/../views/auth/forgot-pass.php';
     }
 
     public function forgotPassword()
