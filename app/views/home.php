@@ -54,7 +54,7 @@ use App\controllers\Auth;
             </div>
 
             <div class="flex items-center gap-2 mt-5 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gift"></i></i> Travel Vouchers</div>
-            <p class="text-sm text-[var,--text-dark)]">Redeem your travel vouchers before they expire</p>
+            <p class="text-sm text-[var(--text-dark)]">Redeem your travel vouchers before they expire</p>
             <div class="flex items-center gap-2 mt-2 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gear"></i> Settings</div>
             <p class="text-sm mb-4 text-[var(--text-dark)]">Manage your notification preferences here</p>
           </div>
@@ -63,7 +63,7 @@ use App\controllers\Auth;
           <div class="invisible absolute bg-[#F4EEEC] p-5 h-68 w-60 rounded-lg leading-tight
           group-hover/account:visible top-9 -right-3 ">
             <div class="flex items-center gap-2 mt-5 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gift"></i></i> Travel Vouchers</div>
-            <p class="text-sm text-[var,--text-dark)]">Redeem your travel vouchers before they expire</p>
+            <p class="text-sm text-[var(--text-dark)]">Redeem your travel vouchers before they expire</p>
             <div class="flex items-center gap-2 mt-2 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gear"></i> Settings</div>
             <p class="text-sm mb-4 text-[var(--text-dark)]">Manage your notification preferences here</p>
             <div class="w-full pt-4 mb-2 border-t-1 border-[var(--text-dark)]">
