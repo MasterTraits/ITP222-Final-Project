@@ -1,4 +1,5 @@
 <?
+
 use App\controllers\Auth;
 ?>
 
@@ -91,11 +92,11 @@ use App\controllers\Auth;
     </div>
 
     <!-- Hero Section -->
-    <section class="relative w-full relative h-96 flex flex-col items-center justify-center">
-        <img src="/assets/destinations/palawan.jpg" alt="Boracay Island" class="inset-0 w-full h-full object-cover object-center">
+    <section class="relative w-full relative h-96 flex flex-col items-center justify-center ">
+        <img src="/assets/details/wyoming-mountains.jpg" alt="Boracay Island" class="inset-0 w-full h-full object-cover object-top">
         </div>
         <div class="absolute bottom-4 w-full max-w-6xl flex items-center justify-between px-4">
-            <h1 class="text-5xl font-bold mb-2 drop-shadow-lg text-white">El Nido, Palawan, Philippines</h1>
+            <h1 class="text-5xl font-bold mb-2 drop-shadow-lg text-white">Devil's Tower, Wyoming, US</h1>
             <a href="/book/1" class="bg-[var(--gold)] hover:bg-amber-300 text-black font-medium px-6 py-3 rounded-lg flex items-center gap-2 transition-colors">
                 <span>🏖️</span> Book Now
             </a>
@@ -109,7 +110,7 @@ use App\controllers\Auth;
             <!-- Price and Location -->
             <div class="space-y-4">
                 <div class="flex items-center gap-2">
-                    <h2 class="text-3xl font-bold">₱22,500</h2>
+                    <h2 class="text-3xl font-bold">₱82,000</h2>
                     <span class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full">Bundle & Save</span>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-2">
@@ -120,7 +121,7 @@ use App\controllers\Auth;
                         </svg>
                         <div>
                             <div class="text-xs text-gray-500">Where to?</div>
-                            <div class="text-sm">Manila, Philippines</div>
+                            <div class="text-sm">Rapid City, South Dakota</div>
                         </div>
                     </div>
                     <div class="flex items-center gap-2 border border-gray-300 rounded-md p-2 bg-white">
@@ -132,7 +133,7 @@ use App\controllers\Auth;
                         </svg>
                         <div>
                             <div class="text-xs text-gray-500">Dates</div>
-                            <div class="text-sm">May 23 - June 3</div>
+                            <div class="text-sm">Jul 10 - Jul 17</div>
                         </div>
                     </div>
                 </div>
@@ -140,7 +141,7 @@ use App\controllers\Auth;
 
             <!-- Rating -->
             <div class="flex items-center gap-2 bg-gray-50 p-3 rounded-md">
-                <span class="text-sm font-medium">Great</span>
+                <span class="text-sm font-medium">Excellent</span>
                 <div class="flex">
                     <span class="text-amber-400 text-xl">★</span>
                     <span class="text-amber-400 text-xl">★</span>
@@ -152,14 +153,15 @@ use App\controllers\Auth;
 
             <!-- Image Gallery -->
             <div class="grid grid-cols-3 gap-2 h-48">
-                <img src="/assets/details/palawan-diving.jpg" class="h-50 w-full border-gray-300 bg-gradient-to-br from-cyan-500 to-sky-500 rounded-md flex items-center justify-center text-white text-sm font-medium object-cover">
-                <img src="/assets/details/palawan-tutel.jpg" class="h-50 w-full border-gray-300 bg-gradient-to-br from-cyan-500 to-sky-500 rounded-md flex items-center justify-center text-white text-sm font-medium object-cover">
-                <img src="/assets/details/palawan2.jpg" class="h-50 w-full border-gray-300 bg-gradient-to-br from-cyan-500 to-sky-500 rounded-md flex items-center justify-center text-white text-sm font-medium object-cover">
+                <img src="/assets/destinations/wyoming.jpg" class="h-50 w-full border-gray-300 bg-gradient-to-br from-cyan-500 to-sky-500 rounded-md flex items-center justify-center text-white text-sm font-medium">
+                <img src="/assets/details/wyoming-acid.jpg" class="h-50 w-full border-gray-300 bg-gradient-to-br from-cyan-500 to-sky-500 rounded-md flex items-center justify-center text-white text-sm font-medium">
+                <img src="/assets/details/wyoming-nature.jpg" class="h-50 w-full border-gray-300 bg-gradient-to-br from-cyan-500 to-sky-500 rounded-md flex items-center justify-center text-white text-sm font-medium">
             </div>
 
             <!-- Description -->
-            <div>
-                <p class="text-gray-700 leading-relaxed">Palawan is a breathtaking sanctuary of unspoiled nature, where jagged limestone cliffs rise above turquoise waters, underground rivers carve through lush forests, and every island feels like a hidden paradise untouched by time</p>
+            <div class="space-y-4">
+                <p class="text-gray-700 leading-relaxed">Wyoming's climbing Mecca, Devil's Tower, stands at 865 feet and offers the beginner or the expert 200 fun and challenging routes. (In fact, a 6-year-old boy conquered the tower in 1994.) The array of cracks in the walls allows you to use your imagination as you test your climbing skills.</p>
+                <p class="text-gray-700 leading-relaxed">President Teddy Roosevelt named Devil's Tower the first national monument in 1906. Today, the park hosts approximately 450,000 visitors annually. And 5,000 of those visitors are climbers. But beware, environmentalists are trying to limit that number, so treat the park with respect.</p>
             </div>
 
             <!-- Fun Facts -->
@@ -170,32 +172,32 @@ use App\controllers\Auth;
                         <path d="M12 17v4"></path>
                         <path d="M12 3a6 6 0 0 1 6 6c0 3-2 5.5-2 8H8c0-2.5-2-5-2-8a6 6 0 0 1 6-6z"></path>
                     </svg>
-                    <h3 class="text-lg font-bold">Fun Facts!</h3>
+                    <h3 class="text-lg font-bold">Climbing Facts!</h3>
                 </div>
                 <ol class="list-decimal list-inside space-y-3 text-sm">
-                    <li><strong>UNESCO World Heritage Site:</strong> The Puerto Princesa Subterranean River is one of the New 7 Wonders of Nature.</li>
-                    <li><strong>Diverse Marine Life:</strong> Palawan has one of the richest marine biodiversity in the world, especially in Tubbataha Reefs Natural Park.</li>
-                    <li><strong>El Nido and Coron:</strong> Famous for limestone cliffs, clear lagoons, and WWII shipwreck diving spots.</li>
-                    <li><strong>Eco-Friendly Province:</strong> Palawan consistently ranks as one of the cleanest and greenest provinces in the Philippines.</li>
-                    <li><strong>Malampaya Sound:</strong> Known as the <em>"fish bowl of the Philippines"</em> for its abundant fish supply.</li>
+                    <li><strong>First National Monument:</strong> Devil's Tower was designated as America's first national monument by President Theodore Roosevelt in 1906.</li>
+                    <li><strong>Youngest Climber:</strong> A 6-year-old boy successfully conquered the tower in 1994, proving that the routes accommodate all skill levels.</li>
+                    <li><strong>200 Climbing Routes:</strong> The tower offers over 200 different climbing routes, ranging from beginner-friendly to expert-level challenges.</li>
+                    <li><strong>Annual Climbers:</strong> Out of 450,000 annual visitors to the park, approximately 5,000 are dedicated climbers seeking the ultimate challenge.</li>
+                    <li><strong>Unique Rock Formation:</strong> The tower's distinctive columnar basalt structure creates an array of natural cracks perfect for traditional climbing techniques.</li>
                 </ol>
             </div>
 
             <!-- Reviews -->
             <div class="space-y-6">
-                <h3 class="text-xl font-bold">Our Reviews</h3>
+                <h3 class="text-xl font-bold">Climber Reviews</h3>
                 <div class="flex items-center gap-4 mb-6">
-                    <div class="text-4xl font-bold">4.5</div>
+                    <div class="text-4xl font-bold">4.9</div>
                     <div>
                         <div class="flex">
                             <span class="text-amber-400 text-xl">★</span>
                             <span class="text-amber-400 text-xl">★</span>
                             <span class="text-amber-400 text-xl">★</span>
                             <span class="text-amber-400 text-xl">★</span>
-                            <span class="text-amber-400 text-xl bg-gradient-to-r from-amber-400 to-gray-300 bg-clip-text text-transparent">★</span>
+                            <span class="text-amber-400 text-xl">★</span>
                         </div>
                         <div class="text-sm text-gray-600">Out of 5 Stars</div>
-                        <div class="text-xs text-gray-400">Overall rating of 50 reviews</div>
+                        <div class="text-xs text-gray-400">Overall rating of 38 climbing reviews</div>
                     </div>
                 </div>
 
@@ -204,37 +206,37 @@ use App\controllers\Auth;
                     <div class="flex items-center gap-2">
                         <div class="w-12 text-sm">5 Stars</div>
                         <div class="flex-1 bg-gray-200 h-2 rounded-full overflow-hidden">
-                            <div class="bg-blue-500 h-full rounded-full" style="width: 70%"></div>
+                            <div class="bg-blue-500 h-full rounded-full" style="width: 90%"></div>
                         </div>
-                        <div class="w-8 text-right text-sm text-gray-600">230</div>
+                        <div class="w-8 text-right text-sm text-gray-600">34</div>
                     </div>
                     <div class="flex items-center gap-2">
                         <div class="w-12 text-sm">4 Stars</div>
                         <div class="flex-1 bg-gray-200 h-2 rounded-full overflow-hidden">
-                            <div class="bg-blue-500 h-full rounded-full" style="width: 20%"></div>
+                            <div class="bg-blue-500 h-full rounded-full" style="width: 10%"></div>
                         </div>
-                        <div class="w-8 text-right text-sm text-gray-600">57</div>
+                        <div class="w-8 text-right text-sm text-gray-600">4</div>
                     </div>
                     <div class="flex items-center gap-2">
                         <div class="w-12 text-sm">3 Stars</div>
                         <div class="flex-1 bg-gray-200 h-2 rounded-full overflow-hidden">
-                            <div class="bg-blue-500 h-full rounded-full" style="width: 10%"></div>
+                            <div class="bg-blue-500 h-full rounded-full" style="width: 0%"></div>
                         </div>
-                        <div class="w-8 text-right text-sm text-gray-600">30</div>
+                        <div class="w-8 text-right text-sm text-gray-600">0</div>
                     </div>
                     <div class="flex items-center gap-2">
                         <div class="w-12 text-sm">2 Stars</div>
                         <div class="flex-1 bg-gray-200 h-2 rounded-full overflow-hidden">
-                            <div class="bg-blue-500 h-full rounded-full" style="width: 5%"></div>
+                            <div class="bg-blue-500 h-full rounded-full" style="width: 0%"></div>
                         </div>
-                        <div class="w-8 text-right text-sm text-gray-600">7</div>
+                        <div class="w-8 text-right text-sm text-gray-600">0</div>
                     </div>
                     <div class="flex items-center gap-2">
                         <div class="w-12 text-sm">1 Stars</div>
                         <div class="flex-1 bg-gray-200 h-2 rounded-full overflow-hidden">
-                            <div class="bg-blue-500 h-full rounded-full" style="width: 8%"></div>
+                            <div class="bg-blue-500 h-full rounded-full" style="width: 0%"></div>
                         </div>
-                        <div class="w-8 text-right text-sm text-gray-600">23</div>
+                        <div class="w-8 text-right text-sm text-gray-600">0</div>
                     </div>
                 </div>
             </div>
@@ -253,107 +255,107 @@ use App\controllers\Auth;
                     <button class="tab-button px-4 py-3 text-sm border-b border-gray-200 bg-white font-medium" onclick="showTab('questions')">Frequently asked questions</button>
                     <button class="tab-button px-4 py-3 text-sm border-b border-gray-200 bg-gray-50" onclick="showTab('policies')">Policies</button>
                 </div>
-                
+
                 <!-- FAQ Tab -->
                 <div id="questions-tab" class="tab-content p-4">
                     <div class="space-y-0">
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Is El Nido Beach pet-friendly?
+                                What is the best time to climb Devil's Tower?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Some areas of El Nido Beach and a few resorts allow pets, but policies vary. It's best to check with your specific accommodation ahead of time. Always keep pets leashed and clean up after them.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">The best time to climb Devil's Tower is from late spring to early fall (May through September). June through August offers the most stable weather conditions. However, be aware that there is a voluntary climbing closure during the month of June out of respect for Native American cultural ceremonies.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Is there parking available at El Nido Beach?
+                                Do I need a permit to climb Devil's Tower?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Parking is limited in the town proper, especially near the beachfront. Some hotels and resorts offer private parking, but public parking can be scarce. Early arrival is recommended if you have a vehicle.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Yes, all climbers must register with the park by obtaining a free climbing permit at the Visitor Center before and after each climb. No advance reservations are needed for the permits. Climbers must also check out after completing their climb.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                When is the best time to go swimming at El Nido beach?
+                                What skill level is required to climb Devil's Tower?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">The best time to swim is between <strong>December and May</strong>, during the dry season. For calm waters, swim in the morning (7 AM to 11 AM) when the tide is moderate and the sun isn't too strong.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Devil's Tower offers routes for all skill levels, but most routes are rated 5.7 to 5.13 on the Yosemite Decimal System. Beginners should climb with an experienced guide. The most popular route, Durrance, is rated 5.7 and involves crack climbing techniques. Even for experienced climbers, a guide is recommended for your first time on the Tower.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Is there a curfew for swimming at El Nido Beach?
+                                What is the June Voluntary Climbing Closure?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">There's no official swimming curfew, but for safety reasons, swimming is discouraged <strong>after dark</strong>. Lifeguards are usually not present, and some areas have strong currents at night.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">The June Voluntary Climbing Closure is a request that climbers not climb on the Tower during the month of June when Native American traditional cultural ceremonies are taking place. This is out of respect for the indigenous peoples who consider the Tower sacred. While not mandatory, most climbers honor this request.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Is there public transportation available to nearby hotels from El Nido Beach?
+                                What equipment do I need to climb Devil's Tower?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Yes. <strong>Tricycles</strong> are the main form of local transportation and are readily available near the beach. Some resorts also offer shuttle services for pick-up and drop-off.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Standard rock climbing gear is required, including a helmet, harness, climbing shoes, and traditional protection (cams, nuts, etc.) for crack climbing. Most routes require a 60m rope. If climbing with our guided service, all technical equipment is provided, but you should bring appropriate clothing, water, and sun protection.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Where is El Nido Beach located?
+                                How long does it take to climb Devil's Tower?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">El Nido Beach is located in <strong>El Nido town</strong>, in the northern part of <strong>Palawan, Philippines</strong>. It faces Bacuit Bay and is surrounded by dramatic limestone cliffs and island scenery.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Most routes take 4-6 hours to complete round trip from the base to the summit and back down. The Durrance route, the most popular, typically takes 3-5 hours for experienced climbers. Plan for a full day activity including approach, climbing, and descent.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Are there ATMs or money changers near El Nido Beach?
+                                Are there climbing guides available at Devil's Tower?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Yes, but they are limited. There are a few <strong>ATMs and money changers</strong> in the town proper. It's a good idea to bring enough <strong>cash</strong>, especially if visiting nearby islands where electronic payments are not accepted.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Yes, several authorized guide services operate in Devil's Tower National Monument. Licensed guides can provide equipment, instruction, and lead climbs for all skill levels. Advance reservations are recommended, especially during peak season (summer months).</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Can I rent snorkeling or diving gear at El Nido Beach?
+                                What wildlife might I encounter while climbing?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Yes. Several dive shops and tour operators offer <strong>snorkeling and scuba gear rentals</strong>. Most island-hopping tours also include basic gear as part of the package.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Prairie falcons and other raptors nest on the Tower, and temporary closures of certain routes may be in effect to protect nesting birds. You might also encounter swifts, swallows, chipmunks, and occasionally snakes. Always respect wildlife and maintain a safe distance.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Are there restaurants or food stalls near El Nido Beach?
+                                What are the weather concerns for climbing Devil's Tower?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">El Nido town has a wide range of dining options, from <strong>beachfront restaurants</strong> to <strong>local eateries</strong> serving Filipino and international cuisine.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Summer thunderstorms are common and can develop quickly. Lightning is a serious hazard on the Tower. Check weather forecasts before climbing and be prepared to descend if storms approach. The rock can also become very hot in direct sunlight, making climbing uncomfortable in mid-summer afternoons.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Is El Nido Beach safe for solo travelers?
+                                Can I camp near Devil's Tower?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Yes, El Nido is generally safe for solo travelers. The locals are friendly and helpful, and the town has a laid-back vibe. Still, as with any destination, it's wise to stay alert and take basic safety precautions.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Yes, Belle Fourche River Campground is located within the monument and operates on a first-come, first-served basis. There are also several private campgrounds and lodging options just outside the monument boundaries. Reservations are recommended during peak season.</p>
                             </div>
                         </div>
                     </div>
@@ -363,24 +365,24 @@ use App\controllers\Auth;
                 <div id="policies-tab" class="tab-content p-4 hidden">
                     <div class="space-y-4">
                         <div class="policy-item">
-                            <h4 class="font-bold mb-1">No Touching or Taking of Marine Life</h4>
-                            <p class="text-sm text-gray-700">Touching coral reefs, collecting seashells, and disturbing wildlife (especially in El Nido and Tubbataha) are strictly prohibited.</p>
+                            <h4 class="font-bold mb-1">Climbing Registration</h4>
+                            <p class="text-sm text-gray-700">All climbers must register at the Visitor Center before climbing and check in after completing their climb. Registration is free and helps park staff monitor climbing activity and ensure climber safety.</p>
                         </div>
                         <div class="policy-item">
-                            <h4 class="font-bold mb-1">Waste Segregation and Disposal</h4>
-                            <p class="text-sm text-gray-700">Visitors and businesses must follow strict waste segregation rules and are responsible for properly disposing of their trash.</p>
+                            <h4 class="font-bold mb-1">June Voluntary Closure</h4>
+                            <p class="text-sm text-gray-700">Climbers are asked to voluntarily refrain from climbing during the month of June out of respect for Native American cultural ceremonies. This voluntary closure has been in effect since 1995 and is respected by most climbers.</p>
                         </div>
                         <div class="policy-item">
-                            <h4 class="font-bold mb-1">Eco-Tourism Fees and Permits</h4>
-                            <p class="text-sm text-gray-700">Tourists are required to pay environmental fees and secure permits for activities like island hopping and trekking.</p>
+                            <h4 class="font-bold mb-1">Environmental Protection</h4>
+                            <p class="text-sm text-gray-700">Fixed anchors are prohibited without prior approval. Climbers must pack out all trash and waste. Chalk use should be minimized, and colored chalk is prohibited. Stay on established trails during approach and descent to minimize erosion.</p>
                         </div>
                         <div class="policy-item">
-                            <h4 class="font-bold mb-1">No Anchoring on Coral Reefs</h4>
-                            <p class="text-sm text-gray-700">Boats must use designated mooring buoys to prevent anchor damage to coral reefs, especially in protected marine areas.</p>
+                            <h4 class="font-bold mb-1">Raptor Nesting Closures</h4>
+                            <p class="text-sm text-gray-700">Temporary closures of certain climbing routes may be implemented to protect nesting prairie falcons and other raptors. These closures typically occur from March through July and are posted at the Visitor Center and on the NPS website.</p>
                         </div>
                         <div class="policy-item">
-                            <h4 class="font-bold mb-1">Ban on Single-Use Plastics</h4>
-                            <p class="text-sm text-gray-700">Many towns (like El Nido and Coron) have implemented bans on plastic bags, straws, and other single-use plastics to reduce pollution.</p>
+                            <h4 class="font-bold mb-1">Safety Requirements</h4>
+                            <p class="text-sm text-gray-700">Helmets are strongly recommended for all climbers. Solo climbing is discouraged. All climbers should carry adequate water, sun protection, and be prepared for sudden weather changes. Emergency services may be delayed due to the remote location.</p>
                         </div>
                     </div>
                 </div>
@@ -396,13 +398,13 @@ use App\controllers\Auth;
             tabContents.forEach(content => {
                 content.classList.add('hidden');
             });
-            
+
             const tabButtons = document.querySelectorAll('.tab-button');
             tabButtons.forEach(button => {
                 button.classList.remove('bg-white');
                 button.classList.add('bg-gray-50');
             });
-            
+
             document.getElementById(tabName + '-tab').classList.remove('hidden');
             event.target.classList.remove('bg-gray-50');
             event.target.classList.add('bg-white');
@@ -414,7 +416,7 @@ use App\controllers\Auth;
             const content = item.querySelector('.accordion-content');
             const icon = item.querySelector('.accordion-icon');
             const isActive = content.style.maxHeight && content.style.maxHeight !== '0px';
-            
+
             // Close all accordion items
             document.querySelectorAll('.accordion-content').forEach(content => {
                 content.style.maxHeight = '0px';
@@ -422,7 +424,7 @@ use App\controllers\Auth;
             document.querySelectorAll('.accordion-icon').forEach(icon => {
                 icon.style.transform = 'rotate(0deg)';
             });
-            
+
             // If the clicked item wasn't active, open it
             if (!isActive) {
                 content.style.maxHeight = content.scrollHeight + 'px';
@@ -432,17 +434,17 @@ use App\controllers\Auth;
 
         // Initialize map
         function initMap() {
-            const palawanCoords = [9.7392, 118.7312];
-            
-            const map = L.map('map').setView(palawanCoords, 8);
-            
+            const wyomingCoords = [44.5902, -104.7154];
+
+            const map = L.map('map').setView(wyomingCoords, 12);
+
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
             }).addTo(map);
-            
-            L.marker(palawanCoords)
+
+            L.marker(wyomingCoords)
                 .addTo(map)
-                .bindPopup('Palawan, Philippines')
+                .bindPopup("Devil's Tower, Wyoming")
                 .openPopup();
         }
 
@@ -454,4 +456,5 @@ use App\controllers\Auth;
         });
     </script>
 </body>
+
 </html>

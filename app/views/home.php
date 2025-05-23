@@ -37,11 +37,11 @@ use App\controllers\Auth;
 
     <!-- Desktop menu -->
     <aside class="hidden md:flex items-center space-x-6">
+      <a href="/" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Home</a>
       <a href="/book/1" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Book</a>
       <a href="/destinations" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Destinations</a>
       <?php if (Auth::check()): ?>
-        <a href="/travel-logs" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Travel Logs</a>
-        <a href="/your-trips" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Your Trips</a>
+        <a href="/travel-logs" class="font-semibold text-[var(--text-dark)] hover:text-[var,--blue]">Travel Logs</a>
       <?php endif; ?>
       <div class="relative py-1 px-4 rounded-full border flex items-center gap-2 group/account hover:bg-[var(--blue)] hover:text-white transition 400ms ease-out">
         <?php if (!Auth::check()): ?>
@@ -81,9 +81,12 @@ use App\controllers\Auth;
       <i class="fa-solid fa-times"></i>
     </button>
     <div class="flex flex-col items-center gap-8 text-xl">
+      <a href="/" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Home</a>
       <a href="/book/1" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Book</a>
       <a href="/destinations" class="font-semibold text-[var,--text-dark)] hover:text-[var(--blue)]">Travel</a>
-      <a href="/your-trips" class="font-semibold text-[var,--text-dark)] hover:text-[var(--blue)]">Your Trips</a>
+      <?php if (Auth::check()): ?>
+        <a href="/travel-logs" class="font-semibold text-[var(--text-dark)] hover:text-[var,--blue]">Travel Logs</a>
+      <?php endif; ?>
       <?php if (!Auth::check()): ?>
         <a href="/login" class="bg-[var(--blue)] text-white rounded-full py-2 px-8 font-semibold">Sign in</a>
         <p class="text-sm">Not a user yet? <a href="/register" class="text-[var(--blue)]">Sign-up</a></p>
@@ -401,7 +404,54 @@ use App\controllers\Auth;
   </section>
 
   <footer class="bg-[var(--text-dark)] h-50">
+    <?php
 
+    $travel = "travel.php";
+    $destination = "destination.php";
+    $trips = "your-trips.php";
+
+    $fees = "airline-fees.php";
+    $lowFare = "low-fare-tips.php";
+    $security = "security.php";
+
+    $privacy = "privacy.php";
+    $terms = "terms.php";
+    ?>
+
+    <!-- Footer Starts -->
+    <div style="background-color: #fff6f3; padding: 20px; font-family: Arial, sans-serif; font-size: 14px; color: #333;">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1000px; margin: auto;">
+        <div style="min-width: 200px; margin-bottom: 20px;">
+          <b>Company</b><br>
+          <a href="<?php echo $travel; ?>" style="text-decoration: none; color: #000;">Travel</a><br>
+          <a href="<?php echo $destination; ?>" style="text-decoration: none; color: #000;">Destination</a><br>
+          <a href="<?php echo $trips; ?>" style="text-decoration: none; color: #000;">Your Trips</a>
+        </div>
+
+        <div style="min-width: 200px; margin-bottom: 20px;">
+          <b>More</b><br>
+          <a href="<?php echo $fees; ?>" style="text-decoration: none; color: #000;">Airline fees</a><br>
+          <a href="<?php echo $lowFare; ?>" style="text-decoration: none; color: #000;">Low fare tips</a><br>
+          <a href="<?php echo $security; ?>" style="text-decoration: none; color: #000;">Security</a>
+        </div>
+
+        <div style="min-width: 200px; margin-bottom: 20px;">
+          <b>Get the Compass app</b>
+        </div>
+      </div>
+
+      <hr style="margin-top: 20px; border: none; border-top: 1px solid #ccc;">
+
+      <div style="text-align: center; font-size: 13px; color: #666; margin-top: 10px;">
+        &copy; <?php echo date("Y"); ?> Compass |
+        <a href="<?php echo $privacy; ?>" style="color: #555;">Privacy</a> |
+        <a href="<?php echo $terms; ?>" style="color: #555;">Terms & Condition</a><br><br>
+
+        <span style="font-weight: bold;">compass.com</span><br><br>
+        English
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP" style="height: 18px; vertical-align: middle;">
+      </div>
+    </div>
   </footer>
 
   <script>

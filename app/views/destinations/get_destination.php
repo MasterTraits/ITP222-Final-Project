@@ -16,6 +16,7 @@ $destinations = [
     [
         "image" => "cebu.jpg",
         "name" => "Cebu, Lapu-Lapu City",
+        "slug" => "cebu",
         "country" => "Philippines",
         "start_date" => "April 10, 2025",
         "end_date" => "April 17, 2025",
@@ -29,6 +30,7 @@ $destinations = [
     [
         "image" => "siargao.jpeg",
         "name" => "Siargao, General Luna",
+        "slug" => "siargao",
         "country" => "Philippines",
         "start_date" => "May 5, 2025",
         "end_date" => "May 15, 2025",
@@ -42,6 +44,7 @@ $destinations = [
     [
         "image" => "boracay.jpg",
         "name" => "Boracay, Malay Aklan",
+        "slug" => "boracay",
         "country" => "Philippines",
         "start_date" => "June 10, 2025",
         "end_date" => "June 17, 2025",
@@ -55,6 +58,7 @@ $destinations = [
     [
         "image" => "palawan.jpg",
         "name" => "Palawan, Puerto Princesa",
+        "slug" => "palawan",
         "country" => "Philippines",
         "start_date" => "July 5, 2025",
         "end_date" => "July 20, 2025",
@@ -68,6 +72,7 @@ $destinations = [
     [
         "image" => "baguio.jpg",
         "name" => "Baguio City",
+        "slug" => "baguio",
         "country" => "Philippines",
         "start_date" => "August 1, 2025",
         "end_date" => "August 5, 2025",
@@ -81,6 +86,7 @@ $destinations = [
     [
         "image" => "bohol.jpg",
         "name" => "Bohol, Panglao Island",
+        "slug" => "bohol",
         "country" => "Philippines",
         "start_date" => "September 10, 2025",
         "end_date" => "September 20, 2025",
@@ -94,6 +100,7 @@ $destinations = [
     [
         "image" => "bangkok.jpg",
         "name" => "Bangkok",
+        "slug" => "bangkok",
         "country" => "Thailand",
         "start_date" => "October 5, 2025",
         "end_date" => "October 12, 2025",
@@ -107,6 +114,7 @@ $destinations = [
     [
         "image" => "tokyo.jpg",
         "name" => "Tokyo",
+        "slug" => "tokyo",
         "country" => "Japan",
         "start_date" => "November 15, 2025",
         "end_date" => "November 25, 2025",
@@ -120,6 +128,7 @@ $destinations = [
     [
         "image" => "newport.jpg",
         "name" => "Newport Beach, Los Angeles",
+        "slug" => "newport",
         "country" => "United States",
         "start_date" => "June 15, 2025",
         "end_date" => "June 25, 2025",
@@ -133,6 +142,7 @@ $destinations = [
     [
         "image" => "upper-hutt.jpg",
         "name" => "Upper Hutt",
+        "slug" => "upper-hutt",
         "country" => "New Zealand",
         "start_date" => "February 10, 2025",
         "end_date" => "February 24, 2025",
@@ -146,6 +156,7 @@ $destinations = [
     [
         "image" => "wyoming.jpg",
         "name" => "Wyoming",
+        "slug" => "wyoming",
         "country" => "United States",
         "start_date" => "December 5, 2025",
         "end_date" => "December 15, 2025",

@@ -21,7 +21,7 @@ use App\controllers\Auth;
 
     <nav class="rounded-tl-lg rounded-br-lg shadow-lg px-4 py-2 w-[95%] max-w-5xl   
     bg-[var(--bg-transparent-light)] backdrop-blur-md border border-[#E2E8F0] 
-    fixed top-5 left-1/2 transform -translate-x-1/2 z-40
+    fixed top-5 left-1/2 transform -translate-x-1/2 z-[9999]
     flex items-center justify-between">
       <a href="/" class="flex items-center">
         <img src="assets/logo.svg" alt="Compass Logo" class="h-10 w-auto">
@@ -51,7 +51,7 @@ use App\controllers\Auth;
               </div>
 
               <div class="flex items-center gap-2 mt-5 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gift"></i></i> Travel Vouchers</div>
-              <p class="text-sm text-[var(--text-dark)]">Redeem your travel vouchers before they expire</p>
+              <p class="text-sm text-[var(--text-dark)] group-hover/account:text-black">Redeem your travel vouchers before they expire</p>
               <div class="flex items-center gap-2 mt-2 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gear"></i> Settings</div>
               <p class="text-sm mb-4 text-[var(--text-dark)]">Manage your notification preferences here</p>
             </div>
@@ -60,9 +60,9 @@ use App\controllers\Auth;
             <div class="invisible absolute bg-[#F4EEEC] p-5 h-68 w-60 rounded-lg leading-tight
           group-hover/account:visible top-9 -right-3 ">
               <div class="flex items-center gap-2 mt-5 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gift"></i></i> Travel Vouchers</div>
-              <p class="text-sm text-[var(--text-dark)]">Redeem your travel vouchers before they expire</p>
+              <p class="text-sm text-[var,--text-dark]">Redeem your travel vouchers before they expire</p>
               <div class="flex items-center gap-2 mt-2 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gear"></i> Settings</div>
-              <p class="text-sm mb-4 text-[var(--text-dark)]">Manage your notification preferences here</p>
+              <p class="text-sm mb-4 text-[var,--text-dark]">Manage your notification preferences here</p>
               <div class="w-full pt-4 mb-2 border-t-1 border-[var(--text-dark)]">
                 <a href="/logout" class="block text-center bg-[var(--blue)] rounded-full py-2 px-5 text-white w-full mb-2 text-semibold">Log-out</a>
               </div>
@@ -73,7 +73,7 @@ use App\controllers\Auth;
     </nav>
 
     <!-- Mobile menu (hidden by default) -->
-    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-[var(--bg-transparent-light)] backdrop-blur-lg z-50 hidden flex-col items-center pt-20">
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-[var(--bg-transparent-light)] backdrop-blur-lg z-[10000] hidden flex-col items-center pt-20">
       <button id="close-menu-button" class="absolute top-5 right-5 text-[var(--text-dark)] text-2xl">
         <i class="fa-solid fa-times"></i>
       </button>
@@ -312,9 +312,13 @@ use App\controllers\Auth;
       }
 
       destinations.forEach((destination) => {
-        const card = document.createElement("div");
+        const card = document.createElement("a");
         card.className =
-          "flex bg-white rounded-xl overflow-hidden mb-5 shadow transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg flex-col md:flex-row";
+          "flex bg-white rounded-xl overflow-hidden mb-5 shadow transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg flex-col md:flex-row cursor-pointer text-decoration-none";
+
+        // Set href attribute for destination redirect
+        const locationSlug = getLocationSlug(destination.name);
+        card.href = `/details/${locationSlug}`;
 
         const duration = getDurationDays(destination.start_date, destination.end_date);
 
@@ -342,7 +346,7 @@ use App\controllers\Auth;
         card.innerHTML = `
             <div class="destination-img w-full md:w-[150px] h-[180px] md:h-[150px] bg-cover bg-center" style="background-image: url('/assets/destinations/${imgSrc}');"></div>
             <div class="flex-1 p-4 relative">
-                <h2 class="text-lg font-semibold mb-2">${destination.name || ""}</h2>
+                <h2 class="text-lg font-semibold mb-2 text-gray-800">${destination.name || ""}</h2>
                 <div class="absolute top-4 right-5 text-right">
                     <p class="text-sm text-gray-700">${destination.start_date || ""} - ${destination.end_date || ""}</p>
                     <p class="text-xs text-gray-500">Trip #${destination.trip_id || ""}</p>
@@ -358,10 +362,32 @@ use App\controllers\Auth;
                   <span class="inline-block bg-gray-100 px-2 py-1 rounded text-xs text-gray-700">${country}</span>
                   <span class="inline-block bg-gray-100 px-2 py-1 rounded text-xs text-gray-700">Info: ${infoNeeds}</span>
                 </div>
+                <div class="absolute bottom-4 right-4">
+                  <span class="text-xs text-blue-600 font-medium">View Details →</span>
+                </div>
             </div>
         `;
         container.appendChild(card);
       });
+    }
+
+    // Helper function to convert destination names to URL slugs
+    function getLocationSlug(destinationName) {
+      const locationMappings = {
+        'Cebu, Lapu-Lapu City': 'cebu',
+        'Siargao, General Luna': 'siargao',
+        'Boracay, Malay Aklan': 'boracay',
+        'Palawan, Puerto Princesa': 'palawan',
+        'Baguio City': 'baguio',
+        'Bohol, Panglao Island': 'bohol',
+        'Bangkok': 'bangkok',
+        'Tokyo': 'tokyo',
+        'Newport Beach, Los Angeles': 'newport',
+        'Upper Hutt': 'upper-hutt',
+        'Wyoming': 'wyoming'
+      };
+
+      return locationMappings[destinationName] || destinationName.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-');
     }
 
     // Helper function to calculate duration in days

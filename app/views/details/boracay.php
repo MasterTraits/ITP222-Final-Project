@@ -92,10 +92,10 @@ use App\controllers\Auth;
 
     <!-- Hero Section -->
     <section class="relative w-full relative h-96 flex flex-col items-center justify-center">
-        <img src="/assets/destinations/palawan.jpg" alt="Boracay Island" class="inset-0 w-full h-full object-cover object-center">
+        <img src="/assets/boracay.jpg" alt="Boracay Island" class="inset-0 w-full h-full object-cover object-center">
         </div>
         <div class="absolute bottom-4 w-full max-w-6xl flex items-center justify-between px-4">
-            <h1 class="text-5xl font-bold mb-2 drop-shadow-lg text-white">El Nido, Palawan, Philippines</h1>
+            <h1 class="text-5xl font-bold mb-2 drop-shadow-lg text-white">Boracay Island, Philippines</h1>
             <a href="/book/1" class="bg-[var(--gold)] hover:bg-amber-300 text-black font-medium px-6 py-3 rounded-lg flex items-center gap-2 transition-colors">
                 <span>🏖️</span> Book Now
             </a>
@@ -109,7 +109,7 @@ use App\controllers\Auth;
             <!-- Price and Location -->
             <div class="space-y-4">
                 <div class="flex items-center gap-2">
-                    <h2 class="text-3xl font-bold">₱22,500</h2>
+                    <h2 class="text-3xl font-bold">₱15,500</h2>
                     <span class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full">Bundle & Save</span>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-2">
@@ -120,7 +120,7 @@ use App\controllers\Auth;
                         </svg>
                         <div>
                             <div class="text-xs text-gray-500">Where to?</div>
-                            <div class="text-sm">Manila, Philippines</div>
+                            <div class="text-sm">Boracay Island, Philippines</div>
                         </div>
                     </div>
                     <div class="flex items-center gap-2 border border-gray-300 rounded-md p-2 bg-white">
@@ -132,7 +132,7 @@ use App\controllers\Auth;
                         </svg>
                         <div>
                             <div class="text-xs text-gray-500">Dates</div>
-                            <div class="text-sm">May 23 - June 3</div>
+                            <div class="text-sm">Dec 15 - Dec 22</div>
                         </div>
                     </div>
                 </div>
@@ -140,52 +140,53 @@ use App\controllers\Auth;
 
             <!-- Rating -->
             <div class="flex items-center gap-2 bg-gray-50 p-3 rounded-md">
-                <span class="text-sm font-medium">Great</span>
+                <span class="text-sm font-medium">Excellent</span>
                 <div class="flex">
-                    <span class="text-amber-400 text-xl">★</span>
-                    <span class="text-amber-400 text-xl">★</span>
-                    <span class="text-amber-400 text-xl">★</span>
-                    <span class="text-amber-400 text-xl">★</span>
-                    <span class="text-amber-400 text-xl">★</span>
+                    <span class="star text-amber-400 text-xl">★</span>
+                    <span class="star text-amber-400 text-xl">★</span>
+                    <span class="star text-amber-400 text-xl">★</span>
+                    <span class="star text-amber-400 text-xl">★</span>
+                    <span class="star text-amber-400 text-xl">★</span>
                 </div>
             </div>
 
             <!-- Image Gallery -->
             <div class="grid grid-cols-3 gap-2 h-48">
-                <img src="/assets/details/palawan-diving.jpg" class="h-50 w-full border-gray-300 bg-gradient-to-br from-cyan-500 to-sky-500 rounded-md flex items-center justify-center text-white text-sm font-medium object-cover">
-                <img src="/assets/details/palawan-tutel.jpg" class="h-50 w-full border-gray-300 bg-gradient-to-br from-cyan-500 to-sky-500 rounded-md flex items-center justify-center text-white text-sm font-medium object-cover">
-                <img src="/assets/details/palawan2.jpg" class="h-50 w-full border-gray-300 bg-gradient-to-br from-cyan-500 to-sky-500 rounded-md flex items-center justify-center text-white text-sm font-medium object-cover">
+                <img src="/assets/details/boracay-diving.jpg" class="h-50 w-full border-gray-300 bg-gradient-to-br from-cyan-500 to-sky-500 rounded-md flex items-center justify-center text-white text-sm font-medium">
+                <img src="/assets/details/boracay-tutel.jpg" class="h-50 w-full border-gray-300 bg-gradient-to-br from-cyan-500 to-sky-500 rounded-md flex items-center justify-center text-white text-sm font-medium">
+                <img src="/assets/details/boracay-sunset.jpg" class="h-50 w-full border-gray-300 bg-gradient-to-br from-cyan-500 to-sky-500 rounded-md flex items-center justify-center text-white text-sm font-medium">
             </div>
 
             <!-- Description -->
-            <div>
-                <p class="text-gray-700 leading-relaxed">Palawan is a breathtaking sanctuary of unspoiled nature, where jagged limestone cliffs rise above turquoise waters, underground rivers carve through lush forests, and every island feels like a hidden paradise untouched by time</p>
+            <div class="space-y-4">
+                <p class="text-gray-700 leading-relaxed">Boracay Island is a tropical paradise located in the central Philippines, renowned for its pristine white sand beaches and crystal-clear turquoise waters. White Beach, the island's main attraction, stretches for 4 kilometers and is consistently ranked among the world's best beaches.</p>
+                <p class="text-gray-700 leading-relaxed">From thrilling water sports like kitesurfing and parasailing to peaceful sunset cruises and island hopping adventures, Boracay offers the perfect blend of relaxation and excitement. Experience vibrant nightlife, world-class dining, and the warm hospitality that the Philippines is famous for.</p>
             </div>
 
             <!-- Fun Facts -->
-            <div class="border border-gray-200 rounded-lg p-6">
+            <div class="border border-gray-200 rounded-lg p-6 bg-gradient-to-br from-amber-50 to-amber-100">
                 <div class="flex items-center gap-2 mb-4">
-                    <svg class="text-amber-400" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg class="text-amber-500" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M9 21h6"></path>
                         <path d="M12 17v4"></path>
                         <path d="M12 3a6 6 0 0 1 6 6c0 3-2 5.5-2 8H8c0-2.5-2-5-2-8a6 6 0 0 1 6-6z"></path>
                     </svg>
-                    <h3 class="text-lg font-bold">Fun Facts!</h3>
+                    <h3 class="text-lg font-bold text-amber-800">Island Facts!</h3>
                 </div>
-                <ol class="list-decimal list-inside space-y-3 text-sm">
-                    <li><strong>UNESCO World Heritage Site:</strong> The Puerto Princesa Subterranean River is one of the New 7 Wonders of Nature.</li>
-                    <li><strong>Diverse Marine Life:</strong> Palawan has one of the richest marine biodiversity in the world, especially in Tubbataha Reefs Natural Park.</li>
-                    <li><strong>El Nido and Coron:</strong> Famous for limestone cliffs, clear lagoons, and WWII shipwreck diving spots.</li>
-                    <li><strong>Eco-Friendly Province:</strong> Palawan consistently ranks as one of the cleanest and greenest provinces in the Philippines.</li>
-                    <li><strong>Malampaya Sound:</strong> Known as the <em>"fish bowl of the Philippines"</em> for its abundant fish supply.</li>
+                <ol class="list-decimal list-inside space-y-3 text-sm text-amber-800">
+                    <li><strong>World's Best Beach:</strong> White Beach has been consistently ranked among the top beaches in the world by various travel publications and websites.</li>
+                    <li><strong>Powdery White Sand:</strong> The famous white sand is made of crushed coral and shells, creating an incredibly fine and soft texture that stays cool even under the hot sun.</li>
+                    <li><strong>Three Beach Stations:</strong> White Beach is divided into three stations, each offering different vibes - Station 1 for luxury, Station 2 for activities, and Station 3 for budget-friendly options.</li>
+                    <li><strong>Kitesurfing Capital:</strong> Boracay is considered one of Asia's premier kitesurfing destinations, with Bulabog Beach offering perfect wind conditions from November to April.</li>
+                    <li><strong>Island Rehabilitation:</strong> The island underwent a major environmental rehabilitation in 2018, emerging cleaner and more sustainable than ever before.</li>
                 </ol>
             </div>
 
             <!-- Reviews -->
             <div class="space-y-6">
-                <h3 class="text-xl font-bold">Our Reviews</h3>
+                <h3 class="text-xl font-bold">Traveler Reviews</h3>
                 <div class="flex items-center gap-4 mb-6">
-                    <div class="text-4xl font-bold">4.5</div>
+                    <div class="text-4xl font-bold">4.8</div>
                     <div>
                         <div class="flex">
                             <span class="text-amber-400 text-xl">★</span>
@@ -195,7 +196,7 @@ use App\controllers\Auth;
                             <span class="text-amber-400 text-xl bg-gradient-to-r from-amber-400 to-gray-300 bg-clip-text text-transparent">★</span>
                         </div>
                         <div class="text-sm text-gray-600">Out of 5 Stars</div>
-                        <div class="text-xs text-gray-400">Overall rating of 50 reviews</div>
+                        <div class="text-xs text-gray-400">Overall rating of 127 traveler reviews</div>
                     </div>
                 </div>
 
@@ -204,37 +205,37 @@ use App\controllers\Auth;
                     <div class="flex items-center gap-2">
                         <div class="w-12 text-sm">5 Stars</div>
                         <div class="flex-1 bg-gray-200 h-2 rounded-full overflow-hidden">
-                            <div class="bg-blue-500 h-full rounded-full" style="width: 70%"></div>
+                            <div class="bg-cyan-500 h-full rounded-full" style="width: 82%"></div>
                         </div>
-                        <div class="w-8 text-right text-sm text-gray-600">230</div>
+                        <div class="w-8 text-right text-sm text-gray-600">104</div>
                     </div>
                     <div class="flex items-center gap-2">
                         <div class="w-12 text-sm">4 Stars</div>
                         <div class="flex-1 bg-gray-200 h-2 rounded-full overflow-hidden">
-                            <div class="bg-blue-500 h-full rounded-full" style="width: 20%"></div>
+                            <div class="bg-cyan-500 h-full rounded-full" style="width: 15%"></div>
                         </div>
-                        <div class="w-8 text-right text-sm text-gray-600">57</div>
+                        <div class="w-8 text-right text-sm text-gray-600">19</div>
                     </div>
                     <div class="flex items-center gap-2">
                         <div class="w-12 text-sm">3 Stars</div>
                         <div class="flex-1 bg-gray-200 h-2 rounded-full overflow-hidden">
-                            <div class="bg-blue-500 h-full rounded-full" style="width: 10%"></div>
+                            <div class="bg-cyan-500 h-full rounded-full" style="width: 2%"></div>
                         </div>
-                        <div class="w-8 text-right text-sm text-gray-600">30</div>
+                        <div class="w-8 text-right text-sm text-gray-600">3</div>
                     </div>
                     <div class="flex items-center gap-2">
                         <div class="w-12 text-sm">2 Stars</div>
                         <div class="flex-1 bg-gray-200 h-2 rounded-full overflow-hidden">
-                            <div class="bg-blue-500 h-full rounded-full" style="width: 5%"></div>
+                            <div class="bg-cyan-500 h-full rounded-full" style="width: 1%"></div>
                         </div>
-                        <div class="w-8 text-right text-sm text-gray-600">7</div>
+                        <div class="w-8 text-right text-sm text-gray-600">1</div>
                     </div>
                     <div class="flex items-center gap-2">
                         <div class="w-12 text-sm">1 Stars</div>
                         <div class="flex-1 bg-gray-200 h-2 rounded-full overflow-hidden">
-                            <div class="bg-blue-500 h-full rounded-full" style="width: 8%"></div>
+                            <div class="bg-cyan-500 h-full rounded-full" style="width: 0%"></div>
                         </div>
-                        <div class="w-8 text-right text-sm text-gray-600">23</div>
+                        <div class="w-8 text-right text-sm text-gray-600">0</div>
                     </div>
                 </div>
             </div>
@@ -253,107 +254,107 @@ use App\controllers\Auth;
                     <button class="tab-button px-4 py-3 text-sm border-b border-gray-200 bg-white font-medium" onclick="showTab('questions')">Frequently asked questions</button>
                     <button class="tab-button px-4 py-3 text-sm border-b border-gray-200 bg-gray-50" onclick="showTab('policies')">Policies</button>
                 </div>
-                
+
                 <!-- FAQ Tab -->
                 <div id="questions-tab" class="tab-content p-4">
                     <div class="space-y-0">
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Is El Nido Beach pet-friendly?
+                                What is the best time to visit Boracay?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Some areas of El Nido Beach and a few resorts allow pets, but policies vary. It's best to check with your specific accommodation ahead of time. Always keep pets leashed and clean up after them.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">The best time to visit Boracay is during the dry season from November to April, when you'll experience sunny skies, calm seas, and minimal rainfall. December to February offers the coolest temperatures, while March to May can be quite hot but perfect for beach activities.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Is there parking available at El Nido Beach?
+                                How do I get to Boracay Island?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Parking is limited in the town proper, especially near the beachfront. Some hotels and resorts offer private parking, but public parking can be scarce. Early arrival is recommended if you have a vehicle.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Fly to Kalibo (KLO) or Caticlan (MPH) airports. From Kalibo, take a 1.5-hour bus ride to Caticlan jetty port. From Caticlan airport, it's just a 10-minute tricycle ride to the jetty. Then take a 15-minute boat ride to Boracay Island. We can arrange all transfers for you.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                When is the best time to go swimming at El Nido beach?
+                                What activities are included in the package?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">The best time to swim is between <strong>December and May</strong>, during the dry season. For calm waters, swim in the morning (7 AM to 11 AM) when the tide is moderate and the sun isn't too strong.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Our package includes island hopping tours, sunset sailing, snorkeling equipment, beach activities, and access to water sports. Optional activities like parasailing, jet skiing, and scuba diving can be arranged at additional cost.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Is there a curfew for swimming at El Nido Beach?
+                                Is Boracay suitable for families with children?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">There's no official swimming curfew, but for safety reasons, swimming is discouraged <strong>after dark</strong>. Lifeguards are usually not present, and some areas have strong currents at night.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Boracay is very family-friendly with calm, shallow waters perfect for children, family resorts, kid-friendly restaurants, and activities suitable for all ages. The beach is safe for swimming and the local community is welcoming to families.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Is there public transportation available to nearby hotels from El Nido Beach?
+                                What should I pack for Boracay?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Yes. <strong>Tricycles</strong> are the main form of local transportation and are readily available near the beach. Some resorts also offer shuttle services for pick-up and drop-off.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Pack light, breathable clothing, swimwear, sunscreen (reef-safe), hat, sunglasses, flip-flops, and a light jacket for evening. Don't forget underwater camera, snorkeling gear if you have your own, and any prescription medications.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Where is El Nido Beach located?
+                                Are there dining options for different dietary requirements?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">El Nido Beach is located in <strong>El Nido town</strong>, in the northern part of <strong>Palawan, Philippines</strong>. It faces Bacuit Bay and is surrounded by dramatic limestone cliffs and island scenery.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Yes! Boracay offers diverse dining options including vegetarian, vegan, halal, and international cuisines. From local Filipino dishes to Italian, Korean, and Indian restaurants, there's something for every palate and dietary requirement.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Are there ATMs or money changers near El Nido Beach?
+                                Is WiFi available on the island?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Yes, but they are limited. There are a few <strong>ATMs and money changers</strong> in the town proper. It's a good idea to bring enough <strong>cash</strong>, especially if visiting nearby islands where electronic payments are not accepted.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Most hotels, restaurants, and cafes offer free WiFi. The connection quality varies but is generally reliable for basic internet needs. For better connectivity, consider purchasing a local SIM card with data plan from convenience stores on the island.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Can I rent snorkeling or diving gear at El Nido Beach?
+                                What is the local currency and payment methods?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Yes. Several dive shops and tour operators offer <strong>snorkeling and scuba gear rentals</strong>. Most island-hopping tours also include basic gear as part of the package.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">The local currency is Philippine Peso (PHP). While many establishments accept credit cards, it's advisable to carry cash for small vendors, tricycle rides, and tips. ATMs are available throughout the island, especially in Station 2.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Are there restaurants or food stalls near El Nido Beach?
+                                Are there medical facilities on the island?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">El Nido town has a wide range of dining options, from <strong>beachfront restaurants</strong> to <strong>local eateries</strong> serving Filipino and international cuisine.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Yes, Boracay has several medical clinics and a hospital. For serious emergencies, patients can be transported to larger hospitals in Kalibo or Iloilo. We recommend travel insurance that covers medical emergencies and evacuation.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Is El Nido Beach safe for solo travelers?
+                                What environmental guidelines should I follow?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Yes, El Nido is generally safe for solo travelers. The locals are friendly and helpful, and the town has a laid-back vibe. Still, as with any destination, it's wise to stay alert and take basic safety precautions.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Please use reef-safe sunscreen, avoid single-use plastics, don't touch or step on coral reefs, dispose of waste properly, and respect marine life. Boracay has strict environmental regulations to preserve its natural beauty for future generations.</p>
                             </div>
                         </div>
                     </div>
@@ -363,24 +364,28 @@ use App\controllers\Auth;
                 <div id="policies-tab" class="tab-content p-4 hidden">
                     <div class="space-y-4">
                         <div class="policy-item">
-                            <h4 class="font-bold mb-1">No Touching or Taking of Marine Life</h4>
-                            <p class="text-sm text-gray-700">Touching coral reefs, collecting seashells, and disturbing wildlife (especially in El Nido and Tubbataha) are strictly prohibited.</p>
+                            <h4 class="font-bold mb-1">Booking & Payment</h4>
+                            <p class="text-sm text-gray-700">25% deposit required at booking, with the remaining balance due 30 days before arrival. Full payment required for bookings made within 30 days of arrival. Payment accepted via credit card, bank transfer, or PayPal.</p>
                         </div>
                         <div class="policy-item">
-                            <h4 class="font-bold mb-1">Waste Segregation and Disposal</h4>
-                            <p class="text-sm text-gray-700">Visitors and businesses must follow strict waste segregation rules and are responsible for properly disposing of their trash.</p>
+                            <h4 class="font-bold mb-1">Cancellation Policy</h4>
+                            <p class="text-sm text-gray-700">Full refund if canceled 45+ days before arrival. 50% refund if canceled 15-44 days before arrival. No refund if canceled less than 15 days before arrival. Travel insurance is highly recommended.</p>
                         </div>
                         <div class="policy-item">
-                            <h4 class="font-bold mb-1">Eco-Tourism Fees and Permits</h4>
-                            <p class="text-sm text-gray-700">Tourists are required to pay environmental fees and secure permits for activities like island hopping and trekking.</p>
+                            <h4 class="font-bold mb-1">Weather Conditions</h4>
+                            <p class="text-sm text-gray-700">Activities may be modified due to weather conditions for safety reasons. During typhoon season (June-October), we may need to reschedule or relocate activities. No refunds for weather-related changes, but alternative activities will be provided.</p>
                         </div>
                         <div class="policy-item">
-                            <h4 class="font-bold mb-1">No Anchoring on Coral Reefs</h4>
-                            <p class="text-sm text-gray-700">Boats must use designated mooring buoys to prevent anchor damage to coral reefs, especially in protected marine areas.</p>
+                            <h4 class="font-bold mb-1">Environmental Responsibility</h4>
+                            <p class="text-sm text-gray-700">All guests must follow Boracay's environmental guidelines including proper waste disposal, use of reef-safe sunscreen, and respect for marine life. Violations may result in fines imposed by local authorities.</p>
                         </div>
                         <div class="policy-item">
-                            <h4 class="font-bold mb-1">Ban on Single-Use Plastics</h4>
-                            <p class="text-sm text-gray-700">Many towns (like El Nido and Coron) have implemented bans on plastic bags, straws, and other single-use plastics to reduce pollution.</p>
+                            <h4 class="font-bold mb-1">Health & Safety</h4>
+                            <p class="text-sm text-gray-700">Guests must be able to swim or wear life jackets during water activities. Children under 12 must be supervised by adults at all times. Please inform us of any medical conditions or allergies before arrival.</p>
+                        </div>
+                        <div class="policy-item">
+                            <h4 class="font-bold mb-1">Travel Requirements</h4>
+                            <p class="text-sm text-gray-700">Valid passport required for international visitors. Check visa requirements for your nationality. Proof of onward travel may be required. Travel insurance covering medical emergencies and trip cancellation is strongly recommended.</p>
                         </div>
                     </div>
                 </div>
@@ -396,13 +401,13 @@ use App\controllers\Auth;
             tabContents.forEach(content => {
                 content.classList.add('hidden');
             });
-            
+
             const tabButtons = document.querySelectorAll('.tab-button');
             tabButtons.forEach(button => {
                 button.classList.remove('bg-white');
                 button.classList.add('bg-gray-50');
             });
-            
+
             document.getElementById(tabName + '-tab').classList.remove('hidden');
             event.target.classList.remove('bg-gray-50');
             event.target.classList.add('bg-white');
@@ -414,7 +419,7 @@ use App\controllers\Auth;
             const content = item.querySelector('.accordion-content');
             const icon = item.querySelector('.accordion-icon');
             const isActive = content.style.maxHeight && content.style.maxHeight !== '0px';
-            
+
             // Close all accordion items
             document.querySelectorAll('.accordion-content').forEach(content => {
                 content.style.maxHeight = '0px';
@@ -422,7 +427,7 @@ use App\controllers\Auth;
             document.querySelectorAll('.accordion-icon').forEach(icon => {
                 icon.style.transform = 'rotate(0deg)';
             });
-            
+
             // If the clicked item wasn't active, open it
             if (!isActive) {
                 content.style.maxHeight = content.scrollHeight + 'px';
@@ -432,17 +437,17 @@ use App\controllers\Auth;
 
         // Initialize map
         function initMap() {
-            const palawanCoords = [9.7392, 118.7312];
-            
-            const map = L.map('map').setView(palawanCoords, 8);
-            
+            const boracayCoords = [11.95620, 121.93176];
+
+            const map = L.map('map').setView(boracayCoords, 13);
+
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
             }).addTo(map);
-            
-            L.marker(palawanCoords)
+
+            L.marker(boracayCoords)
                 .addTo(map)
-                .bindPopup('Palawan, Philippines')
+                .bindPopup('Boracay, Philippines')
                 .openPopup();
         }
 
@@ -454,4 +459,5 @@ use App\controllers\Auth;
         });
     </script>
 </body>
+
 </html>

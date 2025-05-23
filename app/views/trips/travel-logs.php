@@ -24,7 +24,7 @@ echo '</pre>';
 <body class="bg-gray-50 text-gray-800">
   <nav class="rounded-tl-lg rounded-br-lg shadow-sm px-4 py-2 w-[95%] max-w-5xl   
     bg-white backdrop-blur-md border border-[#E2E8F0] 
-    fixed top-5 left-1/2 transform -translate-x-1/2 z-40
+    fixed top-5 left-1/2 transform -translate-x-1/2 z-[9999]
     flex items-center justify-between">
     <a href="/" class="flex items-center">
       <img src="assets/logo.svg" alt="Compass Logo" class="h-10 w-auto">
@@ -75,7 +75,7 @@ echo '</pre>';
   </nav>
 
   <!-- Mobile menu (hidden by default) -->
-  <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-[var(--bg-transparent-light)] backdrop-blur-lg z-50 hidden flex-col items-center pt-20">
+  <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-[var(--bg-transparent-light)] backdrop-blur-lg z-[10000] hidden flex-col items-center pt-20">
     <button id="close-menu-button" class="absolute top-5 right-5 text-[var(--text-dark)] text-2xl">
       <i class="fa-solid fa-times"></i>
     </button>
@@ -215,11 +215,10 @@ echo '</pre>';
           <!-- Post Creation -->
           <form id="post-form" action="/travel-logs/create" method="POST" enctype="multipart/form-data" class="bg-white rounded-lg shadow-sm p-4 mb-6">
             <div class="flex space-x-3">
-              <img src="https://i.pravatar.cc/150?img=3" alt="Profile" class="w-10 h-10 rounded-full">
               <div class="flex-1">
                 <textarea id="post-content" name="content" class="w-full rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none" rows="3" placeholder="Share your travel adventure..."></textarea>
                 <div class="flex justify-between items-center mt-3">
-                  <div class="flex gap-4">
+                  <div class="flex gap-4 pl-4">
                     <!-- Upload Image Button -->
                     <label class="flex items-center text-gray-500 hover:text-[var(--text-dark)] cursor-pointer" title="Add Photo">
                       <i class="fas fa-image"></i>

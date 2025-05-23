@@ -1,4 +1,5 @@
 <?
+
 use App\controllers\Auth;
 ?>
 
@@ -92,10 +93,10 @@ use App\controllers\Auth;
 
     <!-- Hero Section -->
     <section class="relative w-full relative h-96 flex flex-col items-center justify-center">
-        <img src="/assets/destinations/palawan.jpg" alt="Boracay Island" class="inset-0 w-full h-full object-cover object-center">
+        <img src="/assets/details/upper-hut-bridge.jpg" alt="Boracay Island" class="inset-0 w-full h-full object-cover object-bottom">
         </div>
         <div class="absolute bottom-4 w-full max-w-6xl flex items-center justify-between px-4">
-            <h1 class="text-5xl font-bold mb-2 drop-shadow-lg text-white">El Nido, Palawan, Philippines</h1>
+            <h1 class="text-5xl font-bold mb-2 drop-shadow-lg text-white">Upper Hut, New Zealand</h1>
             <a href="/book/1" class="bg-[var(--gold)] hover:bg-amber-300 text-black font-medium px-6 py-3 rounded-lg flex items-center gap-2 transition-colors">
                 <span>🏖️</span> Book Now
             </a>
@@ -103,13 +104,13 @@ use App\controllers\Auth;
     </section>
 
     <!-- Main Content -->
-    <div class="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8"> <!-- Left Column - Main Content -->
         <!-- Left Column - Main Content -->
         <div class="lg:col-span-2 space-y-8">
             <!-- Price and Location -->
             <div class="space-y-4">
                 <div class="flex items-center gap-2">
-                    <h2 class="text-3xl font-bold">₱22,500</h2>
+                    <h2 class="text-3xl font-bold">₱68,000</h2>
                     <span class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full">Bundle & Save</span>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-2">
@@ -120,7 +121,7 @@ use App\controllers\Auth;
                         </svg>
                         <div>
                             <div class="text-xs text-gray-500">Where to?</div>
-                            <div class="text-sm">Manila, Philippines</div>
+                            <div class="text-sm">Upper Hutt, New Zealand</div>
                         </div>
                     </div>
                     <div class="flex items-center gap-2 border border-gray-300 rounded-md p-2 bg-white">
@@ -132,7 +133,7 @@ use App\controllers\Auth;
                         </svg>
                         <div>
                             <div class="text-xs text-gray-500">Dates</div>
-                            <div class="text-sm">May 23 - June 3</div>
+                            <div class="text-sm">Feb 25 - Mar 5</div>
                         </div>
                     </div>
                 </div>
@@ -140,7 +141,7 @@ use App\controllers\Auth;
 
             <!-- Rating -->
             <div class="flex items-center gap-2 bg-gray-50 p-3 rounded-md">
-                <span class="text-sm font-medium">Great</span>
+                <span class="text-sm font-medium">Excellent</span>
                 <div class="flex">
                     <span class="text-amber-400 text-xl">★</span>
                     <span class="text-amber-400 text-xl">★</span>
@@ -152,14 +153,15 @@ use App\controllers\Auth;
 
             <!-- Image Gallery -->
             <div class="grid grid-cols-3 gap-2 h-48">
-                <img src="/assets/details/palawan-diving.jpg" class="h-50 w-full border-gray-300 bg-gradient-to-br from-cyan-500 to-sky-500 rounded-md flex items-center justify-center text-white text-sm font-medium object-cover">
-                <img src="/assets/details/palawan-tutel.jpg" class="h-50 w-full border-gray-300 bg-gradient-to-br from-cyan-500 to-sky-500 rounded-md flex items-center justify-center text-white text-sm font-medium object-cover">
-                <img src="/assets/details/palawan2.jpg" class="h-50 w-full border-gray-300 bg-gradient-to-br from-cyan-500 to-sky-500 rounded-md flex items-center justify-center text-white text-sm font-medium object-cover">
+                <img src="/assets/destinations/upper-hutt.jpg" class="h-50 w-full border-gray-300 bg-gradient-to-br from-cyan-500 to-sky-500 rounded-md flex items-center justify-center text-white text-sm font-medium">
+                <img src="/assets/details/upper-hut-lake.jpg" class="h-50 w-full border-gray-300 bg-gradient-to-br from-cyan-500 to-sky-500 rounded-md flex items-center justify-center text-white text-sm font-medium">
+                <img src="/assets/details/upper-hut-tower.jpg" class="h-50 w-full border-gray-300 bg-gradient-to-br from-cyan-500 to-sky-500 rounded-md flex items-center justify-center text-white text-sm font-medium">
             </div>
 
             <!-- Description -->
-            <div>
-                <p class="text-gray-700 leading-relaxed">Palawan is a breathtaking sanctuary of unspoiled nature, where jagged limestone cliffs rise above turquoise waters, underground rivers carve through lush forests, and every island feels like a hidden paradise untouched by time</p>
+            <div class="space-y-4">
+                <p class="text-gray-700 leading-relaxed">The Karapoti Trail, home to the Trek Karapoti Classic, twists around the Akatarawa Range and delivers 31 miles of technical single track and challenging fire road climbs. During the ride there are several vistas to soothe those eyes while you reward your burning legs by taking a quick breather.</p>
+                <p class="text-gray-700 leading-relaxed">Upper Hutt is New Zealand's mountain biking hub, and if you're looking for a group ride, stop by Mountain Trails bike shop. Or if you want a number plate on your handlebar, the Trek Karapoti Classic is scheduled for March 4, 2001.</p>
             </div>
 
             <!-- Fun Facts -->
@@ -170,32 +172,32 @@ use App\controllers\Auth;
                         <path d="M12 17v4"></path>
                         <path d="M12 3a6 6 0 0 1 6 6c0 3-2 5.5-2 8H8c0-2.5-2-5-2-8a6 6 0 0 1 6-6z"></path>
                     </svg>
-                    <h3 class="text-lg font-bold">Fun Facts!</h3>
+                    <h3 class="text-lg font-bold">Trail Facts!</h3>
                 </div>
                 <ol class="list-decimal list-inside space-y-3 text-sm">
-                    <li><strong>UNESCO World Heritage Site:</strong> The Puerto Princesa Subterranean River is one of the New 7 Wonders of Nature.</li>
-                    <li><strong>Diverse Marine Life:</strong> Palawan has one of the richest marine biodiversity in the world, especially in Tubbataha Reefs Natural Park.</li>
-                    <li><strong>El Nido and Coron:</strong> Famous for limestone cliffs, clear lagoons, and WWII shipwreck diving spots.</li>
-                    <li><strong>Eco-Friendly Province:</strong> Palawan consistently ranks as one of the cleanest and greenest provinces in the Philippines.</li>
-                    <li><strong>Malampaya Sound:</strong> Known as the <em>"fish bowl of the Philippines"</em> for its abundant fish supply.</li>
+                    <li><strong>Karapoti Classic:</strong> The Trek Karapoti Classic is New Zealand's oldest mountain bike race, first held in 1986 and attracting riders from around the world.</li>
+                    <li><strong>31-Mile Challenge:</strong> The Karapoti Trail covers 31 miles (50km) of diverse terrain including technical single track, fire roads, and challenging climbs through native bush.</li>
+                    <li><strong>Akatarawa Range:</strong> The trail winds through the stunning Akatarawa Range, offering breathtaking vistas of the Wellington region and Tararua Ranges.</li>
+                    <li><strong>Mountain Biking Hub:</strong> Upper Hutt is recognized as New Zealand's premier mountain biking destination with over 100km of trails suitable for all skill levels.</li>
+                    <li><strong>Native Bush Experience:</strong> Riders experience authentic New Zealand native forest with towering rimu, rata, and kahikatea trees along the trail.</li>
                 </ol>
             </div>
 
             <!-- Reviews -->
             <div class="space-y-6">
-                <h3 class="text-xl font-bold">Our Reviews</h3>
+                <h3 class="text-xl font-bold">Rider Reviews</h3>
                 <div class="flex items-center gap-4 mb-6">
-                    <div class="text-4xl font-bold">4.5</div>
+                    <div class="text-4xl font-bold">4.7</div>
                     <div>
                         <div class="flex">
                             <span class="text-amber-400 text-xl">★</span>
                             <span class="text-amber-400 text-xl">★</span>
                             <span class="text-amber-400 text-xl">★</span>
                             <span class="text-amber-400 text-xl">★</span>
-                            <span class="text-amber-400 text-xl bg-gradient-to-r from-amber-400 to-gray-300 bg-clip-text text-transparent">★</span>
+                            <span class="text-amber-400 text-xl bg-gradient-to-r from-amber-400 via-amber-400 to-gray-300 bg-clip-text text-transparent" style="background: linear-gradient(90deg, #fbbf24 70%, #d1d5db 70%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">★</span>
                         </div>
                         <div class="text-sm text-gray-600">Out of 5 Stars</div>
-                        <div class="text-xs text-gray-400">Overall rating of 50 reviews</div>
+                        <div class="text-xs text-gray-400">Overall rating of 45 mountain biking reviews</div>
                     </div>
                 </div>
 
@@ -204,37 +206,37 @@ use App\controllers\Auth;
                     <div class="flex items-center gap-2">
                         <div class="w-12 text-sm">5 Stars</div>
                         <div class="flex-1 bg-gray-200 h-2 rounded-full overflow-hidden">
-                            <div class="bg-blue-500 h-full rounded-full" style="width: 70%"></div>
+                            <div class="bg-blue-500 h-full rounded-full" style="width: 78%"></div>
                         </div>
-                        <div class="w-8 text-right text-sm text-gray-600">230</div>
+                        <div class="w-8 text-right text-sm text-gray-600">35</div>
                     </div>
                     <div class="flex items-center gap-2">
                         <div class="w-12 text-sm">4 Stars</div>
                         <div class="flex-1 bg-gray-200 h-2 rounded-full overflow-hidden">
-                            <div class="bg-blue-500 h-full rounded-full" style="width: 20%"></div>
+                            <div class="bg-blue-500 h-full rounded-full" style="width: 18%"></div>
                         </div>
-                        <div class="w-8 text-right text-sm text-gray-600">57</div>
+                        <div class="w-8 text-right text-sm text-gray-600">8</div>
                     </div>
                     <div class="flex items-center gap-2">
                         <div class="w-12 text-sm">3 Stars</div>
                         <div class="flex-1 bg-gray-200 h-2 rounded-full overflow-hidden">
-                            <div class="bg-blue-500 h-full rounded-full" style="width: 10%"></div>
+                            <div class="bg-blue-500 h-full rounded-full" style="width: 4%"></div>
                         </div>
-                        <div class="w-8 text-right text-sm text-gray-600">30</div>
+                        <div class="w-8 text-right text-sm text-gray-600">2</div>
                     </div>
                     <div class="flex items-center gap-2">
                         <div class="w-12 text-sm">2 Stars</div>
                         <div class="flex-1 bg-gray-200 h-2 rounded-full overflow-hidden">
-                            <div class="bg-blue-500 h-full rounded-full" style="width: 5%"></div>
+                            <div class="bg-blue-500 h-full rounded-full" style="width: 0%"></div>
                         </div>
-                        <div class="w-8 text-right text-sm text-gray-600">7</div>
+                        <div class="w-8 text-right text-sm text-gray-600">0</div>
                     </div>
                     <div class="flex items-center gap-2">
                         <div class="w-12 text-sm">1 Stars</div>
                         <div class="flex-1 bg-gray-200 h-2 rounded-full overflow-hidden">
-                            <div class="bg-blue-500 h-full rounded-full" style="width: 8%"></div>
+                            <div class="bg-blue-500 h-full rounded-full" style="width: 0%"></div>
                         </div>
-                        <div class="w-8 text-right text-sm text-gray-600">23</div>
+                        <div class="w-8 text-right text-sm text-gray-600">0</div>
                     </div>
                 </div>
             </div>
@@ -253,107 +255,107 @@ use App\controllers\Auth;
                     <button class="tab-button px-4 py-3 text-sm border-b border-gray-200 bg-white font-medium" onclick="showTab('questions')">Frequently asked questions</button>
                     <button class="tab-button px-4 py-3 text-sm border-b border-gray-200 bg-gray-50" onclick="showTab('policies')">Policies</button>
                 </div>
-                
+
                 <!-- FAQ Tab -->
                 <div id="questions-tab" class="tab-content p-4">
                     <div class="space-y-0">
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Is El Nido Beach pet-friendly?
+                                What skill level is required for the Karapoti Trail?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Some areas of El Nido Beach and a few resorts allow pets, but policies vary. It's best to check with your specific accommodation ahead of time. Always keep pets leashed and clean up after them.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">The Karapoti Trail is designed for intermediate to advanced mountain bikers. You should be comfortable riding technical single track, navigating roots and rocks, and handling moderate to challenging climbs. Strong beginners with some off-road experience can participate with proper preparation.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Is there parking available at El Nido Beach?
+                                Do I need to bring my own mountain bike?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Parking is limited in the town proper, especially near the beachfront. Some hotels and resorts offer private parking, but public parking can be scarce. Early arrival is recommended if you have a vehicle.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">No, high-quality full suspension mountain bikes are included in the package. We offer various sizes and can adjust the setup to your preferences. If you prefer to bring your own bike, we can arrange shipping logistics for an additional fee.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                When is the best time to go swimming at El Nido beach?
+                                When is the best time to ride in New Zealand?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">The best time to swim is between <strong>December and May</strong>, during the dry season. For calm waters, swim in the morning (7 AM to 11 AM) when the tide is moderate and the sun isn't too strong.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">The prime mountain biking season is from November to April (summer and early autumn in the Southern Hemisphere). February and March typically offer the most stable weather conditions with warm temperatures and less rainfall, making it ideal for the Karapoti Trail.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Is there a curfew for swimming at El Nido Beach?
+                                Can I participate in the Trek Karapoti Classic?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">There's no official swimming curfew, but for safety reasons, swimming is discouraged <strong>after dark</strong>. Lifeguards are usually not present, and some areas have strong currents at night.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Yes! If your trip coincides with the event (usually held in early March), we'll handle your registration and provide race-day support. The Karapoti Classic is New Zealand's oldest mountain bike race and a fantastic experience for enthusiasts.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Is there public transportation available to nearby hotels from El Nido Beach?
+                                What should I pack for the mountain biking trip?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Yes. <strong>Tricycles</strong> are the main form of local transportation and are readily available near the beach. Some resorts also offer shuttle services for pick-up and drop-off.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Bring your own helmet (or use ours), cycling shorts/pants, jerseys, gloves, cycling shoes, rain jacket, casual clothes, and personal items. New Zealand weather can change quickly, so layers are essential. A detailed packing list will be provided upon booking.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Where is El Nido Beach located?
+                                How challenging is the 31-mile Karapoti Trail?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">El Nido Beach is located in <strong>El Nido town</strong>, in the northern part of <strong>Palawan, Philippines</strong>. It faces Bacuit Bay and is surrounded by dramatic limestone cliffs and island scenery.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">The Karapoti Trail is considered moderately challenging with technical single track sections, fire road climbs, and varied terrain. Most riders complete it in 3-6 hours depending on fitness level and trail conditions. There are several rest points with scenic vistas along the way.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Are there ATMs or money changers near El Nido Beach?
+                                Are there other trails available in Upper Hutt?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Yes, but they are limited. There are a few <strong>ATMs and money changers</strong> in the town proper. It's a good idea to bring enough <strong>cash</strong>, especially if visiting nearby islands where electronic payments are not accepted.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Yes! Upper Hutt offers over 100km of mountain biking trails ranging from beginner-friendly to expert level. Popular alternatives include the Tunnel Gully Track, Whakatiki Track, and various trails in the Rimutaka Forest Park. Our guides can recommend trails based on your skill level.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Can I rent snorkeling or diving gear at El Nido Beach?
+                                What wildlife might I encounter on the trails?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Yes. Several dive shops and tour operators offer <strong>snorkeling and scuba gear rentals</strong>. Most island-hopping tours also include basic gear as part of the package.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">You may encounter native New Zealand birds like tui, bellbirds, and fantails. The native bush is home to various insects and occasionally you might spot native geckos. Always respect wildlife and maintain a safe distance. The trails pass through beautiful native forest ecosystems.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Are there restaurants or food stalls near El Nido Beach?
+                                What are the weather concerns for mountain biking?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">El Nido town has a wide range of dining options, from <strong>beachfront restaurants</strong> to <strong>local eateries</strong> serving Filipino and international cuisine.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">New Zealand weather can change rapidly, especially in the mountains. Rain can make trails slippery and muddy. We monitor weather conditions closely and may adjust routes or reschedule rides for safety. Always be prepared with rain gear and warm layers.</p>
                             </div>
                         </div>
 
                         <div class="accordion-item border-b border-gray-200 last:border-b-0">
                             <button class="accordion-header w-full py-4 text-left text-sm font-medium flex justify-between items-center" onclick="toggleAccordion(this)">
-                                Is El Nido Beach safe for solo travelers?
+                                Where can I stay near the trails?
                                 <span class="accordion-icon text-xl transition-transform">+</span>
                             </button>
                             <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300">
-                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Yes, El Nido is generally safe for solo travelers. The locals are friendly and helpful, and the town has a laid-back vibe. Still, as with any destination, it's wise to stay alert and take basic safety precautions.</p>
+                                <p class="text-sm text-gray-700 leading-relaxed pb-4">Our package includes accommodation at the Upper Hutt Mountain Lodge. There are also various hotels, motels, and holiday parks in Upper Hutt and nearby Wellington. The area is well-connected with good access to trails and local amenities.</p>
                             </div>
                         </div>
                     </div>
@@ -363,24 +365,28 @@ use App\controllers\Auth;
                 <div id="policies-tab" class="tab-content p-4 hidden">
                     <div class="space-y-4">
                         <div class="policy-item">
-                            <h4 class="font-bold mb-1">No Touching or Taking of Marine Life</h4>
-                            <p class="text-sm text-gray-700">Touching coral reefs, collecting seashells, and disturbing wildlife (especially in El Nido and Tubbataha) are strictly prohibited.</p>
+                            <h4 class="font-bold mb-1">Booking & Payment</h4>
+                            <p class="text-sm text-gray-700">30% deposit required at booking, with the remaining balance due 60 days before arrival. Full payment required for bookings made within 60 days of arrival. Payment can be made via credit card or bank transfer.</p>
                         </div>
                         <div class="policy-item">
-                            <h4 class="font-bold mb-1">Waste Segregation and Disposal</h4>
-                            <p class="text-sm text-gray-700">Visitors and businesses must follow strict waste segregation rules and are responsible for properly disposing of their trash.</p>
+                            <h4 class="font-bold mb-1">Cancellation Policy</h4>
+                            <p class="text-sm text-gray-700">Full refund minus $250 admin fee if canceled 90+ days before arrival. 50% refund if canceled 60-89 days before arrival. No refund if canceled less than 60 days before arrival. Travel insurance is strongly recommended.</p>
                         </div>
                         <div class="policy-item">
-                            <h4 class="font-bold mb-1">Eco-Tourism Fees and Permits</h4>
-                            <p class="text-sm text-gray-700">Tourists are required to pay environmental fees and secure permits for activities like island hopping and trekking.</p>
+                            <h4 class="font-bold mb-1">Weather Conditions</h4>
+                            <p class="text-sm text-gray-700">Riding may be rescheduled due to unsafe weather conditions. New Zealand weather can change rapidly, so be prepared for all conditions. No refunds for poor weather, but guides will arrange alternative activities when possible.</p>
                         </div>
                         <div class="policy-item">
-                            <h4 class="font-bold mb-1">No Anchoring on Coral Reefs</h4>
-                            <p class="text-sm text-gray-700">Boats must use designated mooring buoys to prevent anchor damage to coral reefs, especially in protected marine areas.</p>
+                            <h4 class="font-bold mb-1">Trail Safety</h4>
+                            <p class="text-sm text-gray-700">Helmets are mandatory for all riders. Riders must follow guide instructions and stay on designated trails. Mountain biking involves inherent risks, and participants ride at their own risk. Basic first aid training is provided to all guides.</p>
                         </div>
                         <div class="policy-item">
-                            <h4 class="font-bold mb-1">Ban on Single-Use Plastics</h4>
-                            <p class="text-sm text-gray-700">Many towns (like El Nido and Coron) have implemented bans on plastic bags, straws, and other single-use plastics to reduce pollution.</p>
+                            <h4 class="font-bold mb-1">Environmental Responsibility</h4>
+                            <p class="text-sm text-gray-700">We follow Leave No Trace principles. Stay on designated trails to protect native vegetation. Pack out all rubbish and respect wildlife. Some trails may have seasonal closures to protect nesting birds or during hunting seasons.</p>
+                        </div>
+                        <div class="policy-item">
+                            <h4 class="font-bold mb-1">Insurance Requirements</h4>
+                            <p class="text-sm text-gray-700">Comprehensive travel and medical insurance with mountain biking coverage is required for all participants. Proof of insurance must be provided before the trip. Coverage should include emergency evacuation and repatriation.</p>
                         </div>
                     </div>
                 </div>
@@ -396,13 +402,13 @@ use App\controllers\Auth;
             tabContents.forEach(content => {
                 content.classList.add('hidden');
             });
-            
+
             const tabButtons = document.querySelectorAll('.tab-button');
             tabButtons.forEach(button => {
                 button.classList.remove('bg-white');
                 button.classList.add('bg-gray-50');
             });
-            
+
             document.getElementById(tabName + '-tab').classList.remove('hidden');
             event.target.classList.remove('bg-gray-50');
             event.target.classList.add('bg-white');
@@ -414,7 +420,7 @@ use App\controllers\Auth;
             const content = item.querySelector('.accordion-content');
             const icon = item.querySelector('.accordion-icon');
             const isActive = content.style.maxHeight && content.style.maxHeight !== '0px';
-            
+
             // Close all accordion items
             document.querySelectorAll('.accordion-content').forEach(content => {
                 content.style.maxHeight = '0px';
@@ -422,7 +428,7 @@ use App\controllers\Auth;
             document.querySelectorAll('.accordion-icon').forEach(icon => {
                 icon.style.transform = 'rotate(0deg)';
             });
-            
+
             // If the clicked item wasn't active, open it
             if (!isActive) {
                 content.style.maxHeight = content.scrollHeight + 'px';
@@ -432,17 +438,17 @@ use App\controllers\Auth;
 
         // Initialize map
         function initMap() {
-            const palawanCoords = [9.7392, 118.7312];
-            
-            const map = L.map('map').setView(palawanCoords, 8);
-            
+            const upperHuttCoords = [-41.1242, 175.0723];
+
+            const map = L.map('map').setView(upperHuttCoords, 11);
+
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
             }).addTo(map);
-            
-            L.marker(palawanCoords)
+
+            L.marker(upperHuttCoords)
                 .addTo(map)
-                .bindPopup('Palawan, Philippines')
+                .bindPopup('Upper Hutt, New Zealand')
                 .openPopup();
         }
 
@@ -454,4 +460,5 @@ use App\controllers\Auth;
         });
     </script>
 </body>
+
 </html>

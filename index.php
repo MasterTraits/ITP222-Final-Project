@@ -90,8 +90,16 @@ switch ($request) {
         include __DIR__ . '/app/views/book/booking-success.php';
         break;
 
-    case '/your-trips':
+    case '/travel-logs':
         $tripController->userTrips();
+        break;
+
+    case '/travel-logs/create':
+        $tripController->createPost();
+        break;
+
+    case '/destinations':
+        include __DIR__ . '/app/views/destinations/destinations.php';
         break;
 
     case '/test':
@@ -102,8 +110,24 @@ switch ($request) {
             USER TRIPS
          ***************************/
 
-    case '/travel/palawan':
-        include __DIR__ . 'app/views/travel/palawan.php';
+    case '/details/boracay':
+        include __DIR__ . '/app/views/details/boracay.php';
+        break;
+
+    case '/details/newport':
+        include __DIR__ . '/app/views/details/newport.php';
+        break;
+
+    case '/details/palawan':
+        include __DIR__ . '/app/views/details/palawan.php';
+        break;
+
+    case '/details/upper-hutt':
+        include __DIR__ . '/app/views/details/upper-hutt.php';
+        break;
+    
+    case '/details/wyoming':
+        include __DIR__ . '/app/views/details/wyoming.php';
         break;
 
 
