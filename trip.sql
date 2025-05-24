@@ -4,7 +4,7 @@ CREATE TABLE trips (
     given VARCHAR(100) NOT NULL,
     surname VARCHAR(100) NOT NULL,
     content TEXT NOT NULL,
-    location VARCHAR(255),w
+    location VARCHAR(255),
     images TEXT,
     created_at DATETIME NOT NULL,
     INDEX (user_id)

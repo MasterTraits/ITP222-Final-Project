@@ -149,7 +149,7 @@ use App\controllers\Auth;
                     <span class="text-amber-400 text-xl">★</span>
                     <span class="text-amber-400 text-xl">★</span>
                     <span class="text-amber-400 text-xl">★</span>
-                    <span class="="text-amber-400 text-xl">★</span>
+                    <span class="=" text-amber-400 text-xl">★</span>
                     <span class="text-amber-400 text-xl">★</span>
                 </div>
             </div>
@@ -390,6 +390,58 @@ use App\controllers\Auth;
             </div>
         </div>
     </div>
+
+    <footer class="bg-[var(--text-dark)] h-50">
+        <?php
+
+        $travel = "/";
+        $destination = "/destinations";
+        $trips = "/travel-logs";
+
+        $fees = "airline-fees.php";
+        $lowFare = "low-fare-tips.php";
+        $security = "security.php";
+
+        $privacy = "privacy.php";
+        $terms = "terms.php";
+        ?>
+
+        <!-- Footer Starts -->
+        <div style="background-color: #fff6f3; padding: 20px; font-family: Arial, sans-serif; font-size: 14px; color: #333; margin-top: 150px;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1000px; margin: auto;">
+                <div style="min-width: 200px; margin-bottom: 20px;">
+                    <b>Company</b><br>
+                    <a href="<?php echo $travel; ?>" style="text-decoration: none; color: #000;">Home</a><br>
+                    <a href="<?php echo $destination; ?>" style="text-decoration: none; color: #000;">Destination</a><br>
+                    <a href="<?php echo $trips; ?>" style="text-decoration: none; color: #000;">Travel Logs</a>
+                </div>
+
+                <div style="min-width: 200px; margin-bottom: 20px;">
+                    <b>More</b><br>
+                    <a href="<?php echo $fees; ?>" style="text-decoration: none; color: #000;">Airline fees</a><br>
+                    <a href="<?php echo $lowFare; ?>" style="text-decoration: none; color: #000;">Low fare tips</a><br>
+                    <a href="<?php echo $security; ?>" style="text-decoration: none; color: #000;">Security</a>
+                </div>
+
+                <div style="min-width: 200px; margin-bottom: 20px;">
+                    <b>Get the Compass app</b>
+                </div>
+            </div>
+
+            <hr style="margin-top: 20px; border: none; border-top: 1px solid #ccc;">
+
+            <div style="text-align: center; font-size: 13px; color: #666; margin-top: 10px;">
+                &copy; <?php echo date("Y"); ?> Compass |
+                <a href="<?php echo $privacy; ?>" style="color: #555;">Privacy</a> |
+                <a href="<?php echo $terms; ?>" style="color: #555;">Terms & Condition</a><br><br>
+
+                <span style="font-weight: bold;">Contact us! tel no. 09612312312, <br />Our email: Contact: contact@compass.com</span><br><br>
+
+                English
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP" style="height: 18px; vertical-align: middle;">
+            </div>
+        </div>
+    </footer>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>

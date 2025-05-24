@@ -57,7 +57,52 @@ class TripController
     $userTrips = array_filter($allTrips, function($trip) use ($userId) {
       return isset($trip['user_id']) && $trip['user_id'] == $userId;
     });
+
+    // Get posts data (travel logs with content)
+    $allPosts = $this->getAllPosts();
+    $userPosts = array_filter($allPosts, function($post) use ($userId) {
+      return isset($post['user_id']) && $post['user_id'] == $userId;
+    });
+
     require __DIR__ . '/../views/trips/travel-logs.php';
+  }
+
+  // Get all posts from the trips table
+  public function getAllPosts()
+  {
+    try {
+      $stmt = $this->tripModel->getDb()->prepare(
+        "SELECT t.*, u.given, u.surname 
+         FROM trips t 
+         LEFT JOIN users u ON t.user_id = u.id 
+         ORDER BY t.created_at DESC, t.id DESC"
+      );
+      $stmt->execute();
+      return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    } catch (\Exception $e) {
+      error_log('Error fetching posts: ' . $e->getMessage());
+      return [];
+    }
+  }
+
+  // Get posts for a specific user
+  public function getUserPosts($userId)
+  {
+    try {
+      $stmt = $this->tripModel->getDb()->prepare(
+        "SELECT t.*, u.given, u.surname 
+         FROM trips t 
+         LEFT JOIN users u ON t.user_id = u.id 
+         WHERE t.user_id = :user_id 
+         ORDER BY t.created_at DESC, t.id DESC"
+      );
+      $stmt->bindValue(':user_id', $userId, \PDO::PARAM_INT);
+      $stmt->execute();
+      return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    } catch (\Exception $e) {
+      error_log('Error fetching user posts: ' . $e->getMessage());
+      return [];
+    }
   }
 
   // Handle POST from travel log form
@@ -71,82 +116,78 @@ class TripController
       $content = isset($_POST['content']) ? trim($_POST['content']) : '';
       $location = isset($_POST['location']) ? trim($_POST['location']) : '';
       
-      // Get images from $_FILES
-      $images = isset($_FILES['images']) && !empty($_FILES['images']['name'][0]) ? $_FILES['images'] : null;
+      // Validate required content
+      if (empty($content)) {
+        header('Location: /travel-logs?error=content_required');
+        exit;
+      }
 
-      // Handle image uploads directly in controller
-      $imagePaths = [];
+      // Handle single image upload
+      $imagePath = '';
       $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
       
       if (!is_dir($uploadsDir)) {
         mkdir($uploadsDir, 0777, true);
       }
 
-      // Process multiple images
-      if ($images && isset($images['name']) && !empty($images['name'])) {
-        if (is_array($images['name'])) {
-          foreach ($images['name'] as $idx => $imageName) {
-            if (empty($imageName) || empty($images['tmp_name'][$idx])) {
-              continue;
-            }
-
-            if ($images['error'][$idx] !== UPLOAD_ERR_OK || !is_uploaded_file($images['tmp_name'][$idx])) {
-              continue;
-            }
-
-            $check = @getimagesize($images['tmp_name'][$idx]);
-            if ($check === false) {
-              continue;
-            }
-
-            $allowedFormats = ["jpg", "jpeg", "png", "gif", "webp"];
-            $imageFileType = strtolower(pathinfo($imageName, PATHINFO_EXTENSION));
-            if (!in_array($imageFileType, $allowedFormats)) {
-              continue;
-            }
-
+      // Process single image if uploaded
+      if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        $image = $_FILES['image'];
+        
+        // Validate image
+        $check = @getimagesize($image['tmp_name']);
+        if ($check !== false) {
+          $allowedFormats = ["jpg", "jpeg", "png", "gif", "webp"];
+          $imageFileType = strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));
+          
+          if (in_array($imageFileType, $allowedFormats)) {
             $maxFileSize = 5 * 1024 * 1024; // 5MB
-            if ($images['size'][$idx] > $maxFileSize) {
-              continue;
+            if ($image['size'] <= $maxFileSize) {
+              $filename = uniqid('tripimg_', true) . '.' . $imageFileType;
+              $targetPath = $uploadsDir . $filename;
+              if (move_uploaded_file($image['tmp_name'], $targetPath)) {
+                $imagePath = '/uploads/' . $filename;
+                error_log('Image uploaded successfully: ' . $imagePath);
+              } else {
+                error_log('Failed to move uploaded file');
+              }
+            } else {
+              error_log('File size too large: ' . $image['size']);
             }
-
-            $filename = uniqid('tripimg_', true) . '.' . $imageFileType;
-            $targetPath = $uploadsDir . $filename;
-            if (move_uploaded_file($images['tmp_name'][$idx], $targetPath)) {
-              $imagePaths[] = '/uploads/' . $filename;
-            }
+          } else {
+            error_log('Invalid file format: ' . $imageFileType);
           }
+        } else {
+          error_log('Invalid image file');
         }
       }
 
-      $imageList = !empty($imagePaths) ? implode(',', $imagePaths) : '';
-
-      // Insert directly into database using existing model connection
+      // Insert into trips table
       try {
         $stmt = $this->tripModel->getDb()->prepare(
-          "INSERT INTO travels (user_id, from_location, to_location, travel_date, booking_date, first_name, last_name, content, activities, images) 
-           VALUES (:user_id, :from_location, :to_location, :travel_date, :booking_date, :first_name, :last_name, :content, :activities, :images)"
+          "INSERT INTO trips (user_id, given, surname, content, location, images, created_at) 
+           VALUES (:user_id, :given, :surname, :content, :location, :images, :created_at)"
         );
         
         $stmt->bindValue(':user_id', $userId, \PDO::PARAM_INT);
-        $stmt->bindValue(':from_location', $location);
-        $stmt->bindValue(':to_location', $location);
-        $stmt->bindValue(':travel_date', date('Y-m-d'));
-        $stmt->bindValue(':booking_date', date('Y-m-d'));
-        $stmt->bindValue(':first_name', $given);
-        $stmt->bindValue(':last_name', $surname);
+        $stmt->bindValue(':given', $given);
+        $stmt->bindValue(':surname', $surname);
         $stmt->bindValue(':content', $content);
-        $stmt->bindValue(':activities', 'travel-log');
-        $stmt->bindValue(':images', $imageList);
+        $stmt->bindValue(':location', $location);
+        $stmt->bindValue(':images', $imagePath);
+        $stmt->bindValue(':created_at', date('Y-m-d H:i:s'));
         
-        $stmt->execute();
-        
-        error_log('Travel post successfully saved with images: ' . $imageList);
+        if ($stmt->execute()) {
+          error_log('Travel post successfully saved with image: ' . $imagePath);
+          header('Location: /travel-logs?success=post_created');
+        } else {
+          error_log('Database execution failed: ' . json_encode($stmt->errorInfo()));
+          header('Location: /travel-logs?error=save_failed');
+        }
       } catch (\Exception $e) {
         error_log('Trip post error: ' . $e->getMessage());
+        header('Location: /travel-logs?error=save_failed');
       }
-
-      header('Location: /travel-logs');
       exit;
     }
     header('Location: /travel-logs');

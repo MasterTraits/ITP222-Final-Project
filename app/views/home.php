@@ -53,7 +53,7 @@ use App\controllers\Auth;
               <p class="text-sm text-[var(--text-dark)]">Not a user yet? <a href="/register" class="text-[var(--blue)]">Sign-up</a></p>
             </div>
 
-            <div class="flex items-center gap-2 mt-5 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gift"></i></i> Travel Vouchers</div>
+            <div class="flex items-center gap-2 mt-5 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gift"></i> Travel Vouchers</div>
             <p class="text-sm text-[var(--text-dark)]">Redeem your travel vouchers before they expire</p>
             <div class="flex items-center gap-2 mt-2 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gear"></i> Settings</div>
             <p class="text-sm mb-4 text-[var(--text-dark)]">Manage your notification preferences here</p>
@@ -62,10 +62,10 @@ use App\controllers\Auth;
           <i class="fa-solid fa-user text-sm"></i> <?= $_SESSION["user"]["given"] . " " . $_SESSION["user"]["surname"] ?>
           <div class="invisible absolute bg-[#F4EEEC] p-5 h-68 w-60 rounded-lg leading-tight
           group-hover/account:visible top-9 -right-3 ">
-            <div class="flex items-center gap-2 mt-5 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gift"></i></i> Travel Vouchers</div>
-            <p class="text-sm text-[var(--text-dark)]">Redeem your travel vouchers before they expire</p>
+            <div class="flex items-center gap-2 mt-5 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gift"></i> Travel Vouchers</div>
+            <p class="text-sm text-[var,--text-dark)]">Redeem your travel vouchers before they expire</p>
             <div class="flex items-center gap-2 mt-2 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gear"></i> Settings</div>
-            <p class="text-sm mb-4 text-[var(--text-dark)]">Manage your notification preferences here</p>
+            <p class="text-sm mb-4 text-[var,--text-dark)]">Manage your notification preferences here</p>
             <div class="w-full pt-4 mb-2 border-t-1 border-[var(--text-dark)]">
               <a href="/logout" class="block text-center bg-[var(--blue)] rounded-full py-2 px-5 text-white w-full mb-2 text-semibold">Log-out</a>
             </div>
@@ -83,9 +83,9 @@ use App\controllers\Auth;
     <div class="flex flex-col items-center gap-8 text-xl">
       <a href="/" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Home</a>
       <a href="/book/1" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Book</a>
-      <a href="/destinations" class="font-semibold text-[var,--text-dark)] hover:text-[var(--blue)]">Travel</a>
+      <a href="/destinations" class="font-semibold text-[var(--text-dark)] hover:text-[var,--blue]">Travel</a>
       <?php if (Auth::check()): ?>
-        <a href="/travel-logs" class="font-semibold text-[var(--text-dark)] hover:text-[var,--blue]">Travel Logs</a>
+        <a href="/travel-logs" class="font-semibold text-[var,--text-dark)] hover:text-[var,--blue]">Travel Logs</a>
       <?php endif; ?>
       <?php if (!Auth::check()): ?>
         <a href="/login" class="bg-[var(--blue)] text-white rounded-full py-2 px-8 font-semibold">Sign in</a>
@@ -99,7 +99,7 @@ use App\controllers\Auth;
   <!-------------------------------
         HERO LANDING PAGE 
   -------------------------------->
-  <section class="carousel-section-wrapper relative min-h-[500px] h-[90vh] md:h-180 text-white flex flex-col justify-between items-center p-5 md:p-10">
+  <section class="carousel-section-wrapper relative min-h-[500px] h-[90vh] px-5 md:px-10 md:h-180 text-white flex flex-col justify-between items-center p-5 md:p-10">
     <div class="h-10"></div>
     <div class="carousel-slides-container absolute inset-0">
       <?php
@@ -113,7 +113,7 @@ use App\controllers\Auth;
             <img src="<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['title'] ?? 'Carousel image') ?>" class="absolute inset-0 object-cover object-bottom w-full min-w-full h-full -z-2">
           <?php endif; ?>
 
-          <article class="slide-content max-w-5xl w-full relative z-10 mx-auto flex flex-col items-center justify-center text-center md:items-start md:text-left mt-auto mb-auto">
+          <article class="slide-content max-w-5xl md:pl-5 xl:pl-0 w-full relative z-10 mx-auto flex flex-col items-center justify-center text-center md:items-start md:text-left mt-auto mb-auto">
             <?php if (isset($item['title'])): ?>
               <h1 class="tracking-widest text-5xl font-light mb-4 text-shadow-xl"><?= htmlspecialchars($item['title']) ?></h1>
             <?php endif; ?>
@@ -127,8 +127,8 @@ use App\controllers\Auth;
       }
       ?>
     </div>
-    <article class="carousel-controls-indicators absolute bottom-0 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-5xl pb-30 flex justify-between items-center">
-      <a href="/travel" class="explore-link flex items-center gap-3 bg-[var(--bg-transparent-dark)] backdrop-blur-md rounded-full p-2 pr-4 font-light group-destinations hover:bg-gradient-to-r from-[var(--blue)] to-[var(--gold)] transition animated-gradient-hover">
+    <article class="carousel-controls-indicators absolute bottom-0 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-5xl px-5 lg:px-0 pb-30 flex justify-between items-center">
+      <a href="/destinations" class="explore-link flex items-center gap-3 bg-[var(--bg-transparent-dark)] backdrop-blur-md rounded-full p-2 pr-4 font-light group-destinations hover:bg-gradient-to-r from-[var(--blue)] to-[var(--gold)] transition animated-gradient-hover">
         <i class="fa-solid fa-arrow-up transform -rotate-55 bg-white text-black size-8 text-center p-2 rounded-full"></i>
         <p>Explore Destinations</p>
       </a>
@@ -142,7 +142,7 @@ use App\controllers\Auth;
         </button>
       </div>
     </article>
-    <div class="carousel-previews absolute right-4 top-1/2 transform -translate-y-1/2 z-20 flex flex-col gap-y-2">
+    <div class="carousel-previews absolute right-4 top-1/2 transform -translate-y-1/2 z-20 hidden md:flex flex-col gap-y-2">
       <?php
       // Generate preview indicators using another loop
       $previewIndex = 0;
@@ -165,7 +165,7 @@ use App\controllers\Auth;
       }
       ?>
     </div>
-    <div class="absolute top-1/2 left-5 transform -translate-y-1/2 text-xl shadow-2xl hidden sm:flex flex-col gap-6 z-40">
+    <div class="absolute top-1/2 left-5 transform -translate-y-1/2 text-xl shadow-2xl hidden md:flex flex-col gap-6 z-40">
       <i class="fa-brands fa-facebook"></i>
       <i class="fa-brands fa-instagram"></i>
       <i class="fa-brands fa-x-twitter"></i>
@@ -173,7 +173,7 @@ use App\controllers\Auth;
     <!-------------------------------
             FORMS HANDLING
     -------------------------------->
-    <form action="/book/1" method="POST" class="absolute flex flex-col md:flex-row md:items-center justify-around gap-4 bg-[var(--bg-transparent-light)] backdrop-blur-md w-[95%] max-w-5xl text-black -bottom-[8rem] md:-bottom-13 p-4 rounded-tl-lg rounded-br-lg shadow-lg z-10">
+    <form action="/book/1" method="POST" class="absolute hidden md:flex flex-col md:flex-row md:items-center justify-around gap-4 bg-[var(--bg-transparent-light)] backdrop-blur-md w-[95%] max-w-5xl text-black -bottom-[8rem] md:-bottom-13 p-4 rounded-tl-lg rounded-br-lg shadow-lg z-10">
       <div class="w-full">
         <!-- Custom dropdown for transport type -->
         <div class="custom-dropdown group-select hover:text-[var(--blue)] text-base" data-value="flight">
@@ -210,13 +210,13 @@ use App\controllers\Auth;
           <div class="w-full">
             <label for="country" class="text-sm">To</label>
             <div class="grid grid-cols-2 gap-2 w-full">
-              <select id="country" name="country" class="bg-[var(--bg-input)] border border-[var(--blue)] text-black rounded-full rounded-tr-none py-4 px-2 w-full hover:bg-white *:p-1 transition duration-300 ease-in-out">
+              <select id="country" name="country" class="bg-[var(--bg-input)] border border-[var,--blue)] text-black rounded-full rounded-tr-none py-4 px-2 w-full hover:bg-white *:p-1 transition duration-300 ease-in-out">
                 <option value="" hidden disabled>Country</option>
                 <option value="Philippines">Philippines</option>
                 <option value="United States">United States</option>
                 <option value="New Zealand">New Zealand</option>
               </select>
-              <select id="city" name="city" class="bg-[var(--bg-input)] border border-[var(--blue)] text-black rounded-full rounded-tr-none py-4 px-4 w-full hover:bg-white *:p-1 transition duration-300 ease-in-out">
+              <select id="city" name="city" class="bg-[var(--bg-input)] border border-[var,--blue)] text-black rounded-full rounded-tr-none py-4 px-4 w-full hover:bg-white *:p-1 transition duration-300 ease-in-out">
                 <option value="" hidden disabled>City</option>
                 <option value="Manila" data-country="Philippines">Manila</option>
                 <option value="El Nido" data-country="Philippines">El Nido, Palawan</option>
@@ -278,6 +278,14 @@ use App\controllers\Auth;
         </button>
       </div>
     </form>
+
+    <!-- Mobile Book Now Button -->
+    <div class="absolute bottom-8 w-full px-5 z-20 md:hidden">
+      <a href="/book/1" class="bg-[var(--gold)] hover:bg-[var(--blue)] text-black hover:text-white rounded-full py-4 px-8 font-bold text-lg shadow-lg transition-all duration-300 ease-in-out flex items-center justify-center gap-3">
+        <i class="fa-solid fa-plane text-xl"></i>
+        Book Now
+      </a>
+    </div>
   </section>
 
   <!-------------------------------
@@ -286,7 +294,7 @@ use App\controllers\Auth;
   <?php if (!Auth::check()): ?>
     <section class="w-full flex flex-col items-center mb-30">
       <div class="h-[12rem] md:h-45"></div>
-      <article class="max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-4 px-4">
+      <article class="max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-4 px-5 md:px-10">
         <div class="md:col-span-2">
           <h2 class="text-3xl tracking-tighter font-bold text-[var(--blue)]">Guiding you to a memorable trip.</h2>
           <p class="text-[var(--text-dark)] mt-8 font-semibold text-balance">
@@ -301,7 +309,7 @@ use App\controllers\Auth;
           alt="Compass Logo"
           class="h-[80%] w-auto mx-auto md:col-span-1 transform -scale-x-100">
       </article>
-      <article class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl w-full px-4 mt-8">
+      <article class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl w-full px-5 md:px-10 mt-8">
         <div class="w-full rounded-3xl border border-[var(--hero-border)] p-6 *:leading-tight">
           <div class="flex *:-mr-2 mb-4">
             <?php foreach ($logos as $logo) { ?>
@@ -339,76 +347,172 @@ use App\controllers\Auth;
         TRAVEL DESTINATIONS 
   -------------------------------->
   <section class="bg-[#F4EEEC] relative min-h-[500px] md:h-185 w-full flex flex-col items-center px-4 py-12 md:py-0">
-    <h3 class="mt-25 mb-10 text-[27px] tracking-tight text-[var(--blue)]">Discover what we offer!</h3>
+    <h3 class="mt-25 mb-10 text-[27px] tracking-tight text-[var(--blue)] text-center px-4">Discover what we offer!</h3>
 
-    <article class="flex gap-6 max-w-5xl overflow-x-auto flex-nowrap p-5 scroll-smooth">
+    <article class="flex gap-4 md:gap-6 max-w-7xl overflow-x-auto flex-nowrap p-2 md:p-5 scroll-smooth scrollbar-hide">
       <?php foreach ($destinations as $destination) { ?>
         <a
-          href="/travel/palawan"
-          class="w-70 shrink-0 rounded-xl bg-[var(--background)] border border-[var(--hero-border)] hover:scale-105">
-          <img src="assets/login-sample.jpeg" alt="Philippines" class="rounded-t-lg h-40 w-full object-fit">
-          <div class="p-3 tracking-tight flex flex-col ">
-            <p class="text-lg tracking-tight font-semibold -mb-1"><?= $destination['package'] ?></p>
-            <p class="tracking-tight mb-2"><?= $destination['location'] ?></p>
-            <div class="text-sm py-1 px-2 rounded-lg <?= ($destination['rating'] > 8) ? "border-2 border-[var(--blue)]" : (($destination['rating'] > 5) ? "border-2 border-[var(--blue)]" : "bg-[var(--hero-border)]") ?> mb-2">
+          href="<?= $destination['url']?>"
+          class="w-64 md:w-70 shrink-0 rounded-xl bg-[var(--background)] border border-[var(--hero-border)] hover:scale-105 transition-transform duration-300 shadow-md hover:shadow-lg">
+          <img src="<?= $destination['image']?>" alt="<?= htmlspecialchars($destination['package']) ?>" class="rounded-t-lg h-32 md:h-40 w-full object-cover">
+          <div class="p-2 md:p-3 tracking-tight flex flex-col">
+            <p class="text-base md:text-lg tracking-tight font-semibold -mb-1 line-clamp-1"><?= htmlspecialchars($destination['package']) ?></p>
+            <p class="text-sm md:text-base tracking-tight mb-2 text-gray-600 line-clamp-1"><?= htmlspecialchars($destination['location']) ?></p>
+            <div class="text-xs md:text-sm py-1 px-2 rounded-lg <?= ($destination['rating'] > 8) ? "border-2 border-[var(--blue)]" : (($destination['rating'] > 5) ? "border-2 border-[var(--blue)]" : "bg-[var(--hero-border)]") ?> mb-2">
               <?= $destination['rating'] ?>/10 Recommended (<?= $destination['users_rated'] ?>)
             </div>
-            <div class="text-sm flex items-center gap-2.5">
-              <i class="fa-regular fa-building text-xl mb-3"></i>
+            <div class="text-xs md:text-sm flex items-center gap-2 mb-2">
+              <i class="fa-regular fa-building text-lg md:text-xl"></i>
               <?= $destination['star'] ?> star
             </div>
-            <div class="text-sm flex items-center gap-2 mb-8 "><i class="fa-solid fa-plane-departure "></i>
-              <?= $destination['from'] ?> - <?= $destination['to'] ?>
+            <div class="text-xs md:text-sm flex items-center gap-2 mb-4 md:mb-8">
+              <i class="fa-solid fa-plane-departure"></i>
+              <span class="line-clamp-1"><?= $destination['from'] ?> - <?= $destination['to'] ?></span>
             </div>
-            <p class="inline-block text-sm text-[var(--blue)] p-2 bg-[var(--gold)] font-semibold self-end">Bundle Save</p>
-            <div class="flex items-center gap-1 text-xl mt-3 my-2 self-end">
-              ₱<?= number_format($destination['price'], 0, '.', ',') ?>
-              <i class="fa-solid fa-circle-info text-neutral-400"></i>
-              <s class="text-neutral-400">₱<?= number_format($destination['original_price'], 0, '.', ',') ?></s>
+            <p class="inline-block text-xs md:text-sm text-[var(--blue)] p-1 md:p-2 bg-[var(--gold)] font-semibold self-end rounded mb-2">Bundle Save</p>
+            <div class="flex items-center gap-1 text-lg md:text-xl mt-1 md:mt-3 my-2 self-end">
+              <span class="font-bold">₱<?= number_format($destination['price'], 0, '.', ',') ?></span>
+              <i class="fa-solid fa-circle-info text-neutral-400 text-sm"></i>
+              <s class="text-neutral-400 text-sm md:text-base">₱<?= number_format($destination['original_price'], 0, '.', ',') ?></s>
             </div>
           </div>
         </a>
       <?php } ?>
     </article>
-    <div></div>
+
+    <!-- Mobile scroll indicator -->
+    <div class="md:hidden mt-4 flex items-center gap-2 text-sm text-gray-500">
+      <i class="fa-solid fa-arrow-left"></i>
+      <span>Scroll to see more destinations</span>
+      <i class="fa-solid fa-arrow-right"></i>
+    </div>
   </section>
 
   <!-------------------------------
       LATEST EXPLORATION UPDATES 
   -------------------------------->
-  <section class="w-full flex flex-col items-center my-40">
-    <h2 class="text-3xl text-left tracking-tight font-bold text-[var(--blue)] mb-5 w-full max-w-5xl">Hear our Stories.</h2>
-    <article class="grid grid-cols-4 gap-4 p-4 w-full max-w-5xl">
-      <div class="col-span-3 row-span-3 relative overflow-hidden rounded-lg">
-        <img src="assets/login-sample.webp" alt="Description of the image" class="w-full h-100 object-cover">
-        <p class="absolute bottom-0 left-0 w-full p-4 text-white bg-[var(--bg-transparent-dark)] bg-opacity-50">
-          Caption here
-        </p>
+  <section class="w-full flex flex-col items-center my-20 md:my-40 px-4">
+    <h2 class="text-2xl md:text-3xl text-center md:text-left tracking-tight font-bold text-[var(--blue)] mb-5 w-full max-w-5xl px-4 md:px-0">Hear our Stories.</h2>
+    
+    <!-- Desktop Layout -->
+    <article class="hidden md:grid grid-cols-4 gap-4 p-4 w-full max-w-5xl">
+      <div class="col-span-3 row-span-3 relative overflow-hidden rounded-lg group cursor-pointer">
+        <img src="assets/destinations/palawan.jpg" alt="Palawan Underground River Adventure" class="w-full h-100 object-cover transition-transform duration-300 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full p-6 text-white">
+          <h3 class="text-xl font-bold mb-2">Exploring Palawan's Underground River</h3>
+          <p class="text-sm opacity-90 leading-relaxed">Our recent expedition to Puerto Princesa's underground river revealed breathtaking limestone formations and diverse wildlife. A truly magical experience that showcases the Philippines' natural wonders.</p>
+          <div class="flex items-center mt-3 text-xs opacity-75">
+            <i class="fa-solid fa-calendar mr-2"></i>
+            <span>December 15, 2024</span>
+            <i class="fa-solid fa-map-marker-alt ml-4 mr-2"></i>
+            <span>Palawan, Philippines</span>
+          </div>
+        </div>
       </div>
 
       <div class="col-start-4 flex flex-col gap-4">
-        <div class="relative rounded-lg w-full h-28 overflow-hidden">
-          <img src="" class="w-full h-full object-cover brightness-75">
-          <p class="absolute bottom-0 left-0 w-full p-2 text-white bg-[var(--bg-transparent-dark)]">Caption here</p>
+        <div class="relative rounded-lg w-full h-28 overflow-hidden group cursor-pointer">
+          <img src="assets/destinations/siargao.jpeg" alt="Siargao Surfing" class="w-full h-full object-cover brightness-75 transition-transform duration-300 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 w-full p-3 text-white">
+            <h4 class="text-sm font-semibold mb-1">Siargao's Perfect Waves</h4>
+            <p class="text-xs opacity-90">Catching the legendary Cloud 9 barrel</p>
+          </div>
         </div>
-        <div class="relative rounded-lg w-full h-28 overflow-hidden">
-          <img src="" class="w-full h-full object-cover brightness-75">
-          <p class="absolute bottom-0 left-0 w-full p-2 text-white bg-[var(--bg-transparent-dark)]">Caption here</p>
+        
+        <div class="relative rounded-lg w-full h-28 overflow-hidden group cursor-pointer">
+          <img src="assets/destinations/baguio.jpg" alt="Baguio Mountain Views" class="w-full h-full object-cover brightness-75 transition-transform duration-300 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 w-full p-3 text-white">
+            <h4 class="text-sm font-semibold mb-1">Baguio's Cool Escape</h4>
+            <p class="text-xs opacity-90">Mountain adventures in the summer capital</p>
+          </div>
         </div>
-        <div class="relative rounded-lg w-full h-28 overflow-hidden">
-          <img src="" class="w-full h-full object-cover brightness-75">
-          <p class="absolute bottom-0 left-0 w-full p-2 text-white bg-[var(--bg-transparent-dark)]">Caption here</p>
+        
+        <div class="relative rounded-lg w-full h-28 overflow-hidden group cursor-pointer">
+          <img src="assets/destinations/boracay.jpg" alt="Boracay Sunset" class="w-full h-full object-cover brightness-75 transition-transform duration-300 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 w-full p-3 text-white">
+            <h4 class="text-sm font-semibold mb-1">Boracay's White Sands</h4>
+            <p class="text-xs opacity-90">Sunset moments at Station 1</p>
+          </div>
         </div>
       </div>
     </article>
+
+    <!-- Mobile Layout -->
+    <div class="md:hidden w-full max-w-lg px-4">
+      <!-- Featured Story -->
+      <div class="relative overflow-hidden rounded-lg mb-6 group cursor-pointer">
+        <img src="assets/destinations/palawan.jpg" alt="Palawan Underground River Adventure" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full p-4 text-white">
+          <h3 class="text-lg font-bold mb-2">Exploring Palawan's Underground River</h3>
+          <p class="text-sm opacity-90 leading-relaxed line-clamp-2">Our recent expedition to Puerto Princesa's underground river revealed breathtaking limestone formations and diverse wildlife.</p>
+          <div class="flex items-center mt-3 text-xs opacity-75">
+            <i class="fa-solid fa-calendar mr-2"></i>
+            <span>Dec 15, 2024</span>
+            <i class="fa-solid fa-map-marker-alt ml-4 mr-2"></i>
+            <span>Palawan</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Story Grid -->
+      <div class="grid grid-cols-1 gap-4">
+        <div class="relative rounded-lg h-32 overflow-hidden group cursor-pointer">
+          <img src="assets/destinations/siargao.jpeg" alt="Siargao Surfing" class="w-full h-full object-cover brightness-75 transition-transform duration-300 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 w-full p-3 text-white">
+            <h4 class="text-base font-semibold mb-1">Siargao's Perfect Waves</h4>
+            <p class="text-sm opacity-90">Catching the legendary Cloud 9 barrel at sunrise</p>
+          </div>
+        </div>
+        
+        <div class="relative rounded-lg h-32 overflow-hidden group cursor-pointer">
+          <img src="assets/destinations/baguio.jpg" alt="Baguio Mountain Views" class="w-full h-full object-cover brightness-75 transition-transform duration-300 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 w-full p-3 text-white">
+            <h4 class="text-base font-semibold mb-1">Baguio's Cool Escape</h4>
+            <p class="text-sm opacity-90">Mountain adventures in the summer capital</p>
+          </div>
+        </div>
+        
+        <div class="relative rounded-lg h-32 overflow-hidden group cursor-pointer">
+          <img src="assets/destinations/boracay.jpg" alt="Boracay Sunset" class="w-full h-full object-cover brightness-75 transition-transform duration-300 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 w-full p-3 text-white">
+            <h4 class="text-base font-semibold mb-1">Boracay's White Sands</h4>
+            <p class="text-sm opacity-90">Sunset moments at Station 1 beach</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- View More Button -->
+      <div class="text-center mt-6">
+        <a href="/travel-logs" class="inline-flex items-center gap-2 bg-[var(--blue)] hover:bg-[var(--gold)] text-white px-6 py-3 rounded-full transition-colors duration-300">
+          <span>View All Stories</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Desktop View More -->
+    <div class="hidden md:block text-center mt-8">
+      <a href="/travel-logs" class="inline-flex items-center gap-2 bg-[var(--blue)] hover:bg-[var(--gold)] text-white px-8 py-3 rounded-full transition-colors duration-300 shadow-md hover:shadow-lg">
+        <span>View All Travel Stories</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
   </section>
 
   <footer class="bg-[var(--text-dark)] h-50">
     <?php
 
-    $travel = "travel.php";
-    $destination = "destination.php";
-    $trips = "your-trips.php";
+    $travel = "/";
+    $destination = "/destinations";
+    $trips = "/travel-logs";
 
     $fees = "airline-fees.php";
     $lowFare = "low-fare-tips.php";
@@ -423,9 +527,9 @@ use App\controllers\Auth;
       <div style="display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1000px; margin: auto;">
         <div style="min-width: 200px; margin-bottom: 20px;">
           <b>Company</b><br>
-          <a href="<?php echo $travel; ?>" style="text-decoration: none; color: #000;">Travel</a><br>
+          <a href="<?php echo $travel; ?>" style="text-decoration: none; color: #000;">Home</a><br>
           <a href="<?php echo $destination; ?>" style="text-decoration: none; color: #000;">Destination</a><br>
-          <a href="<?php echo $trips; ?>" style="text-decoration: none; color: #000;">Your Trips</a>
+          <a href="<?php echo $trips; ?>" style="text-decoration: none; color: #000;">Travel Logs</a>
         </div>
 
         <div style="min-width: 200px; margin-bottom: 20px;">
@@ -447,7 +551,8 @@ use App\controllers\Auth;
         <a href="<?php echo $privacy; ?>" style="color: #555;">Privacy</a> |
         <a href="<?php echo $terms; ?>" style="color: #555;">Terms & Condition</a><br><br>
 
-        <span style="font-weight: bold;">compass.com</span><br><br>
+        <span style="font-weight: bold;">Contact us!  tel no. 09612312312, <br/>Our email: Contact: contact@compass.com</span><br><br>
+        
         English
         <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP" style="height: 18px; vertical-align: middle;">
       </div>

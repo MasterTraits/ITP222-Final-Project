@@ -36,9 +36,122 @@ $bookingRef = 'COM' . strtoupper(substr(md5(time()), 0, 6));
     </div>
   <?php endif; ?>
 
+  <!-- Beautiful Responsive Header -->
+  <header class="bg-[#fc6] border-b border-yellow-300 shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <a href="/" class="flex items-center space-x-2">
+            <div class="w-10 h-10 bg-gradient-to-br from-[var(--blue)] to-[var(--gold)] rounded-lg flex items-center justify-center">
+              <i class="fa-solid fa-compass text-white text-lg"></i>
+            </div>
+            <span class="text-xl font-bold text-[var(--text-dark)] hidden sm:block">Compass</span>
+          </a>
+        </div>
 
-  <header class="w-full bg-[var(--gold)] h-20 flex items-center px-20 text-white mb-10">
-    <img src="/assets/logo.svg" alt="Compass Logo" class="h-10 w-auto">
+        <!-- Desktop Navigation -->
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-8">
+            <a href="/" class="text-gray-800 hover:text-[var(--blue)] px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+              <i class="fa-solid fa-home mr-1"></i>Home
+            </a>
+            <a href="/book/1" class="text-[var(--blue)] bg-white/30 px-3 py-2 rounded-md text-sm font-medium">
+              <i class="fa-solid fa-plane mr-1"></i>Book
+            </a>
+            <a href="/destinations" class="text-gray-800 hover:text-[var(--blue)] px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+              <i class="fa-solid fa-map-location-dot mr-1"></i>Destinations
+            </a>
+            <?php if (isset($_SESSION['user'])): ?>
+              <a href="/travel-logs" class="text-gray-800 hover:text-[var(--blue)] px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                <i class="fa-solid fa-clipboard mr-1"></i>Travel Logs
+              </a>
+            <?php endif; ?>
+          </div>
+        </div>
+
+        <!-- User Menu / Auth Buttons (Desktop) -->
+        <div class="hidden md:block">
+          <div class="ml-4 flex items-center md:ml-6">
+            <?php if (!isset($_SESSION['user'])): ?>
+              <div class="flex items-center space-x-4">
+                <a href="/login" class="text-gray-800 hover:text-[var(--blue)] px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                  Sign In
+                </a>
+                <a href="/register" class="bg-[var(--blue)] hover:bg-[var(--text-dark)] text-white px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 shadow-md hover:shadow-lg">
+                  Sign Up
+                </a>
+              </div>
+            <?php else: ?>
+              <div class="relative group">
+                <div class="flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-white/20 transition-colors duration-200 cursor-pointer">
+                  <i class="fa-solid fa-user text-gray-800"></i>
+                  <span class="text-gray-800 font-medium">
+                    <?= htmlspecialchars($_SESSION['user']['given'] . ' ' . $_SESSION['user']['surname']) ?>
+                  </span>
+                  <i class="fa-solid fa-chevron-down text-gray-800 text-xs"></i>
+                </div>
+                <div class="invisible group-hover:visible absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                  <a href="/travel-logs" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    <i class="fa-solid fa-clipboard mr-2"></i>Travel Logs
+                  </a>
+                  <a href="/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    <i class="fa-solid fa-sign-out-alt mr-2"></i>Sign Out
+                  </a>
+                </div>
+              </div>
+            <?php endif; ?>
+          </div>
+        </div>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button type="button" id="mobile-menu-button" class="bg-white/20 inline-flex items-center justify-center p-2 rounded-md text-gray-800 hover:text-gray-600 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--blue)]">
+            <span class="sr-only">Open main menu</span>
+            <i class="fa-solid fa-bars h-6 w-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu, show/hide based on menu state -->
+    <div class="md:hidden hidden" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[#fc6] border-t border-yellow-300">
+        <a href="/" class="text-gray-600 hover:text-[var(--blue)] hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium">
+          <i class="fa-solid fa-home mr-2"></i>Home
+        </a>
+        <a href="/book/1" class="text-[var(--blue)] bg-blue-50 block px-3 py-2 rounded-md text-base font-medium">
+          <i class="fa-solid fa-plane mr-2"></i>Book
+        </a>
+        <a href="/destinations" class="text-gray-600 hover:text-[var,--blue)] hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium">
+          <i class="fa-solid fa-map-location-dot mr-2"></i>Destinations
+        </a>
+        <?php if (isset($_SESSION['user'])): ?>
+          <a href="/travel-logs" class="text-gray-600 hover:text-[var(--blue)] hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium">
+            <i class="fa-solid fa-clipboard mr-2"></i>Travel Logs
+          </a>
+        <?php endif; ?>
+        
+        <!-- Mobile Auth Section -->
+        <div class="border-t border-gray-200 pt-4">
+          <?php if (!isset($_SESSION['user'])): ?>
+            <a href="/login" class="text-gray-600 hover:text-[var(--blue)] hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium">
+              <i class="fa-solid fa-sign-in-alt mr-2"></i>Sign In
+            </a>
+            <a href="/register" class="bg-[var(--blue)] text-white block px-3 py-2 rounded-md text-base font-medium mt-2">
+              <i class="fa-solid fa-user-plus mr-2"></i>Sign Up
+            </a>
+          <?php else: ?>
+            <div class="px-3 py-2 text-base font-medium text-gray-700 border-b border-gray-200 mb-2">
+              <i class="fa-solid fa-user mr-2"></i><?= htmlspecialchars($_SESSION['user']['given'] . ' ' . $_SESSION['user']['surname']) ?>
+            </div>
+            <a href="/logout" class="text-gray-600 hover:text-[var(--blue)] hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium">
+              <i class="fa-solid fa-sign-out-alt mr-2"></i>Sign Out
+            </a>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
   </header>
 
   <!-- Progress Indicator -->
@@ -58,7 +171,7 @@ $bookingRef = 'COM' . strtoupper(substr(md5(time()), 0, 6));
           </div>
           <span class="text-sm mt-1 text-[var(--blue)] font-medium">Planning</span>
         </div>
-        <div class="flex-1 h-1 bg-[var(--blue)] mx-2"></div>
+        <div class="flex-1 h-1 bg-[var,--blue)] mx-2"></div>
         <div class="flex flex-col items-center">
           <div class="w-10 h-10 bg-[var(--blue)] rounded-full flex items-center justify-center text-white font-bold">3</div>
           <span class="text-sm mt-1 text-[var(--blue)] font-medium">Payment</span>
@@ -93,7 +206,7 @@ $bookingRef = 'COM' . strtoupper(substr(md5(time()), 0, 6));
               <div>
                 <label for="phone" class="block text-sm mb-1">Phone</label>
                 <input type="tel" id="phone" name="phone" value="<?= isset($savedData['phone']) ? $savedData['phone'] : '' ?>" required
-                  class="bg-[var(--bg-input)] border border-[var(--blue)] text-black rounded-lg py-3 px-4 w-full hover:bg-white transition duration-300 ease-in-out">
+                  class="bg-[var(--bg-input)] border border-[var,--blue)] text-black rounded-lg py-3 px-4 w-full hover:bg-white transition duration-300 ease-in-out">
               </div>
             </div>
           </div>
@@ -199,6 +312,12 @@ $bookingRef = 'COM' . strtoupper(substr(md5(time()), 0, 6));
   </footer>
 
   <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.classList.toggle('hidden');
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
       // Format card number with spaces
       document.getElementById('cardNumber').addEventListener('input', function(e) {

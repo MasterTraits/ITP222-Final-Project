@@ -1,10 +1,6 @@
 <?php
 
 use App\controllers\Auth;
-echo '<pre>';
-var_dump($_SESSION);
-echo '</pre>';
-
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +18,12 @@ echo '</pre>';
 </head>
 
 <body class="bg-gray-50 text-gray-800">
-  <nav class="rounded-tl-lg rounded-br-lg shadow-sm px-4 py-2 w-[95%] max-w-5xl   
-    bg-white backdrop-blur-md border border-[#E2E8F0] 
-    fixed top-5 left-1/2 transform -translate-x-1/2 z-[9999]
+  <!-------------------------------
+      REUSABLE NAVIGATION BAR 
+  -------------------------------->
+  <nav class="rounded-tl-lg rounded-br-lg shadow-lg px-4 py-2 w-[95%] max-w-5xl   
+    bg-[var(--bg-transparent-light)] backdrop-blur-md border border-[#E2E8F0] 
+    fixed top-5 left-1/2 transform -translate-x-1/2 z-40
     flex items-center justify-between">
     <a href="/" class="flex items-center">
       <img src="assets/logo.svg" alt="Compass Logo" class="h-10 w-auto">
@@ -37,10 +36,11 @@ echo '</pre>';
 
     <!-- Desktop menu -->
     <aside class="hidden md:flex items-center space-x-6">
+      <a href="/" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Home</a>
       <a href="/book/1" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Book</a>
       <a href="/destinations" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Destinations</a>
       <?php if (Auth::check()): ?>
-        <a href="/travel-logs" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Travel Logs</a>
+        <a href="/travel-logs" class="font-semibold text-[var(--text-dark)] hover:text-[var,--blue]">Travel Logs</a>
       <?php endif; ?>
       <div class="relative py-1 px-4 rounded-full border flex items-center gap-2 group/account hover:bg-[var(--blue)] hover:text-white transition 400ms ease-out">
         <?php if (!Auth::check()): ?>
@@ -52,19 +52,19 @@ echo '</pre>';
               <p class="text-sm text-[var(--text-dark)]">Not a user yet? <a href="/register" class="text-[var(--blue)]">Sign-up</a></p>
             </div>
 
-            <div class="flex items-center gap-2 mt-5 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gift"></i></i> Travel Vouchers</div>
-            <p class="text-sm text-[var(--text-dark)]">Redeem your travel vouchers before they expire</p>
+            <div class="flex items-center gap-2 mt-5 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gift"></i> Travel Vouchers</div>
+            <p class="text-sm text-[var,--text-dark)]">Redeem your travel vouchers before they expire</p>
             <div class="flex items-center gap-2 mt-2 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gear"></i> Settings</div>
-            <p class="text-sm mb-4 text-[var(--text-dark)]">Manage your notification preferences here</p>
+            <p class="text-sm mb-4 text-[var,--text-dark)]">Manage your notification preferences here</p>
           </div>
         <?php else: ?>
           <i class="fa-solid fa-user text-sm"></i> <?= $_SESSION["user"]["given"] . " " . $_SESSION["user"]["surname"] ?>
           <div class="invisible absolute bg-[#F4EEEC] p-5 h-68 w-60 rounded-lg leading-tight
           group-hover/account:visible top-9 -right-3 ">
-            <div class="flex items-center gap-2 mt-5 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gift"></i></i> Travel Vouchers</div>
-            <p class="text-sm text-[var(--text-dark)]">Redeem your travel vouchers before they expire</p>
+            <div class="flex items-center gap-2 mt-5 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gift"></i> Travel Vouchers</div>
+            <p class="text-sm text-[var,--text-dark)]">Redeem your travel vouchers before they expire</p>
             <div class="flex items-center gap-2 mt-2 mb-1 text-[var(--blue)]"><i class="fa-solid fa-gear"></i> Settings</div>
-            <p class="text-sm mb-4 text-[var(--text-dark)]">Manage your notification preferences here</p>
+            <p class="text-sm mb-4 text-[var,--text-dark)]">Manage your notification preferences here</p>
             <div class="w-full pt-4 mb-2 border-t-1 border-[var(--text-dark)]">
               <a href="/logout" class="block text-center bg-[var(--blue)] rounded-full py-2 px-5 text-white w-full mb-2 text-semibold">Log-out</a>
             </div>
@@ -75,15 +75,16 @@ echo '</pre>';
   </nav>
 
   <!-- Mobile menu (hidden by default) -->
-  <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-[var(--bg-transparent-light)] backdrop-blur-lg z-[10000] hidden flex-col items-center pt-20">
+  <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-[var(--bg-transparent-light)] backdrop-blur-lg z-50 hidden flex-col items-center pt-20">
     <button id="close-menu-button" class="absolute top-5 right-5 text-[var(--text-dark)] text-2xl">
       <i class="fa-solid fa-times"></i>
     </button>
     <div class="flex flex-col items-center gap-8 text-xl">
+      <a href="/" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Home</a>
       <a href="/book/1" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Book</a>
-      <a href="/destinations" class="font-semibold text-[var(--text-dark)] hover:text-[var(--blue)]">Travel</a>
+      <a href="/destinations" class="font-semibold text-[var(--text-dark)] hover:text-[var,--blue]">Travel</a>
       <?php if (Auth::check()): ?>
-        <a href="/travel-logs" class="font-semibold text-[var(--text-dark)] hover:text-[var,--blue)]">Travel Logs</a>
+        <a href="/travel-logs" class="font-semibold text-[var,--text-dark)] hover:text-[var,--blue]">Travel Logs</a>
       <?php endif; ?>
       <?php if (!Auth::check()): ?>
         <a href="/login" class="bg-[var(--blue)] text-white rounded-full py-2 px-8 font-semibold">Sign in</a>
@@ -100,7 +101,9 @@ echo '</pre>';
     <aside class="hidden md:block">
       <div class="bg-white rounded-lg shadow-sm p-4 sticky top-20">
         <div class="flex items-center space-x-3 mb-4">
-          <img src="https://i.pravatar.cc/150?img=3" alt="Profile" class="w-12 h-12 rounded-full">
+          <div class="w-12 h-12 rounded-full bg-[var(--blue)] flex items-center justify-center">
+            <i class="fa-solid fa-user text-white text-lg"></i>
+          </div>
           <h2 class="font-bold"><?= $_SESSION["user"]["given"] . " " . $_SESSION["user"]["surname"] ?></h2>
         </div>
         <div class="flex justify-between text-sm mb-4">
@@ -197,7 +200,7 @@ echo '</pre>';
                   <div class="flex items-center gap-2 text-xs mt-2">
                     <span class="px-2 py-1 rounded bg-[var(--blue)] text-white">
                       <?= ucfirst(htmlspecialchars($trip['transport_type'] ?? '')) ?>
-                  </span>
+                    </span>
                     <span class="px-2 py-1 rounded bg-gray-100 text-gray-700">
                       <?= ucfirst(htmlspecialchars($trip['trip_type'] ?? '')) ?>
                     </span>
@@ -222,8 +225,8 @@ echo '</pre>';
                     <!-- Upload Image Button -->
                     <label class="flex items-center text-gray-500 hover:text-[var(--text-dark)] cursor-pointer" title="Add Photo">
                       <i class="fas fa-image"></i>
-                      <span class="tracking-tighter">&nbsp;&nbsp;Upload images</span>
-                      <input type="file" id="post-image" name="images[]" accept="image/*" class="hidden" multiple>
+                      <span class="tracking-tighter">&nbsp;&nbsp;Upload image</span>
+                      <input type="file" id="post-image" name="image" accept="image/*" class="hidden">
                     </label>
                     <!-- Location Button -->
                     <button type="button" id="add-location-btn" class="text-gray-500 hover:text-[var(--text-dark)] flex items-center" title="Add Location">
@@ -238,28 +241,71 @@ echo '</pre>';
                 <!-- Location input, hidden by default -->
                 <input type="text" id="location-input" name="location" placeholder="Enter location..." class="mt-3 w-full rounded-lg border border-gray-300 p-2 text-sm hidden placeholder:text-neutral-500 text-[var(--blue)]" />
                 <!-- Image preview, hidden by default -->
-                <div id="image-preview" class="mt-3 flex flex-wrap gap-2"></div>
+                <div id="image-preview" class="mt-3"></div>
               </div>
             </div>
           </form>
+
           <!-- Filter Options -->
           <div class="flex space-x-2 mb-6 overflow-x-auto pb-2">
-            <button class="bg-[var(--text-dark)] text-white px-4 py-2 rounded-full text-sm font-medium">All Posts</button>
-            <button class="bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-sm font-medium">Following</button>
-            <button class="bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-sm font-medium">Popular</button>
-            <button class="bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-sm font-medium">Europe</button>
-            <button class="bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-sm font-medium">Asia</button>
-            <button class="bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-sm font-medium">Americas</button>
+            <button class="filter-btn bg-[var(--text-dark)] text-white px-4 py-2 rounded-full text-sm font-medium" data-filter="all">All Posts</button>
+            <button class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-sm font-medium" data-filter="user">Your Posts</button>
+            <button class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-sm font-medium" data-filter="philippines">Philippines</button>
+            <button class="filter-btn bg-white text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full text-sm font-medium" data-filter="international">International</button>
           </div>
+
           <div id="posts-container">
-            <!-- Posts will be dynamically added here -->
+            <!-- Posts will be dynamically loaded here -->
           </div>
         </section>
       </div>
     </div>
   </main>
 
+  <!-- Footer Starts -->
+  <div style="background-color: #fff6f3; padding: 20px; font-family: Arial, sans-serif; font-size: 14px; color: #333; margin-top: 150px;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1000px; margin: auto;">
+      <div style="min-width: 200px; margin-bottom: 20px;">
+        <b>Company</b><br>
+        <a href="<?php echo $travel; ?>" style="text-decoration: none; color: #000;">Home</a><br>
+        <a href="<?php echo $destination; ?>" style="text-decoration: none; color: #000;">Destination</a><br>
+        <a href="<?php echo $trips; ?>" style="text-decoration: none; color: #000;">Travel Logs</a>
+      </div>
+
+      <div style="min-width: 200px; margin-bottom: 20px;">
+        <b>More</b><br>
+        <a href="<?php echo $fees; ?>" style="text-decoration: none; color: #000;">Airline fees</a><br>
+        <a href="<?php echo $lowFare; ?>" style="text-decoration: none; color: #000;">Low fare tips</a><br>
+        <a href="<?php echo $security; ?>" style="text-decoration: none; color: #000;">Security</a>
+      </div>
+
+      <div style="min-width: 200px; margin-bottom: 20px;">
+        <b>Get the Compass app</b>
+      </div>
+    </div>
+
+    <hr style="margin-top: 20px; border: none; border-top: 1px solid #ccc;">
+
+    <div style="text-align: center; font-size: 13px; color: #666; margin-top: 10px;">
+      &copy; <?php echo date("Y"); ?> Compass |
+      <a href="<?php echo $privacy; ?>" style="color: #555;">Privacy</a> |
+      <a href="<?php echo $terms; ?>" style="color: #555;">Terms & Condition</a><br><br>
+
+      <span style="font-weight: bold;">Contact us! tel no. 09612312312, <br />Our email: Contact: contact@compass.com</span><br><br>
+
+      English
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP" style="height: 18px; vertical-align: middle;">
+    </div>
+  </div>
+  </footer>
+
+
   <script>
+    // Global posts data
+    let allPosts = <?= json_encode($allPosts ?? []) ?>;
+    let userPosts = <?= json_encode($userPosts ?? []) ?>;
+    let currentUserId = <?= json_encode($_SESSION['user']['id'] ?? null) ?>;
+
     // Tab switching logic
     document.getElementById('tab-trips').addEventListener('click', function() {
       document.getElementById('user-trips-section').style.display = '';
@@ -276,7 +322,152 @@ echo '</pre>';
       this.classList.remove('text-gray-500', 'border-transparent');
       document.getElementById('tab-trips').classList.remove('text-[var(--blue)]', 'border-[var(--blue)]', 'border-b-2');
       document.getElementById('tab-trips').classList.add('text-gray-500', 'border-transparent');
+      loadPosts('all');
     });
+
+    // Filter posts functionality
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+
+        // Update active filter button
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('bg-[var(--text-dark)]', 'text-white');
+          b.classList.add('bg-white', 'text-gray-700');
+        });
+        this.classList.add('bg-[var(--text-dark)]', 'text-white');
+        this.classList.remove('bg-white', 'text-gray-700');
+
+        loadPosts(filter);
+      });
+    });
+
+    // Load and display posts
+    function loadPosts(filter = 'all') {
+      const container = document.getElementById('posts-container');
+      let postsToShow = [];
+
+      switch (filter) {
+        case 'user':
+          postsToShow = userPosts;
+          break;
+        case 'philippines':
+          postsToShow = allPosts.filter(post =>
+            post.location && (
+              post.location.toLowerCase().includes('philippines') ||
+              post.location.toLowerCase().includes('manila') ||
+              post.location.toLowerCase().includes('cebu') ||
+              post.location.toLowerCase().includes('palawan') ||
+              post.location.toLowerCase().includes('boracay') ||
+              post.location.toLowerCase().includes('baguio') ||
+              post.location.toLowerCase().includes('siargao') ||
+              post.location.toLowerCase().includes('bohol')
+            )
+          );
+          break;
+        case 'international':
+          postsToShow = allPosts.filter(post =>
+            post.location && !(
+              post.location.toLowerCase().includes('philippines') ||
+              post.location.toLowerCase().includes('manila') ||
+              post.location.toLowerCase().includes('cebu') ||
+              post.location.toLowerCase().includes('palawan') ||
+              post.location.toLowerCase().includes('boracay') ||
+              post.location.toLowerCase().includes('baguio') ||
+              post.location.toLowerCase().includes('siargao') ||
+              post.location.toLowerCase().includes('bohol')
+            )
+          );
+          break;
+        default:
+          postsToShow = allPosts;
+      }
+
+      if (postsToShow.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-10 text-gray-500">
+            <h3 class="text-lg font-semibold">No posts found</h3>
+            <p>Be the first to share your travel adventure!</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = postsToShow.map(post => createPostHTML(post)).join('');
+    }
+
+    // Create HTML for a single post
+    function createPostHTML(post) {
+      const userName = post.given && post.surname ? `${post.given} ${post.surname}` : 'Anonymous';
+      const isCurrentUser = post.user_id == currentUserId;
+      const postDate = new Date(post.created_at).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+
+      // Handle single image
+      let imageHTML = '';
+      if (post.images && post.images.trim()) {
+        const imageSrc = post.images.trim();
+        imageHTML = `
+          <div class="mt-3">
+            <img src="${imageSrc}" alt="Travel photo" class="rounded-lg object-cover w-full max-h-96 cursor-pointer" onclick="openImageModal('${imageSrc}')">
+          </div>
+        `;
+      }
+
+      return `
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-[var(--blue)] flex items-center justify-center">
+              <i class="fa-solid fa-user text-white text-sm"></i>
+            </div>
+            <div class="flex-1">
+              <h3 class="font-semibold text-gray-900">${userName} ${isCurrentUser ? '(You)' : ''}</h3>
+              <div class="flex items-center text-sm text-gray-500">
+                ${post.location ? `<i class="fas fa-map-marker-alt mr-1"></i><span class="mr-3">${post.location}</span>` : ''}
+                <span>${postDate}</span>
+              </div>
+            </div>
+          </div>
+          <div class="text-gray-800 mb-3">${post.content || ''}</div>
+          ${imageHTML}
+          <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+            <div class="flex space-x-4">
+              <button class="flex items-center text-gray-500 hover:text-blue-600">
+                <i class="fas fa-heart mr-1"></i>
+                <span>Like</span>
+              </button>
+              <button class="flex items-center text-gray-500 hover:text-blue-600">
+                <i class="fas fa-comment mr-1"></i>
+                <span>Comment</span>
+              </button>
+              <button class="flex items-center text-gray-500 hover:text-blue-600">
+                <i class="fas fa-share mr-1"></i>
+                <span>Share</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Image modal functionality
+    function openImageModal(imageSrc) {
+      const modal = document.createElement('div');
+      modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50';
+      modal.innerHTML = `
+        <div class="relative max-w-4xl max-h-full p-4">
+          <img src="${imageSrc}" alt="Full size image" class="max-w-full max-h-full object-contain">
+          <button class="absolute top-4 right-4 text-white text-xl bg-black bg-opacity-50 rounded-full w-8 h-8 flex items-center justify-center" onclick="this.parentElement.parentElement.remove()">×</button>
+        </div>
+      `;
+      modal.onclick = function(e) {
+        if (e.target === modal) modal.remove();
+      };
+      document.body.appendChild(modal);
+    }
 
     // Show/hide location input
     document.getElementById('add-location-btn').addEventListener('click', function() {
@@ -287,55 +478,52 @@ echo '</pre>';
       }
     });
 
-    // Image preview for upload (multiple images) with remove and add (+) button
+    // Image preview for upload (single image) with remove button
     const imageInput = document.getElementById('post-image');
     const preview = document.getElementById('image-preview');
-    let imagesData = [];
+    let imageData = null;
 
-    function renderImages() {
+    function renderImage() {
       preview.innerHTML = '';
-      imagesData.forEach((imgObj, idx) => {
+      if (imageData) {
         const wrapper = document.createElement('div');
         wrapper.className = "relative inline-block";
+
         // Image
         const img = document.createElement('img');
-        img.src = imgObj.dataUrl;
-        img.className = "max-h-40 rounded-lg mt-2 mr-2 inline-block";
+        img.src = imageData.dataUrl;
+        img.className = "max-h-40 rounded-lg mt-2 inline-block";
+
         // Remove button
         const removeBtn = document.createElement('button');
         removeBtn.type = "button";
         removeBtn.innerHTML = '<span class="absolute top-1 right-1 bg-white rounded-full border border-gray-300 text-gray-500 hover:text-red-600 px-2 py-0.5 text-xs font-bold cursor-pointer" title="Remove">&times;</span>';
         removeBtn.className = "absolute top-0 right-0 z-10";
         removeBtn.onclick = function() {
-          imagesData.splice(idx, 1);
-          renderImages();
+          imageData = null;
+          renderImage();
+          imageInput.value = '';
         };
+
         wrapper.appendChild(img);
         wrapper.appendChild(removeBtn);
         preview.appendChild(wrapper);
-      });
-    }
-
-    function handleFiles(files) {
-      Array.from(files).forEach(file => {
-        if (file && file.type.startsWith('image/')) {
-          const reader = new FileReader();
-          reader.onload = function(evt) {
-            imagesData.push({
-              file,
-              dataUrl: evt.target.result
-            });
-            renderImages();
-          };
-          reader.readAsDataURL(file);
-        }
-      });
+      }
     }
 
     imageInput.addEventListener('change', function(e) {
-      handleFiles(e.target.files);
-      // Reset input so same file can be added again if needed
-      e.target.value = '';
+      const file = e.target.files[0];
+      if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          imageData = {
+            file,
+            dataUrl: evt.target.result
+          };
+          renderImage();
+        };
+        reader.readAsDataURL(file);
+      }
     });
   </script>
 </body>
